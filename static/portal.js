@@ -178,28 +178,6 @@ function atualizarCabecalhoUsuario(f) {
         avatarEl.textContent = iniciais;
     }
 
-    // Férias Status
-    const diag = f.diagnostico_ferias;
-    const labelFerias = document.getElementById('appStatFeriasLabel');
-    const subFerias = document.getElementById('appStatFeriasSub');
-
-    if (diag) {
-        labelFerias.textContent = diag.status_label || 'Em dia';
-        if (diag.status === 'VENCIDA') {
-            labelFerias.className = 'text-xs font-black text-rose-600 mt-1';
-            subFerias.textContent = diag.alerta_texto || 'Férias vencidas (Art. 137 CLT)';
-        } else if (diag.status === 'RISCO_DOBRAR') {
-            labelFerias.className = 'text-xs font-black text-amber-600 mt-1';
-            subFerias.textContent = `Limite: ${diag.proxima_data_limite || 'Atenção'}`;
-        } else if (diag.status === 'EM_GOZO') {
-            labelFerias.className = 'text-xs font-bold text-teal-600 mt-1';
-            subFerias.textContent = 'Em período de descanso';
-        } else {
-            labelFerias.className = 'text-xs font-bold text-emerald-700 mt-1';
-            subFerias.textContent = 'Período regular em dia';
-        }
-    }
-
     // Admissão & Tempo de Empresa
     if (f.admissao) {
         document.getElementById('appStatAdmissao').textContent = formatarData(f.admissao);
