@@ -1,0 +1,1551 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGP SANTOS MANUTENÇÃO | Sistema de Gestão de Pessoal</title>
+    <script>
+        window.addEventListener('error', function(e) {
+            console.error('[SGP Global Error]:', e.message, e.filename, e.lineno);
+        });
+        window.addEventListener('unhandledrejection', function(e) {
+            console.error('[SGP Promise Rejection]:', e.reason);
+        });
+    </script>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#0f172a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col font-sans">
+
+    <!-- ========================================================================= -->
+    <!-- TELA: LOGIN DO ADMINISTRADOR (ACESSO RESTRITO)                           -->
+    <!-- ========================================================================= -->
+    <div id="viewLoginAdmin" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950">
+        <div class="w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-700/40 animate-in fade-in zoom-in duration-200">
+            <!-- Header do Card com a Logomarca Oficial -->
+            <div class="bg-slate-900 px-6 py-7 text-white text-center relative border-b border-slate-800">
+                <div class="flex justify-center mb-3">
+                    <img src="/static/logo-transparent.png" alt="Santos Manutenções" class="h-16 w-auto object-contain drop-shadow-md">
+                </div>
+                <h1 class="text-base font-black tracking-wider uppercase text-white">SGP SANTOS MANUTENÇÃO</h1>
+                <p class="text-xs text-blue-300 font-semibold tracking-wider uppercase mt-0.5">Acesso Administrativo &bull; Recursos Humanos</p>
+                <div class="mt-2.5 inline-flex items-center space-x-1 px-3 py-1 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-400/30">
+                    <i class="fa-solid fa-shield-halved text-[9px] mr-1 text-amber-400"></i> Acesso Restrito aos Gestores
+                </div>
+            </div>
+
+            <!-- Formulário de Login -->
+            <div class="p-6 space-y-4 text-xs">
+                <div id="loginAdminErro" class="hidden bg-rose-50 border border-rose-200 text-rose-700 text-xs p-3 rounded-xl flex items-start space-x-2">
+                    <i class="fa-solid fa-circle-exclamation text-rose-500 mt-0.5 text-sm shrink-0"></i>
+                    <span id="loginAdminErroTexto">Usuário ou senha inválidos.</span>
+                </div>
+
+                <form id="formLoginAdmin" onsubmit="realizarLoginAdmin(event)" class="space-y-4">
+                    <!-- Usuário -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Usuário Administrador</label>
+                        <div class="relative">
+                            <i class="fa-solid fa-user-tie absolute left-3.5 top-3 text-slate-400 text-sm"></i>
+                            <input type="text" id="loginAdminUsuario" placeholder="Digite seu usuário" required autofocus
+                                class="w-full pl-10 pr-3 py-2.5 text-sm bg-slate-50 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition font-medium text-slate-800">
+                        </div>
+                    </div>
+
+                    <!-- Senha -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Senha de Acesso</label>
+                        <div class="relative">
+                            <i class="fa-solid fa-lock absolute left-3.5 top-3 text-slate-400 text-sm"></i>
+                            <input type="password" id="loginAdminSenha" placeholder="Digite sua senha" required
+                                class="w-full pl-10 pr-10 py-2.5 text-sm bg-slate-50 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition font-medium text-slate-800">
+                            <button type="button" onclick="toggleVisibilidadeSenhaAdmin('loginAdminSenha', this)" class="absolute right-3 top-2.5 text-slate-400 hover:text-slate-600">
+                                <i class="fa-solid fa-eye text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Botão Entrar -->
+                    <button type="submit" id="btnLoginAdminSubmit"
+                        class="w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white rounded-xl font-bold text-sm shadow-md shadow-blue-600/30 flex items-center justify-center transition">
+                        <span>Acessar o Sistema</span>
+                        <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </button>
+                </form>
+
+                <!-- Dica / Informações de Acesso Padrão -->
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 text-[11px] text-slate-600 space-y-1">
+                    <p class="font-bold text-slate-800 flex items-center">
+                        <i class="fa-solid fa-key mr-1.5 text-blue-600 text-xs"></i> Credenciais Iniciais de Administrador
+                    </p>
+                    <p class="text-slate-600 leading-relaxed">
+                        Usuário: <strong class="text-slate-900 font-mono bg-slate-200 px-1 py-0.5 rounded">admin</strong> &nbsp;|&nbsp; 
+                        Senha inicial: <strong class="text-slate-900 font-mono bg-slate-200 px-1 py-0.5 rounded">admin123</strong>
+                    </p>
+                    <p class="text-[10px] text-slate-400">Você pode alterar sua senha a qualquer momento após o acesso.</p>
+                </div>
+            </div>
+
+            <!-- Footer do Card -->
+            <div class="bg-slate-50 border-t border-slate-100 px-6 py-3 text-center text-[10px] text-slate-400">
+                SGP Santos Manutenção &bull; Painel Corporativo de Gestão
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- ÁREA PRINCIPAL DO SISTEMA ADMINISTRATIVO (APÓS LOGIN)                      -->
+    <!-- ========================================================================= -->
+    <div id="viewAppAdmin" class="hidden flex-1 flex flex-col min-h-screen">
+
+    <!-- TOPBAR / HEADER -->
+    <header class="bg-slate-900 text-white sticky top-0 z-30 shadow-lg border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <a href="/" class="flex items-center space-x-3.5 group">
+                    <img src="/static/logo-transparent.png" alt="Santos Manutenções" class="h-12 w-auto object-contain transition group-hover:scale-105 drop-shadow">
+                    <div class="border-l border-slate-700/80 pl-3.5 hidden sm:block">
+                        <div class="flex items-center space-x-2">
+                            <h1 class="text-base font-black tracking-wider text-white uppercase">SGP SANTOS MANUTENÇÃO</h1>
+                            <span class="text-[10px] bg-blue-500/20 text-blue-300 border border-blue-400/30 px-1.5 py-0.5 rounded font-mono font-bold">v2.0</span>
+                        </div>
+                        <p class="text-[11px] text-slate-400">Sistema de Gestão de Funcionários, Ponto & Emissão de Documentos</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="flex items-center space-x-2.5 sm:space-x-3">
+                <button onclick="abrirModalUploadLote()" title="Anexar Contracheques de todos os colaboradores de uma só vez com reconhecimento de nome" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-lg font-semibold flex items-center shadow-sm shadow-emerald-500/30 transition">
+                    <i class="fa-solid fa-layer-group mr-1.5 text-amber-300"></i>
+                    <span class="hidden md:inline">Anexar em Lote</span>
+                </button>
+                <a href="/portal" target="_blank" title="Abrir Aplicativo do Colaborador (Holerites / Contracheques)" class="bg-indigo-700 hover:bg-indigo-600 text-white text-xs px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-lg font-semibold flex items-center shadow-sm shadow-indigo-500/30 transition">
+                    <i class="fa-solid fa-mobile-screen-button mr-1.5 text-amber-300"></i>
+                    <span class="hidden md:inline">Portal do Colaborador</span>
+                </a>
+                <button onclick="reimportarBase()" title="Sincronizar com a planilha Excel" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-lg font-medium flex items-center border border-slate-700 transition">
+                    <i class="fa-solid fa-arrows-rotate mr-1.5 text-blue-400" id="syncIcon"></i>
+                    <span class="hidden md:inline">Sincronizar</span>
+                </button>
+                <button onclick="abrirModalNovoFuncionario()" class="bg-blue-600 hover:bg-blue-500 text-white text-xs px-3 py-2 sm:px-4 sm:py-2.5 rounded-lg font-semibold flex items-center shadow-sm shadow-blue-500/40 transition">
+                    <i class="fa-solid fa-user-plus mr-1.5"></i>
+                    <span class="hidden sm:inline">Novo</span>
+                </button>
+
+                <!-- Perfil do Administrador e Logout -->
+                <div class="flex items-center space-x-1.5 sm:space-x-2 pl-2 border-l border-slate-700">
+                    <div class="hidden lg:flex items-center space-x-2 bg-slate-800/90 border border-slate-700 px-2.5 py-1.5 rounded-lg shadow-xs">
+                        <div class="w-6 h-6 rounded-full bg-blue-600 text-white text-[10px] font-black flex items-center justify-center">
+                            AD
+                        </div>
+                        <div class="text-left leading-tight">
+                            <span class="block text-[11px] font-bold text-white" id="topbarAdminNome">Administrador</span>
+                            <span class="block text-[9px] text-slate-400 font-mono">admin</span>
+                        </div>
+                    </div>
+                    <button onclick="abrirModalTrocarSenhaAdmin()" title="Alterar Senha do Administrador" class="w-8 h-8 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white rounded-lg text-xs flex items-center justify-center border border-slate-700 transition">
+                        <i class="fa-solid fa-key text-amber-400"></i>
+                    </button>
+                    <button onclick="realizarLogoutAdmin()" title="Sair do Sistema" class="px-2.5 py-1.5 bg-rose-600/90 hover:bg-rose-500 text-white rounded-lg text-xs font-bold flex items-center shadow-xs transition">
+                        <i class="fa-solid fa-right-from-bracket sm:mr-1"></i>
+                        <span class="hidden sm:inline">Sair</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full space-y-6">
+
+        <!-- CARDS DE MÉTRICAS -->
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+            <!-- Card 1: Ativos -->
+            <div class="bg-white rounded-xl p-3.5 shadow-sm border border-slate-200 flex items-center justify-between">
+                <div>
+                    <p class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Ativos</p>
+                    <h3 class="text-2xl font-bold text-slate-900 mt-0.5" id="statAtivos">--</h3>
+                    <span class="text-[10px] text-emerald-600 font-medium"><i class="fa-solid fa-check-circle mr-1"></i>Em operação</span>
+                </div>
+                <div class="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-base">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+            </div>
+
+            <!-- Card 2: Em Atestado -->
+            <div class="bg-white rounded-xl p-3.5 shadow-sm border border-slate-200 flex items-center justify-between">
+                <div>
+                    <p class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Em Atestado</p>
+                    <h3 class="text-2xl font-bold text-amber-600 mt-0.5" id="statAtestados">--</h3>
+                    <span class="text-[10px] text-amber-600 font-medium"><i class="fa-solid fa-notes-medical mr-1"></i>Afastamentos</span>
+                </div>
+                <div class="w-10 h-10 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center text-base">
+                    <i class="fa-solid fa-file-waveform"></i>
+                </div>
+            </div>
+
+            <!-- Card 3: Horas Extras -->
+            <div class="bg-white rounded-xl p-3.5 shadow-sm border border-slate-200 flex items-center justify-between">
+                <div>
+                    <p class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Horas Extras</p>
+                    <h3 class="text-2xl font-bold text-blue-600 mt-0.5" id="statHorasExtras">--</h3>
+                    <span class="text-[10px] text-blue-600 font-medium"><i class="fa-regular fa-clock mr-1"></i>Registradas</span>
+                </div>
+                <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center text-base">
+                    <i class="fa-solid fa-stopwatch"></i>
+                </div>
+            </div>
+
+            <!-- Card 4: Férias CLT (NOVO) -->
+            <div class="bg-white rounded-xl p-3.5 shadow-sm border border-slate-200 flex items-center justify-between cursor-pointer hover:border-amber-400 hover:shadow-md transition" onclick="filtrarPorFeriasAlertas()" title="Filtrar colaboradores com férias vencidas ou em risco de dobra">
+                <div>
+                    <p class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Férias CLT</p>
+                    <div class="flex items-baseline space-x-1.5 mt-0.5">
+                        <h3 class="text-2xl font-black text-rose-600" id="statFeriasVencidas">--</h3>
+                        <span class="text-[10px] text-slate-400 font-semibold uppercase">vencidas</span>
+                    </div>
+                    <span class="text-[10px] text-amber-600 font-bold block mt-0.5 truncate" id="statFeriasRisco"><i class="fa-solid fa-triangle-exclamation mr-1"></i>-- em risco</span>
+                </div>
+                <div class="w-10 h-10 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center text-base">
+                    <i class="fa-solid fa-umbrella-beach"></i>
+                </div>
+            </div>
+
+            <!-- Card 5: Desligados -->
+            <div class="bg-white rounded-xl p-3.5 shadow-sm border border-slate-200 flex items-center justify-between">
+                <div>
+                    <p class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Desligados</p>
+                    <h3 class="text-2xl font-bold text-slate-600 mt-0.5" id="statDesligados">--</h3>
+                    <span class="text-[10px] text-slate-500 font-medium"><i class="fa-solid fa-archive mr-1"></i>Histórico</span>
+                </div>
+                <div class="w-10 h-10 bg-slate-100 text-slate-600 rounded-xl flex items-center justify-center text-base">
+                    <i class="fa-solid fa-user-xmark"></i>
+                </div>
+            </div>
+
+            <!-- Card 6: Folha Salarial -->
+            <div class="bg-white rounded-xl p-3.5 shadow-sm border border-slate-200 flex items-center justify-between">
+                <div>
+                    <p class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Folha Bruta</p>
+                    <h3 class="text-sm font-black text-indigo-700 mt-1 truncate max-w-[130px]" id="statFolha">--</h3>
+                    <span class="text-[10px] text-emerald-600 font-semibold block mt-0.5 truncate" id="statSubAssiduidade"><i class="fa-solid fa-gift mr-1"></i>Assid: --</span>
+                </div>
+                <div class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center text-base">
+                    <i class="fa-solid fa-sack-dollar"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- BARRA DE PESQUISA E FILTROS -->
+        <div class="bg-white rounded-xl p-4 shadow-sm border border-slate-200 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="relative flex-1 w-full">
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-slate-400 text-sm"></i>
+                <input type="text" id="searchInput" oninput="debounceBusca()" placeholder="Buscar por nome, matrícula, CPF, cargo ou cidade..."
+                    class="w-full pl-10 pr-4 py-2 text-sm bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition">
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2.5 w-full md:w-auto">
+                <!-- Filtro Férias -->
+                <div class="w-full sm:w-44">
+                    <select id="filtroFerias" onchange="carregarFuncionarios()" class="w-full py-2 px-3 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 font-medium text-slate-700">
+                        <option value="Todos">🌴 Férias: Todas</option>
+                        <option value="VENCIDA">🚨 Vencidas (Dobra CLT)</option>
+                        <option value="RISCO_DOBRAR">⚠️ Risco de Dobra (&lt; 60d)</option>
+                        <option value="EM_GOZO">🏖️ Em Gozo de Férias</option>
+                        <option value="AGENDADA">📅 Férias Agendadas</option>
+                        <option value="EM_DIA">🟢 Férias em Dia</option>
+                    </select>
+                </div>
+
+                <!-- Filtro Local -->
+                <div class="w-1/2 sm:w-36">
+                    <select id="filtroLocal" onchange="carregarFuncionarios()" class="w-full py-2 px-3 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium">
+                        <option value="Todos">📍 Todos os Locais</option>
+                    </select>
+                </div>
+
+                <!-- Filtro Status -->
+                <div class="w-[calc(50%-0.625rem)] sm:w-32">
+                    <select id="filtroStatus" onchange="carregarFuncionarios()" class="w-full py-2 px-3 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium">
+                        <option value="Ativo">Ativos</option>
+                        <option value="Desligado">Desligados</option>
+                        <option value="Todos">Todos</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- TABELA DE FUNCIONÁRIOS -->
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+            <div class="px-5 py-4 border-b border-slate-100 flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <h2 class="text-sm font-bold text-slate-800 uppercase tracking-wider">Quadro de Colaboradores</h2>
+                    <span id="contagemBadge" class="bg-slate-100 text-slate-600 text-xs px-2.5 py-0.5 rounded-full font-semibold">0</span>
+                </div>
+                <div class="text-xs text-slate-400 flex items-center space-x-4">
+                    <span><i class="fa-solid fa-umbrella-beach text-teal-600 mr-1"></i>Gestão CLT Férias</span>
+                    <span><i class="fa-solid fa-file-contract text-blue-500 mr-1"></i>Impressão em 1-Clique</span>
+                    <span><i class="fa-solid fa-shield text-emerald-500 mr-1"></i>Ficha EPI NR-06</span>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs border-collapse">
+                    <thead>
+                        <tr class="bg-slate-50 border-b border-slate-200 text-slate-500 font-semibold uppercase tracking-wider">
+                            <th class="py-3 px-4">Colaborador</th>
+                            <th class="py-3 px-3">Cargo / Função</th>
+                            <th class="py-3 px-3">Local de Trabalho</th>
+                            <th class="py-3 px-3">Remuneração (Função / Assiduidade / Bruto)</th>
+                            <th class="py-3 px-3">Status</th>
+                            <th class="py-3 px-3 text-center">Férias CLT</th>
+                            <th class="py-3 px-4 text-center">Ações Rápidas</th>
+                            <th class="py-3 px-4 text-right">Documentos Legais</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelaFuncionarios" class="divide-y divide-slate-100">
+                        <tr>
+                            <td colspan="8" class="py-12 text-center text-slate-400">
+                                <i class="fa-solid fa-circle-notch fa-spin text-2xl text-blue-600 mb-2"></i>
+                                <p>Carregando dados dos funcionários...</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-slate-200 py-4 mt-8">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between">
+            <p><strong>SGP SANTOS MANUTENÇÃO</strong> &bull; Sistema Integrado de Gestão de Pessoal</p>
+            <p class="mt-1 sm:mt-0 text-slate-400">Termos de Uniforme, Cartão Alimentação e Ficha EPI em conformidade com as NRs</p>
+        </div>
+    </footer>
+
+    </div><!-- FIM #viewAppAdmin -->
+
+    <!-- ========================================================================= -->
+    <!-- MODAL: ALTERAR SENHA DO ADMINISTRADOR                                     -->
+    <!-- ========================================================================= -->
+    <div id="modalTrocarSenhaAdmin" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-sm w-full overflow-hidden border border-slate-200 animate-in fade-in zoom-in duration-150">
+            <div class="bg-slate-900 px-5 py-4 text-white flex items-center justify-between border-b border-slate-800">
+                <div class="flex items-center space-x-2.5">
+                    <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white text-xs">
+                        <i class="fa-solid fa-key"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-sm">Alterar Senha de Admin</h3>
+                        <p class="text-[10px] text-slate-400">Defina uma nova senha de segurança</p>
+                    </div>
+                </div>
+                <button onclick="fecharModal('modalTrocarSenhaAdmin')" class="text-slate-400 hover:text-white text-base">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <form id="formTrocarSenhaAdmin" onsubmit="salvarNovaSenhaAdmin(event)" class="p-5 space-y-3.5 text-xs">
+                <div id="erroTrocarSenhaAdmin" class="hidden p-2.5 bg-rose-50 border border-rose-200 text-rose-700 rounded-lg text-[11px]">
+                    Erro ao alterar senha.
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1">Senha Atual *</label>
+                    <input type="password" id="adminSenhaAtual" required placeholder="Digite a senha atual"
+                        class="w-full px-3 py-2 border border-slate-300 rounded-lg bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500 text-slate-800 font-medium">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1">Nova Senha *</label>
+                    <input type="password" id="adminNovaSenha" required minlength="4" placeholder="Mínimo 4 caracteres"
+                        class="w-full px-3 py-2 border border-slate-300 rounded-lg bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500 text-slate-800 font-medium">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1">Confirmar Nova Senha *</label>
+                    <input type="password" id="adminNovaSenhaConf" required minlength="4" placeholder="Repita a nova senha"
+                        class="w-full px-3 py-2 border border-slate-300 rounded-lg bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500 text-slate-800 font-medium">
+                </div>
+                <div class="pt-3 border-t border-slate-200 flex items-center justify-end space-x-2">
+                    <button type="button" onclick="fecharModal('modalTrocarSenhaAdmin')" class="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl font-semibold transition">
+                        Cancelar
+                    </button>
+                    <button type="submit" id="btnSalvarSenhaAdmin" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-bold shadow-md shadow-blue-600/30 transition">
+                        Atualizar Senha
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- MODAL: FICHA COMPLETA DO COLABORADOR (NOVO / EDITAR)                      -->
+    <!-- ========================================================================= -->
+    <div id="modalFuncionario" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[92vh] flex flex-col overflow-hidden border border-slate-200">
+            <!-- Modal Header -->
+            <div class="bg-slate-900 text-white px-6 py-4 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-9 h-9 bg-blue-600 rounded-lg flex items-center justify-center text-white">
+                        <i class="fa-solid fa-id-badge"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-base" id="modalFuncionarioTitulo">Ficha do Colaborador</h3>
+                        <p class="text-xs text-slate-400">Cadastre ou edite as informações completas</p>
+                    </div>
+                </div>
+                <button onclick="fecharModal('modalFuncionario')" class="text-slate-400 hover:text-white text-lg">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Modal Tabs -->
+            <div class="border-b border-slate-200 bg-slate-50 px-6 flex space-x-6 text-xs font-semibold text-slate-600">
+                <button type="button" onclick="mudarAbaFicha('abaDadosPessoais')" class="aba-btn py-3 border-b-2 border-blue-600 text-blue-600" id="btnAbaDadosPessoais">
+                    <i class="fa-solid fa-user mr-1.5"></i> Dados Pessoais
+                </button>
+                <button type="button" onclick="mudarAbaFicha('abaContratual')" class="aba-btn py-3 border-b-2 border-transparent hover:text-slate-900" id="btnAbaContratual">
+                    <i class="fa-solid fa-briefcase mr-1.5"></i> Contrato & Salário
+                </button>
+                <button type="button" onclick="mudarAbaFicha('abaEndereco')" class="aba-btn py-3 border-b-2 border-transparent hover:text-slate-900" id="btnAbaEndereco">
+                    <i class="fa-solid fa-location-dot mr-1.5"></i> Endereço
+                </button>
+                <button type="button" onclick="mudarAbaFicha('abaBancario')" class="aba-btn py-3 border-b-2 border-transparent hover:text-slate-900" id="btnAbaBancario">
+                    <i class="fa-solid fa-building-columns mr-1.5"></i> Dados Bancários & PIX
+                </button>
+            </div>
+
+            <!-- Modal Form Body -->
+            <form id="formFuncionario" onsubmit="salvarFuncionario(event)" class="p-6 overflow-y-auto flex-1 space-y-4 text-xs">
+                <input type="hidden" id="f_id">
+
+                <!-- ABA 1: DADOS PESSOAIS -->
+                <div id="abaDadosPessoais" class="space-y-4">
+                    <!-- SEÇÃO DE FOTO DO COLABORADOR -->
+                    <div class="bg-gradient-to-r from-slate-50 to-blue-50/30 border border-slate-200/90 rounded-xl p-4 flex flex-col sm:flex-row items-center gap-4">
+                        <!-- Container Preview / Avatar -->
+                        <div class="relative group cursor-pointer" onclick="selecionarArquivoFoto()" title="Clique para escolher ou alterar a foto">
+                            <div id="fotoPreviewContainer" class="w-24 h-24 rounded-2xl overflow-hidden bg-slate-200 border-2 border-slate-300 shadow-sm flex items-center justify-center relative transition-all group-hover:border-blue-500 group-hover:shadow-md">
+                                <img id="f_foto_preview" src="" alt="Foto do Colaborador" class="w-full h-full object-cover hidden" />
+                                <div id="f_foto_placeholder" class="text-center p-2">
+                                    <i class="fa-solid fa-camera text-2xl text-slate-400 group-hover:text-blue-600 transition"></i>
+                                    <span class="block text-[10px] text-slate-500 font-medium mt-1 leading-tight">Sem Foto</span>
+                                </div>
+                                <!-- Overlay hover -->
+                                <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition flex flex-col items-center justify-center text-white text-[11px] font-semibold rounded-2xl">
+                                    <i class="fa-solid fa-arrow-up-from-bracket text-sm mb-1"></i>
+                                    <span>Alterar</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ações e Informações -->
+                        <div class="flex-1 text-center sm:text-left space-y-1.5">
+                            <label class="block font-bold text-slate-800 text-sm">Foto do Colaborador</label>
+                            <p class="text-[11px] text-slate-500 leading-snug">
+                                Anexe a foto de identificação para crachás, lista de colaboradores e portal.
+                            </p>
+                            <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2 pt-1">
+                                <button type="button" onclick="selecionarArquivoFoto()" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold text-xs flex items-center shadow-xs transition">
+                                    <i class="fa-solid fa-camera mr-1.5"></i>
+                                    <span id="btnFotoTexto">Escolher Foto</span>
+                                </button>
+                                <button type="button" id="btnRemoverFoto" onclick="removerFotoFuncionario()" class="px-3 py-1.5 bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 rounded-lg font-semibold text-xs flex items-center transition hidden">
+                                    <i class="fa-solid fa-trash mr-1.5"></i> Remover
+                                </button>
+                            </div>
+                            <p class="text-[10px] text-slate-400">JPG, PNG ou WEBP até 8MB. Você também pode arrastar e soltar a imagem aqui.</p>
+
+                            <!-- Inputs Ocultos de Controle de Foto -->
+                            <input type="file" id="f_foto_file" accept="image/jpeg,image/png,image/webp,image/jpg" class="hidden" onchange="processarArquivoFoto(this)" />
+                            <input type="hidden" id="f_foto_path" />
+                            <input type="hidden" id="f_foto_base64" />
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div class="sm:col-span-2">
+                            <label class="block font-semibold text-slate-700 mb-1">Nome Completo *</label>
+                            <input type="text" id="f_nome" required class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 uppercase">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Matrícula</label>
+                            <input type="text" id="f_matricula" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">CPF</label>
+                            <input type="text" id="f_cpf" placeholder="000.000.000-00" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">RG</label>
+                            <input type="text" id="f_rg" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Data de Nascimento</label>
+                            <input type="date" id="f_data_nascimento" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Telefone / WhatsApp</label>
+                        <input type="text" id="f_telefone" placeholder="(31) 99999-9999" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                    </div>
+                </div>
+
+                <!-- ABA 2: CONTRATO & SALÁRIO -->
+                <div id="abaContratual" class="space-y-4 hidden">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Cargo / Função *</label>
+                            <input type="text" id="f_cargo" required placeholder="Ex: MANTENEDOR, ELETRICISTA..." class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 uppercase">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Local de Trabalho / Obra *</label>
+                            <input type="text" id="f_local_trabalho" required placeholder="Ex: TSA, TCS, CDA, ITAMINAS..." class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 uppercase">
+                        </div>
+                    </div>
+
+                    <!-- CAMPOS DE REMUNERAÇÃO: FUNÇÃO, ASSIDUIDADE E BRUTO -->
+                    <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Salário por Função (R$)</label>
+                            <input type="number" step="0.01" id="f_salario_funcao" placeholder="0.00" oninput="atualizarCalculosSalario()" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 font-mono bg-white">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-emerald-700 mb-1">Prêmio de Assiduidade (R$)</label>
+                            <input type="number" step="0.01" id="f_premio_assiduidade" placeholder="0.00" oninput="atualizarCalculosSalario()" class="w-full px-3 py-2 border border-emerald-300 rounded-lg focus:ring-2 focus:ring-emerald-500 font-mono bg-emerald-50/50">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-indigo-700 mb-1">Salário Bruto (Função + Assiduidade)</label>
+                            <input type="number" step="0.01" id="f_salario_bruto" placeholder="0.00" readonly class="w-full px-3 py-2 border border-indigo-300 rounded-lg font-mono font-bold bg-indigo-50/80 text-indigo-900 cursor-not-allowed">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Valor da Hora (R$)</label>
+                            <input type="number" step="0.01" id="f_valor_hora" placeholder="0.00" onblur="if(this.value) this.value = parseFloat(this.value).toFixed(2);" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 font-mono bg-white">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Status do Colaborador</label>
+                            <select id="f_status" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                <option value="Ativo">Ativo</option>
+                                <option value="Afastado">Afastado</option>
+                                <option value="Desligado">Desligado</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Data de Admissão</label>
+                            <input type="date" id="f_admissao" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Data de Demissão (se houver)</label>
+                            <input type="date" id="f_demissao" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Observações Internas</label>
+                        <textarea id="f_observacoes" rows="2" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500"></textarea>
+                    </div>
+                </div>
+
+                <!-- ABA 3: ENDEREÇO -->
+                <div id="abaEndereco" class="space-y-4 hidden">
+                    <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+                        <div class="sm:col-span-3">
+                            <label class="block font-semibold text-slate-700 mb-1">Logradouro (Rua / Av)</label>
+                            <input type="text" id="f_rua" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Número</label>
+                            <input type="text" id="f_numero" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Bairro</label>
+                            <input type="text" id="f_bairro" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Cidade</label>
+                            <input type="text" id="f_cidade" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">CEP</label>
+                            <input type="text" id="f_cep" placeholder="00000-000" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ABA 4: DADOS BANCÁRIOS & PIX -->
+                <div id="abaBancario" class="space-y-4 hidden">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Banco</label>
+                            <input type="text" id="f_banco" placeholder="Ex: Nubank, Inter, CEF..." class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Agência</label>
+                            <input type="text" id="f_agencia" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Número da Conta</label>
+                            <input type="text" id="f_conta" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Chave PIX</label>
+                        <input type="text" id="f_pix" placeholder="CPF, Telefone ou Chave aleatória" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 font-mono">
+                    </div>
+                </div>
+
+                <!-- Modal Footer Actions -->
+                <div class="pt-4 border-t border-slate-200 flex items-center justify-between">
+                    <button type="button" id="btnExcluirFuncionario" onclick="excluirFuncionario()" class="text-rose-600 hover:text-rose-800 font-semibold text-xs hidden">
+                        <i class="fa-solid fa-trash-can mr-1"></i> Excluir Funcionário
+                    </button>
+                    <div class="flex items-center space-x-3 ml-auto">
+                        <button type="button" onclick="fecharModal('modalFuncionario')" class="px-4 py-2 border border-slate-300 rounded-lg text-slate-700 hover:bg-slate-100 font-medium">
+                            Cancelar
+                        </button>
+                        <button type="submit" class="px-5 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-semibold shadow-sm shadow-blue-500/30">
+                            Salvar Alterações
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- MODAL: CONTROLE DE ATESTADOS MÉDICOS                                      -->
+    <!-- ========================================================================= -->
+    <div id="modalAtestados" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] flex flex-col overflow-hidden border border-slate-200">
+            <div class="bg-amber-600 text-white px-6 py-4 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-9 h-9 bg-amber-700 rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-file-waveform text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-base">Controle de Atestados Médicos</h3>
+                        <p class="text-xs text-amber-100" id="atestadoFuncionarioNome">Colaborador: --</p>
+                    </div>
+                </div>
+                <button onclick="fecharModal('modalAtestados')" class="text-amber-200 hover:text-white text-lg">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="p-6 overflow-y-auto flex-1 space-y-6 text-xs">
+                <!-- Formulário de novo atestado -->
+                <form id="formAtestado" onsubmit="salvarAtestado(event)" class="bg-amber-50/60 p-4 rounded-xl border border-amber-200 space-y-3">
+                    <h4 class="font-bold text-amber-900 flex items-center">
+                        <i class="fa-solid fa-plus-circle mr-1.5 text-amber-600"></i> Lançar Novo Atestado
+                    </h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Data de Início *</label>
+                            <input type="date" id="atest_inicio" required onchange="calcularRetornoAtestado()" class="w-full px-3 py-1.5 border border-slate-300 rounded-lg">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Dias de Afastamento *</label>
+                            <input type="number" id="atest_dias" min="1" value="1" required oninput="calcularRetornoAtestado()" class="w-full px-3 py-1.5 border border-slate-300 rounded-lg">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Data Prevista de Retorno</label>
+                            <input type="date" id="atest_retorno" class="w-full px-3 py-1.5 border border-slate-300 rounded-lg bg-slate-100">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Código CID (se informado)</label>
+                            <input type="text" id="atest_cid" placeholder="Ex: M54.5" class="w-full px-3 py-1.5 border border-slate-300 rounded-lg uppercase">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Médico / CRM</label>
+                            <input type="text" id="atest_crm" placeholder="Ex: Dr. Silva - CRM/MG 12345" class="w-full px-3 py-1.5 border border-slate-300 rounded-lg">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Motivo / Tipo</label>
+                            <input type="text" id="atest_motivo" placeholder="Consulta, Doença, Cirurgia..." class="w-full px-3 py-1.5 border border-slate-300 rounded-lg">
+                        </div>
+                    </div>
+
+                    <div class="flex justify-end pt-2">
+                        <button type="submit" class="bg-amber-600 hover:bg-amber-500 text-white font-semibold px-4 py-2 rounded-lg shadow-sm">
+                            Registrar Atestado
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Histórico de atestados -->
+                <div>
+                    <h4 class="font-bold text-slate-800 mb-3">Histórico de Afastamentos</h4>
+                    <div class="overflow-x-auto border border-slate-200 rounded-xl">
+                        <table class="w-full text-left text-xs">
+                            <thead class="bg-slate-50 border-b border-slate-200 text-slate-600 font-semibold uppercase">
+                                <tr>
+                                    <th class="py-2.5 px-3">Início</th>
+                                    <th class="py-2.5 px-2">Dias</th>
+                                    <th class="py-2.5 px-3">Retorno</th>
+                                    <th class="py-2.5 px-3">CID / Médico</th>
+                                    <th class="py-2.5 px-3">Motivo / Anexo</th>
+                                    <th class="py-2.5 px-2 text-center">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="listaAtestadosTabela" class="divide-y divide-slate-100">
+                                <tr>
+                                    <td colspan="6" class="py-6 text-center text-slate-400">Nenhum atestado registrado.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- MODAL: CONTROLE DE HORAS EXTRAS                                           -->
+    <!-- ========================================================================= -->
+    <div id="modalHorasExtras" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] flex flex-col overflow-hidden border border-slate-200">
+            <div class="bg-blue-600 text-white px-6 py-4 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-9 h-9 bg-blue-700 rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-stopwatch text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-base">Lançamento de Horas Extras</h3>
+                        <p class="text-xs text-blue-100" id="heFuncionarioNome">Colaborador: --</p>
+                    </div>
+                </div>
+                <button onclick="fecharModal('modalHorasExtras')" class="text-blue-200 hover:text-white text-lg">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="p-6 overflow-y-auto flex-1 space-y-6 text-xs">
+                <!-- Formulário de horas extras -->
+                <form id="formHorasExtras" onsubmit="salvarHorasExtras(event)" class="bg-blue-50/60 p-4 rounded-xl border border-blue-200 space-y-3">
+                    <h4 class="font-bold text-blue-900 flex items-center">
+                        <i class="fa-solid fa-plus-circle mr-1.5 text-blue-600"></i> Lançar Horas Extras
+                    </h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Data da Realização *</label>
+                            <input type="date" id="he_data" required class="w-full px-3 py-1.5 border border-slate-300 rounded-lg">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Tipo / Percentual *</label>
+                            <select id="he_percentual" class="w-full px-3 py-1.5 border border-slate-300 rounded-lg font-medium">
+                                <option value="50%">50% (Dias úteis / Sábados)</option>
+                                <option value="100%">100% (Domingos e Feriados)</option>
+                                <option value="Noturno">Adicional Noturno (20%)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Quantidade de Horas *</label>
+                            <input type="number" step="0.5" min="0.5" id="he_horas" required placeholder="Ex: 2.5" class="w-full px-3 py-1.5 border border-slate-300 rounded-lg font-mono">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Motivo / Descrição da Atividade</label>
+                        <input type="text" id="he_motivo" placeholder="Ex: Manutenção preventiva emergencial, finalização de linha..." class="w-full px-3 py-1.5 border border-slate-300 rounded-lg">
+                    </div>
+
+                    <div class="flex justify-end pt-2">
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-4 py-2 rounded-lg shadow-sm">
+                            Registrar Horas Extras
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Histórico de horas extras -->
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="font-bold text-slate-800">Histórico de Horas</h4>
+                        <span id="totalHorasBadge" class="bg-blue-100 text-blue-800 px-2.5 py-1 rounded-full font-bold">Total: 0.0 hrs</span>
+                    </div>
+                    <div class="overflow-x-auto border border-slate-200 rounded-xl">
+                        <table class="w-full text-left text-xs">
+                            <thead class="bg-slate-50 border-b border-slate-200 text-slate-600 font-semibold uppercase">
+                                <tr>
+                                    <th class="py-2.5 px-3">Data</th>
+                                    <th class="py-2.5 px-2">Percentual</th>
+                                    <th class="py-2.5 px-2">Qtd Horas</th>
+                                    <th class="py-2.5 px-3">Valor Estimado</th>
+                                    <th class="py-2.5 px-3">Motivo</th>
+                                    <th class="py-2.5 px-2 text-center">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="listaHorasTabela" class="divide-y divide-slate-100">
+                                <tr>
+                                    <td colspan="6" class="py-6 text-center text-slate-400">Nenhum registro de horas extras.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- MODAL: GESTÃO E AGENDAMENTO DE FÉRIAS CLT                                 -->
+    <!-- ========================================================================= -->
+    <div id="modalFerias" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[92vh] flex flex-col overflow-hidden border border-slate-200">
+            <!-- Modal Header -->
+            <div class="bg-gradient-to-r from-teal-800 to-emerald-900 text-white px-6 py-4 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-teal-700/80 rounded-xl flex items-center justify-center text-white text-lg shadow-inner">
+                        <i class="fa-solid fa-umbrella-beach"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center space-x-2">
+                            <h3 class="font-bold text-base">Gestão de Férias CLT</h3>
+                            <span id="feriasStatusBadgeModal" class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-slate-700 text-white">--</span>
+                        </div>
+                        <p class="text-xs text-teal-100" id="feriasFuncionarioSubtitulo">Colaborador: --</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <button type="button" onclick="imprimirAvisoFeriasColaborador()" class="px-3 py-1.5 bg-teal-700 hover:bg-teal-600 text-white rounded-lg text-xs font-semibold flex items-center transition">
+                        <i class="fa-solid fa-print mr-1.5"></i> Aviso Prévio
+                    </button>
+                    <button type="button" onclick="imprimirReciboFeriasColaborador()" class="px-3 py-1.5 bg-emerald-700 hover:bg-emerald-600 text-white rounded-lg text-xs font-semibold flex items-center transition">
+                        <i class="fa-solid fa-receipt mr-1.5"></i> Recibo Férias
+                    </button>
+                    <button onclick="fecharModal('modalFerias')" class="text-teal-200 hover:text-white text-lg ml-2">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Modal Content (Scrollable) -->
+            <div class="p-6 overflow-y-auto flex-1 space-y-5 text-xs bg-slate-50/50">
+
+                <!-- ALERTA LEGAL / DIAGNÓSTICO CLT -->
+                <div id="feriasAlertaBox" class="p-4 rounded-xl border flex items-start space-x-3 bg-blue-50 border-blue-200 text-blue-900">
+                    <div class="text-xl mt-0.5" id="feriasAlertaIcon">
+                        <i class="fa-solid fa-circle-info text-blue-600"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-bold text-sm" id="feriasAlertaTitulo">Diagnóstico do Período Concessivo</h4>
+                        <p class="text-xs mt-1 leading-relaxed text-slate-700" id="feriasAlertaDesc">Calculando prazos legais da CLT...</p>
+                    </div>
+                </div>
+
+                <!-- CARDS DE RESUMO DO PERÍODO VIGENTE -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                    <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-xs">
+                        <span class="text-[11px] font-semibold text-slate-500 uppercase block">Período Aquisitivo</span>
+                        <p class="text-xs font-bold text-slate-800 mt-1" id="cardFeriasPA">--</p>
+                        <span class="text-[10px] text-slate-400">12 meses de contrato</span>
+                    </div>
+                    <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-xs">
+                        <span class="text-[11px] font-semibold text-slate-500 uppercase block">Limite da Dobra (PC)</span>
+                        <p class="text-xs font-bold text-rose-600 mt-1" id="cardFeriasLimiteDobra">--</p>
+                        <span class="text-[10px] text-slate-400">Art. 134 / 137 CLT</span>
+                    </div>
+                    <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-xs">
+                        <span class="text-[11px] font-semibold text-slate-500 uppercase block">Saldo de Dias</span>
+                        <p class="text-lg font-black text-emerald-600 mt-0.5" id="cardFeriasSaldo">30 dias</p>
+                        <span class="text-[10px] text-slate-400">Direito legal</span>
+                    </div>
+                    <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-xs">
+                        <span class="text-[11px] font-semibold text-slate-500 uppercase block">Contagem Regressiva</span>
+                        <p class="text-xs font-bold text-slate-800 mt-1" id="cardFeriasContagem">--</p>
+                        <span class="text-[10px] text-slate-400" id="cardFeriasContagemSub">Prazo legal</span>
+                    </div>
+                </div>
+
+                <!-- CICLOS AQUISITIVOS DETALHADOS (HISTÓRICO CLT) -->
+                <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-xs">
+                    <div class="px-4 py-2.5 bg-slate-100/70 border-b border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+                        <span class="font-bold text-slate-700 flex items-center">
+                            <i class="fa-solid fa-timeline mr-1.5 text-teal-600"></i> Histórico de Ciclos Aquisitivos & Concessivos
+                        </span>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-[11px] text-slate-500 font-medium" id="totalCiclosLabel">-- ciclos</span>
+                            <button type="button" id="btnQuitarTodasVencidas" onclick="quitarTodasFeriasVencidas()"
+                                class="hidden px-2.5 py-1 bg-teal-700 hover:bg-teal-600 text-white rounded-lg text-[11px] font-bold transition flex items-center shadow-xs">
+                                <i class="fa-solid fa-bolt mr-1 text-amber-300"></i> Quitar Todas as Vencidas
+                            </button>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs">
+                            <thead class="bg-slate-50 border-b border-slate-200 text-slate-500 uppercase font-semibold text-[11px]">
+                                <tr>
+                                    <th class="py-2 px-3">Ciclo</th>
+                                    <th class="py-2 px-3">Período Aquisitivo</th>
+                                    <th class="py-2 px-3">Prazo Concessivo</th>
+                                    <th class="py-2 px-2 text-center">Dias Gozados</th>
+                                    <th class="py-2 px-2 text-center">Saldo</th>
+                                    <th class="py-2 px-3">Status CLT</th>
+                                    <th class="py-2 px-3 text-right">Ação / Baixa</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabelaCiclosFerias" class="divide-y divide-slate-100">
+                                <tr>
+                                    <td colspan="7" class="py-4 text-center text-slate-400">Carregando ciclos...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- FORMULÁRIO DE AGENDAMENTO DE FÉRIAS -->
+                <form id="formAgendarFerias" onsubmit="salvarAgendamentoFerias(event)" class="bg-gradient-to-br from-teal-50/70 to-emerald-50/70 p-5 rounded-xl border border-teal-200 space-y-4 shadow-xs">
+                    <div class="flex items-center justify-between border-b border-teal-200 pb-2">
+                        <h4 class="font-bold text-teal-950 flex items-center text-sm">
+                            <i class="fa-regular fa-calendar-plus mr-2 text-teal-700"></i> Agendar Novo Período de Férias
+                        </h4>
+                        <span class="text-[11px] text-teal-700 bg-teal-100 px-2 py-0.5 rounded font-medium">Conformidade CLT Art. 134</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <!-- Data Início -->
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Data de Início *</label>
+                            <input type="date" id="ferias_inicio" required onchange="calcularRetornoFerias()" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 bg-white">
+                            <span class="text-[10px] text-slate-500 block mt-1" id="dicaInicioFerias">Atenção ao DSR (evite qui/sex)</span>
+                        </div>
+
+                        <!-- Quantidade de Dias -->
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Quantidade de Dias *</label>
+                            <div class="flex items-center space-x-1 mb-1">
+                                <button type="button" onclick="setDiasFerias(30)" class="px-2 py-0.5 text-[10px] font-bold bg-white border border-teal-300 rounded hover:bg-teal-600 hover:text-white transition">30d</button>
+                                <button type="button" onclick="setDiasFerias(20)" class="px-2 py-0.5 text-[10px] font-bold bg-white border border-teal-300 rounded hover:bg-teal-600 hover:text-white transition">20d</button>
+                                <button type="button" onclick="setDiasFerias(15)" class="px-2 py-0.5 text-[10px] font-bold bg-white border border-teal-300 rounded hover:bg-teal-600 hover:text-white transition">15d</button>
+                                <button type="button" onclick="setDiasFerias(10)" class="px-2 py-0.5 text-[10px] font-bold bg-white border border-teal-300 rounded hover:bg-teal-600 hover:text-white transition">10d</button>
+                            </div>
+                            <input type="number" id="ferias_dias" min="5" max="30" value="30" required oninput="calcularRetornoFerias()" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 bg-white font-bold">
+                        </div>
+
+                        <!-- Data Prevista de Retorno -->
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Data Prevista de Retorno</label>
+                            <input type="date" id="ferias_retorno" readonly class="w-full px-3 py-2 border border-slate-300 rounded-lg bg-slate-100 font-bold text-teal-800">
+                            <span class="text-[10px] text-teal-700 block mt-1" id="retornoCalculadoTexto">Retorno calculado automaticamente</span>
+                        </div>
+                    </div>
+
+                    <!-- OPÇÕES CLT: ABONO PECUNIÁRIO E 13º -->
+                    <div class="p-3 bg-white/90 border border-teal-200 rounded-lg grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                        <label class="flex items-start space-x-2.5 cursor-pointer">
+                            <input type="checkbox" id="ferias_abono" onchange="toggleAbonoOptions()" class="mt-0.5 rounded text-teal-600 focus:ring-teal-500 w-4 h-4">
+                            <div>
+                                <span class="font-bold text-slate-800">Abono Pecuniário (Venda de 10 dias)</span>
+                                <p class="text-[10px] text-slate-500">Converte 1/3 das férias em indenização pecuniária (Art. 143 CLT).</p>
+                            </div>
+                        </label>
+
+                        <label class="flex items-start space-x-2.5 cursor-pointer">
+                            <input type="checkbox" id="ferias_adiantamento_13" class="mt-0.5 rounded text-teal-600 focus:ring-teal-500 w-4 h-4">
+                            <div>
+                                <span class="font-bold text-slate-800">Adiantamento de 50% do 13º Salário</span>
+                                <p class="text-[10px] text-slate-500">Solicitação da 1ª parcela da gratificação natalina (Lei 4.749/65).</p>
+                            </div>
+                        </label>
+                    </div>
+
+                    <!-- Observações -->
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Observações do Agendamento</label>
+                        <input type="text" id="ferias_obs" placeholder="Ex: Primeiro período de fruição; cobertura por colega de equipe..." class="w-full px-3 py-1.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 bg-white">
+                    </div>
+
+                    <div class="flex justify-between items-center pt-2">
+                        <div class="text-[11px] text-slate-500">
+                            <i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i> Férias agendadas abatem automaticamente do saldo legal.
+                        </div>
+                        <button type="submit" class="bg-teal-700 hover:bg-teal-600 text-white font-bold px-5 py-2.5 rounded-lg shadow-sm shadow-teal-700/30 flex items-center transition">
+                            <i class="fa-regular fa-calendar-check mr-2"></i> Confirmar Agendamento
+                        </button>
+                    </div>
+                </form>
+
+                <!-- TABELA DE FÉRIAS PROGRAMADAS E HISTÓRICO -->
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 class="font-bold text-slate-800 flex items-center">
+                            <i class="fa-solid fa-list-check mr-1.5 text-teal-600"></i> Férias Registradas / Programadas
+                        </h4>
+                        <span id="totalFeriasAgendadasBadge" class="bg-teal-100 text-teal-800 px-2.5 py-0.5 rounded-full font-bold text-[11px]">0 registros</span>
+                    </div>
+
+                    <div class="overflow-x-auto border border-slate-200 rounded-xl bg-white">
+                        <table class="w-full text-left text-xs">
+                            <thead class="bg-slate-50 border-b border-slate-200 text-slate-600 font-semibold uppercase text-[11px]">
+                                <tr>
+                                    <th class="py-2.5 px-3">Data Início</th>
+                                    <th class="py-2.5 px-2 text-center">Dias</th>
+                                    <th class="py-2.5 px-3">Data Retorno</th>
+                                    <th class="py-2.5 px-3">Opções</th>
+                                    <th class="py-2.5 px-3">Status</th>
+                                    <th class="py-2.5 px-3 text-right">Documentos Oficiais & Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="listaFeriasTabela" class="divide-y divide-slate-100">
+                                <tr>
+                                    <td colspan="6" class="py-6 text-center text-slate-400">Nenhuma programação de férias cadastrada.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- MODAL: REGISTRAR BAIXA DE FÉRIAS GOZADAS (ABATER DO ACUMULADO)            -->
+    <!-- ========================================================================= -->
+    <div id="modalDarBaixaFerias" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden border border-slate-200 animate-in fade-in zoom-in duration-150">
+            <!-- Header -->
+            <div class="bg-gradient-to-r from-emerald-800 to-teal-900 text-white px-6 py-4 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-emerald-700/80 rounded-xl flex items-center justify-center text-white text-lg shadow-inner">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-base" id="baixaModalTitulo">Marcar Férias como Já Gozadas</h3>
+                        <p class="text-xs text-emerald-100" id="baixaModalSubtitulo">Abater saldo de férias acumuladas</p>
+                    </div>
+                </div>
+                <button onclick="fecharModal('modalDarBaixaFerias')" class="text-emerald-200 hover:text-white text-lg">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Form -->
+            <form id="formBaixaFerias" onsubmit="salvarBaixaFeriasCiclo(event)" class="p-6 space-y-4 text-xs">
+                <!-- Informações do Ciclo -->
+                <div class="p-3.5 bg-emerald-50/70 border border-emerald-200 rounded-xl space-y-1.5">
+                    <div class="flex items-center justify-between">
+                        <span class="font-bold text-emerald-950 text-sm" id="baixaCicloNome">Ciclo #1</span>
+                        <span class="px-2 py-0.5 rounded-full font-bold text-[11px] bg-emerald-200 text-emerald-900" id="baixaSaldoAtualBadge">Saldo: 30 dias</span>
+                    </div>
+                    <div class="text-[11px] text-emerald-800 flex flex-wrap gap-x-4">
+                        <span>Período Aquisitivo: <strong id="baixaPaDatas">--</strong></span>
+                        <span>Limite da Dobra: <strong id="baixaPcFim">--</strong></span>
+                    </div>
+                </div>
+
+                <!-- Campos de Data e Dias -->
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Dias Gozados a Abater *</label>
+                        <div class="flex items-center space-x-1 mb-1">
+                            <button type="button" onclick="setDiasBaixa(30)" class="px-2 py-0.5 text-[10px] font-bold bg-slate-100 hover:bg-emerald-600 hover:text-white rounded border border-slate-300 transition">30d</button>
+                            <button type="button" onclick="setDiasBaixa(20)" class="px-2 py-0.5 text-[10px] font-bold bg-slate-100 hover:bg-emerald-600 hover:text-white rounded border border-slate-300 transition">20d</button>
+                            <button type="button" onclick="setDiasBaixa(15)" class="px-2 py-0.5 text-[10px] font-bold bg-slate-100 hover:bg-emerald-600 hover:text-white rounded border border-slate-300 transition">15d</button>
+                        </div>
+                        <input type="number" id="baixa_dias" min="1" max="30" value="30" required oninput="calcularRetornoBaixa()" class="w-full px-3 py-2 border border-slate-300 rounded-lg font-bold bg-white focus:ring-2 focus:ring-emerald-500">
+                    </div>
+
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Data em que Tirou Férias *</label>
+                        <input type="date" id="baixa_data_inicio" required onchange="calcularRetornoBaixa()" class="w-full px-3 py-2 border border-slate-300 rounded-lg bg-white font-medium focus:ring-2 focus:ring-emerald-500">
+                        <span class="text-[10px] text-slate-500 mt-1 block">Retorno: <strong id="baixaRetornoTexto" class="text-slate-800">--</strong></span>
+                    </div>
+                </div>
+
+                <!-- Abono Pecuniário (venda de 10 dias) -->
+                <label class="flex items-start space-x-2.5 p-3 bg-slate-50 border border-slate-200 rounded-xl cursor-pointer">
+                    <input type="checkbox" id="baixa_abono" onchange="toggleAbonoBaixa()" class="mt-0.5 rounded text-emerald-600 focus:ring-emerald-500 w-4 h-4">
+                    <div>
+                        <span class="font-bold text-slate-800">Houve Abono Pecuniário (Venda de 10 dias)</span>
+                        <p class="text-[10px] text-slate-500">Marque se o colaborador recebeu 10 dias em dinheiro além dos dias gozados.</p>
+                    </div>
+                </label>
+
+                <!-- Observação -->
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1">Observações da Baixa</label>
+                    <input type="text" id="baixa_obs" placeholder="Ex: Férias gozadas no período regular; baixa de saldo acumulado..." class="w-full px-3 py-2 border border-slate-300 rounded-lg bg-white">
+                </div>
+
+                <!-- Botões de Ação -->
+                <div class="pt-3 border-t border-slate-200 flex items-center justify-between">
+                    <button type="button" onclick="fecharModal('modalDarBaixaFerias')" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl font-semibold transition">
+                        Cancelar
+                    </button>
+
+                    <div class="flex items-center space-x-2">
+                        <button type="button" id="btnBaixaRapida30" onclick="executarBaixaRapidaAtual()" class="px-3.5 py-2 bg-teal-100 hover:bg-teal-200 text-teal-800 rounded-xl font-bold transition flex items-center">
+                            <i class="fa-solid fa-bolt mr-1.5 text-teal-600"></i> Baixa Rápida (30d)
+                        </button>
+                        <button type="submit" id="btnConfirmarBaixa" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl font-bold shadow-md shadow-emerald-600/30 transition flex items-center">
+                            <i class="fa-solid fa-check mr-1.5"></i> Confirmar Baixa
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- MODAL: VISUALIZAÇÃO E IMPRESSÃO DE DOCUMENTOS                             -->
+    <!-- ========================================================================= -->
+    <div id="modalDocumentos" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[94vh] flex flex-col overflow-hidden border border-slate-200">
+            <!-- Modal Header -->
+            <div class="bg-slate-900 text-white px-6 py-4 flex items-center justify-between border-b border-slate-800">
+                <div class="flex items-center space-x-3">
+                    <div class="w-9 h-9 bg-blue-600 rounded-lg flex items-center justify-center text-white">
+                        <i class="fa-solid fa-print"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-base" id="docModalTitulo">Emissão de Documento Oficial</h3>
+                        <p class="text-xs text-slate-400" id="docModalSubtitulo">Santos Manutenção</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-3">
+                    <button onclick="imprimirDocumentoAtual()" class="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-lg font-semibold flex items-center text-xs shadow-md transition">
+                        <i class="fa-solid fa-print mr-2"></i> Imprimir / Salvar PDF
+                    </button>
+                    <button onclick="fecharModal('modalDocumentos')" class="text-slate-400 hover:text-white text-lg">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Seleção de Abas do Documento -->
+            <div class="bg-slate-100 px-6 border-b border-slate-200 flex flex-wrap gap-2 text-xs font-semibold text-slate-600">
+                <button type="button" onclick="trocarDocumento('uniforme')" id="tabDocUniforme" class="doc-tab-btn py-3 px-2 border-b-2 border-blue-600 text-blue-600 flex items-center">
+                    <i class="fa-solid fa-shirt mr-1.5"></i> Termo de Uniforme
+                </button>
+                <button type="button" onclick="trocarDocumento('cartao')" id="tabDocCartao" class="doc-tab-btn py-3 px-2 border-b-2 border-transparent hover:text-slate-900 flex items-center">
+                    <i class="fa-solid fa-credit-card mr-1.5"></i> Cartão Alimentação
+                </button>
+                <button type="button" onclick="trocarDocumento('epi')" id="tabDocEPI" class="doc-tab-btn py-3 px-2 border-b-2 border-transparent hover:text-slate-900 flex items-center">
+                    <i class="fa-solid fa-vest mr-1.5"></i> Ficha de EPI (NR-06)
+                </button>
+                <button type="button" onclick="trocarDocumento('aviso_ferias')" id="tabDocAvisoFerias" class="doc-tab-btn py-3 px-2 border-b-2 border-transparent hover:text-slate-900 flex items-center text-amber-700">
+                    <i class="fa-solid fa-umbrella-beach mr-1.5 text-amber-600"></i> Aviso de Férias (Art. 135)
+                </button>
+                <button type="button" onclick="trocarDocumento('recibo_ferias')" id="tabDocReciboFerias" class="doc-tab-btn py-3 px-2 border-b-2 border-transparent hover:text-slate-900 flex items-center text-teal-700">
+                    <i class="fa-solid fa-receipt mr-1.5 text-teal-600"></i> Recibo de Férias (Art. 145)
+                </button>
+            </div>
+
+            <!-- Controles extras para Ficha de EPI (Adicionar item) -->
+            <div id="painelAdicionarEPI" class="bg-emerald-50 border-b border-emerald-200 px-6 py-2.5 hidden flex items-center justify-between text-xs">
+                <span class="font-semibold text-emerald-800">
+                    <i class="fa-solid fa-shield-halved mr-1 text-emerald-600"></i> Gerenciamento de EPIs da Ficha:
+                </span>
+                <button onclick="abrirMiniFormEPI()" class="bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-1 rounded font-semibold text-[11px] flex items-center">
+                    <i class="fa-solid fa-plus mr-1"></i> Entregar Novo EPI
+                </button>
+            </div>
+
+            <!-- Mini Form EPI (hidden by default) -->
+            <div id="miniFormEPI" class="bg-emerald-100/70 border-b border-emerald-300 px-6 py-3 hidden text-xs">
+                <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 items-end">
+                    <div>
+                        <label class="block font-semibold text-emerald-900 mb-1">CA (Certificado)</label>
+                        <input type="text" id="epi_ca" placeholder="Ex: 39158" class="w-full px-2 py-1.5 border border-emerald-300 rounded bg-white">
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-emerald-900 mb-1">Qtd</label>
+                        <input type="number" id="epi_qtd" value="1" min="1" class="w-full px-2 py-1.5 border border-emerald-300 rounded bg-white font-mono">
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label class="block font-semibold text-emerald-900 mb-1">Descrição do Equipamento *</label>
+                        <input type="text" id="epi_desc" placeholder="Ex: Bota de segurança com biqueira, Óculos..." class="w-full px-2 py-1.5 border border-emerald-300 rounded bg-white uppercase">
+                    </div>
+                </div>
+                <div class="flex justify-end space-x-2 mt-2">
+                    <button type="button" onclick="fecharMiniFormEPI()" class="px-3 py-1 bg-slate-200 hover:bg-slate-300 rounded text-slate-700">Cancelar</button>
+                    <button type="button" onclick="salvarNovoEPI()" class="px-3 py-1 bg-emerald-700 hover:bg-emerald-600 text-white rounded font-semibold">Confirmar Entrega</button>
+                </div>
+            </div>
+
+            <!-- Área de Visualização e Renderização do Documento Impresso -->
+            <div class="p-6 overflow-y-auto flex-1 bg-slate-200/70 flex justify-center">
+                <!-- FOLHA A4 -->
+                <div id="folhaA4" class="folha-a4 bg-white shadow-xl p-10 w-full max-w-[780px] min-h-[1050px] flex flex-col justify-between text-slate-900 font-sans border border-slate-300">
+                    <!-- O conteúdo dinâmico do documento será injetado aqui pelo JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- MODAL: GESTÃO DE CONTRACHEQUES & ACESSO AO PORTAL                         -->
+    <!-- ========================================================================= -->
+    <div id="modalContracheques" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[94vh] flex flex-col overflow-hidden border border-slate-200">
+            <!-- Modal Header -->
+            <div class="bg-slate-900 text-white px-6 py-4 flex items-center justify-between border-b border-slate-800">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-tr from-emerald-600 to-teal-500 rounded-xl flex items-center justify-center text-white shadow-md shadow-emerald-500/30">
+                        <i class="fa-solid fa-file-invoice-dollar text-xl"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center space-x-2">
+                            <h3 class="font-bold text-base">Contracheques & Holerites Mensais</h3>
+                            <span class="bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 text-[10px] px-2 py-0.5 rounded font-mono">Portal do Colaborador</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-0.5" id="ccFuncionarioSubtitulo">Colaborador: ---</p>
+                    </div>
+                </div>
+                <button onclick="fecharModal('modalContracheques')" class="text-slate-400 hover:text-white text-xl">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Banner Informativo -->
+            <div class="bg-indigo-50 border-b border-indigo-100 px-6 py-2.5 flex items-center justify-between text-xs">
+                <div class="flex items-center space-x-2 text-indigo-900 font-medium">
+                    <i class="fa-solid fa-mobile-screen-button text-indigo-600 text-base"></i>
+                    <span>Os holerites anexados aqui ficam disponíveis instantaneamente para o funcionário no <strong>Portal do Colaborador</strong>.</span>
+                </div>
+                <a href="/portal" target="_blank" class="text-indigo-700 hover:text-indigo-900 font-bold flex items-center text-[11px] bg-white px-2.5 py-1 rounded-md border border-indigo-200 shadow-2xs">
+                    Abrir Portal <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[10px]"></i>
+                </a>
+            </div>
+
+            <!-- Modal Body com Scroll -->
+            <div class="p-6 overflow-y-auto space-y-6 flex-1 bg-slate-50/50">
+
+                <!-- Formulário: Anexar Novo Contracheque -->
+                <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-slate-700 mb-4 flex items-center">
+                        <i class="fa-solid fa-cloud-arrow-up mr-2 text-blue-600"></i> Anexar Novo Holerite / Contracheque
+                    </h4>
+
+                    <form id="formContracheque" onsubmit="salvarNovoContracheque(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
+                            <!-- Competência: Mês -->
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-700 uppercase mb-1">Mês de Referência *</label>
+                                <select id="cc_mes" required class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg bg-white font-medium focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                                    <option value="1">01 - Janeiro</option>
+                                    <option value="2">02 - Fevereiro</option>
+                                    <option value="3">03 - Março</option>
+                                    <option value="4">04 - Abril</option>
+                                    <option value="5">05 - Maio</option>
+                                    <option value="6">06 - Junho</option>
+                                    <option value="7">07 - Julho</option>
+                                    <option value="8">08 - Agosto</option>
+                                    <option value="9">09 - Setembro</option>
+                                    <option value="10">10 - Outubro</option>
+                                    <option value="11">11 - Novembro</option>
+                                    <option value="12">12 - Dezembro</option>
+                                    <option value="13">13º Salário (Anual)</option>
+                                </select>
+                            </div>
+
+                            <!-- Competência: Ano -->
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-700 uppercase mb-1">Ano *</label>
+                                <select id="cc_ano" required class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg bg-white font-mono font-medium focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                                    <option value="2027">2027</option>
+                                    <option value="2026" selected>2026</option>
+                                    <option value="2025">2025</option>
+                                    <option value="2024">2024</option>
+                                </select>
+                            </div>
+
+                            <!-- Valor Líquido (opcional) -->
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-700 uppercase mb-1">Valor Líquido (R$)</label>
+                                <input type="number" step="0.01" min="0" id="cc_valor_liquido" placeholder="Ex: 2540.80" class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg bg-white font-mono focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                            </div>
+
+                            <!-- Observação -->
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-700 uppercase mb-1">Descrição / Obs</label>
+                                <input type="text" id="cc_obs" placeholder="Ex: Adiantamento, Folha normal..." class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                            </div>
+                        </div>
+
+                        <!-- Seleção de Arquivo (PDF ou Imagem) -->
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-700 uppercase mb-1">Arquivo do Holerite (PDF ou Imagem) *</label>
+                            <div class="flex items-center space-x-3">
+                                <label class="flex-1 cursor-pointer border-2 border-dashed border-slate-300 hover:border-blue-500 hover:bg-blue-50/40 rounded-xl p-3 flex items-center justify-center space-x-2 transition bg-slate-50 text-slate-600">
+                                    <i class="fa-solid fa-file-pdf text-rose-500 text-lg"></i>
+                                    <span id="cc_nome_arquivo_display" class="text-xs font-semibold">Clique para selecionar o arquivo (PDF, JPG, PNG)</span>
+                                    <input type="file" id="cc_input_arquivo" accept=".pdf,image/*" onchange="atualizarDisplayArquivoContracheque(this)" class="hidden" required>
+                                </label>
+                                <button type="submit" id="btnSalvarContracheque" class="bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-3 rounded-xl font-bold text-xs flex items-center shadow-md shadow-emerald-600/30 transition shrink-0">
+                                    <i class="fa-solid fa-check mr-2"></i> Anexar & Salvar
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Lista de Contracheques Anexados -->
+                <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm space-y-3">
+                    <div class="flex items-center justify-between">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center">
+                            <i class="fa-solid fa-folder-open mr-2 text-amber-500"></i> Histórico de Holerites Anexados
+                        </h4>
+                        <span id="ccTotalBadge" class="bg-slate-100 text-slate-700 px-2.5 py-0.5 rounded-full font-bold text-[11px]">0 holerites</span>
+                    </div>
+
+                    <div class="overflow-x-auto border border-slate-200 rounded-xl">
+                        <table class="w-full text-left text-xs">
+                            <thead class="bg-slate-50 border-b border-slate-200 text-slate-600 font-semibold uppercase text-[11px]">
+                                <tr>
+                                    <th class="py-2.5 px-4">Competência</th>
+                                    <th class="py-2.5 px-3">Arquivo</th>
+                                    <th class="py-2.5 px-3">Tamanho</th>
+                                    <th class="py-2.5 px-3">Valor Líquido</th>
+                                    <th class="py-2.5 px-3">Data de Envio</th>
+                                    <th class="py-2.5 px-4 text-right">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="listaContrachequesTabela" class="divide-y divide-slate-100">
+                                <tr>
+                                    <td colspan="6" class="py-8 text-center text-slate-400">
+                                        Nenhum contracheque anexado para este colaborador.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Painel: Credenciais de Acesso ao Portal -->
+                <div class="bg-slate-100/90 rounded-xl p-4 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                    <div>
+                        <h5 class="text-xs font-bold text-slate-800 flex items-center">
+                            <i class="fa-solid fa-key mr-1.5 text-blue-600"></i> Acesso do Colaborador ao Portal
+                        </h5>
+                        <div class="text-[11px] text-slate-600 mt-1 flex flex-wrap items-center gap-x-4 gap-y-1">
+                            <span>Login: <strong class="font-mono text-slate-800" id="ccInfoLogin">---</strong></span>
+                            <span>Senha Padrão: <strong class="text-slate-800">4 primeiros dígitos do CPF</strong></span>
+                            <span id="ccStatusSenhaBadge" class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">Senha Padrão</span>
+                        </div>
+                    </div>
+                    <button type="button" onclick="redefinirSenhaColaboradorAtual()" class="px-3 py-1.5 bg-white hover:bg-rose-50 text-rose-700 hover:text-rose-800 border border-slate-300 hover:border-rose-300 rounded-lg text-xs font-semibold shadow-2xs flex items-center transition shrink-0">
+                        <i class="fa-solid fa-rotate-left mr-1.5 text-rose-500"></i> Redefinir Senha do Colaborador
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- ========================================================================= -->
+    <!-- MODAL: ANEXAR CONTRACHEQUES EM LOTE COM CASAMENTO AUTOMÁTICO DE NOMES     -->
+    <!-- ========================================================================= -->
+    <div id="modalUploadLoteContracheques" class="fixed inset-0 bg-slate-900/75 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-5xl w-full max-h-[94vh] flex flex-col overflow-hidden border border-slate-200">
+            <!-- Header do Modal -->
+            <div class="bg-slate-900 text-white px-6 py-4 flex items-center justify-between border-b border-slate-800">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-tr from-amber-500 to-emerald-500 rounded-xl flex items-center justify-center text-white shadow-md shadow-emerald-500/30">
+                        <i class="fa-solid fa-layer-group text-xl"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center space-x-2">
+                            <h3 class="font-bold text-base">Anexar Contracheques em Lote</h3>
+                            <span class="bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 text-[10px] px-2 py-0.5 rounded font-mono font-bold">Auto-Identificação por Nome</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-0.5">Selecione dezenas de arquivos: o sistema vincula cada holerite ao respectivo colaborador automaticamente.</p>
+                    </div>
+                </div>
+                <button onclick="fecharModal('modalUploadLoteContracheques')" class="text-slate-400 hover:text-white text-xl">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Corpo com Scroll -->
+            <div class="p-6 overflow-y-auto space-y-5 flex-1 bg-slate-50/50">
+
+                <!-- ETAPA 1: Seleção de Competência e Arquivos -->
+                <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-3">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-6 h-6 rounded-full bg-blue-600 text-white text-xs font-bold flex items-center justify-center">1</span>
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-800">Defina a Competência do Pagamento</h4>
+                        </div>
+
+                        <div class="flex items-center space-x-2">
+                            <!-- Mês -->
+                            <select id="lote_mes" onchange="aoMudarCompetenciaLote()" class="px-3 py-1.5 text-xs border border-slate-300 rounded-lg bg-white font-medium focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                                <option value="1">01 - Janeiro</option>
+                                <option value="2">02 - Fevereiro</option>
+                                <option value="3">03 - Março</option>
+                                <option value="4">04 - Abril</option>
+                                <option value="5">05 - Maio</option>
+                                <option value="6">06 - Junho</option>
+                                <option value="7">07 - Julho</option>
+                                <option value="8">08 - Agosto</option>
+                                <option value="9">09 - Setembro</option>
+                                <option value="10">10 - Outubro</option>
+                                <option value="11">11 - Novembro</option>
+                                <option value="12">12 - Dezembro</option>
+                                <option value="13">13º Salário (Anual)</option>
+                            </select>
+
+                            <!-- Ano -->
+                            <select id="lote_ano" onchange="aoMudarCompetenciaLote()" class="px-3 py-1.5 text-xs border border-slate-300 rounded-lg bg-white font-mono font-medium focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                                <option value="2027">2027</option>
+                                <option value="2026" selected>2026</option>
+                                <option value="2025">2025</option>
+                                <option value="2024">2024</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Banner de Gestão & Exclusão em Lote da Competência -->
+                    <div id="bannerResumoLoteMes" class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
+                        <div class="flex items-center space-x-2.5 text-slate-700">
+                            <span class="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-calendar-days text-sm"></i>
+                            </span>
+                            <div>
+                                <span>Contracheques em <strong id="textoMesAnoResumoLote" class="text-slate-900">Fevereiro / 2026</strong>:</span>
+                                <span id="badgeContrachequesExistentesMes" class="ml-1.5 inline-flex items-center px-2 py-0.5 rounded-full font-bold text-[11px] bg-slate-200 text-slate-700">
+                                    <i class="fa-solid fa-circle-notch fa-spin text-slate-500 mr-1"></i> Consultando...
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Botão de Apagar Todos os Contracheques Deste Mês -->
+                        <button type="button" id="btnExcluirLoteMes" onclick="confirmarExcluirContrachequesMes()"
+                            class="hidden px-3.5 py-1.5 bg-rose-50 hover:bg-rose-600 hover:text-white text-rose-700 border border-rose-300 hover:border-rose-600 rounded-lg text-xs font-bold transition flex items-center shadow-xs shrink-0">
+                            <i class="fa-solid fa-trash-can mr-1.5"></i>
+                            <span id="btnExcluirLoteMesTexto">Apagar Todos do Mês</span>
+                        </button>
+                    </div>
+
+                    <!-- Dropzone de Arquivos Múltiplos -->
+                    <div id="dropzoneLote" ondragover="aoArrastarSobreDropzone(event)" ondragleave="aoSairDropzone(event)" ondrop="aoSoltarArquivos(event)"
+                        class="border-2 border-dashed border-slate-300 hover:border-emerald-500 hover:bg-emerald-50/30 rounded-2xl p-6 text-center cursor-pointer transition bg-slate-50">
+                        <input type="file" multiple id="inputArquivosLote" accept=".pdf,image/*" onchange="aoSelecionarArquivosLote(this.files)" class="hidden">
+                        <label for="inputArquivosLote" class="cursor-pointer block space-y-2">
+                            <div class="w-12 h-12 mx-auto bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl shadow-xs">
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-slate-800">Clique para selecionar os contracheques ou arraste os arquivos aqui</p>
+                                <p class="text-xs text-slate-500 mt-0.5">Selecione todos os arquivos da pasta de uma vez (Ctrl+A). Suporta PDF, JPG e PNG.</p>
+                            </div>
+                            <span class="inline-block px-3 py-1 rounded-full text-[11px] font-bold bg-white text-slate-600 border border-slate-200 shadow-2xs">
+                                💡 Dica: Os arquivos podem se chamar "Nome do Colaborador.pdf" ou conter o nome/CPF no texto.
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- ETAPA 2: Tabela de Conciliação e Revisão Inteligente -->
+                <div id="painelRevisaoLote" class="hidden bg-white rounded-xl p-5 border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-3">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-6 h-6 rounded-full bg-emerald-600 text-white text-xs font-bold flex items-center justify-center">2</span>
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-800">Conferência e Conciliação Inteligente</h4>
+                        </div>
+
+                        <!-- Resumo dos Matches -->
+                        <div class="flex items-center space-x-2 text-xs">
+                            <span id="loteTotalSelecionadosBadge" class="bg-slate-100 text-slate-700 px-2.5 py-1 rounded-lg font-bold">0 arquivos</span>
+                            <span id="loteMatchesExatosBadge" class="bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-lg font-bold">0 identificados</span>
+                            <span id="loteMatchesDuvidaBadge" class="hidden bg-amber-100 text-amber-800 px-2.5 py-1 rounded-lg font-bold">0 pendentes</span>
+                        </div>
+                    </div>
+
+                    <!-- Tabela de Conciliação -->
+                    <div class="overflow-x-auto border border-slate-200 rounded-xl max-h-[380px] overflow-y-auto">
+                        <table class="w-full text-left text-xs">
+                            <thead class="bg-slate-50 border-b border-slate-200 text-slate-600 font-semibold uppercase text-[11px] sticky top-0 z-10">
+                                <tr>
+                                    <th class="py-2.5 px-3">#</th>
+                                    <th class="py-2.5 px-3">Arquivo do Holerite</th>
+                                    <th class="py-2.5 px-3">Tamanho</th>
+                                    <th class="py-2.5 px-3">Colaborador Vinculado Automaticamente</th>
+                                    <th class="py-2.5 px-3">Status do Reconhecimento</th>
+                                    <th class="py-2.5 px-3 text-right">Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody id="listaConciliacaoLoteTabela" class="divide-y divide-slate-100">
+                                <!-- Itens inseridos dinamicamente pelo JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- ETAPA 3: Progresso e Envio -->
+                <div id="painelProgressoLote" class="hidden bg-white rounded-xl p-5 border border-slate-200 shadow-sm space-y-3">
+                    <div class="flex items-center justify-between text-xs font-bold text-slate-800">
+                        <span id="textoProgressoLote" class="flex items-center">
+                            <i class="fa-solid fa-circle-notch fa-spin text-blue-600 mr-2"></i> Enviando contracheques para o servidor...
+                        </span>
+                        <span id="porcentagemProgressoLote" class="font-mono text-blue-600">0%</span>
+                    </div>
+                    <div class="w-full bg-slate-200 rounded-full h-3 overflow-hidden">
+                        <div id="barraProgressoLote" class="bg-gradient-to-r from-blue-600 to-emerald-500 h-3 rounded-full transition-all duration-200" style="width: 0%"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer com Botões de Ação -->
+            <div class="bg-slate-100 px-6 py-4 border-t border-slate-200 flex items-center justify-between">
+                <button type="button" onclick="fecharModal('modalUploadLoteContracheques')" class="px-4 py-2 bg-white hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-semibold border border-slate-300 transition">
+                    Cancelar
+                </button>
+
+                <div class="flex items-center space-x-3">
+                    <button type="button" id="btnLimparFilaLote" onclick="limparFilaLote()" class="hidden px-3 py-2 text-rose-600 hover:text-rose-800 text-xs font-semibold">
+                        Limpar Arquivos
+                    </button>
+                    <button type="button" id="btnConfirmarEnvioLote" onclick="iniciarEnvioLote()" disabled
+                        class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 disabled:cursor-not-allowed text-white rounded-xl text-xs font-bold shadow-md shadow-emerald-600/30 flex items-center transition">
+                        <i class="fa-solid fa-paper-plane mr-2"></i>
+                        <span id="btnConfirmarEnvioLoteTexto">Confirmar e Enviar para os Colaboradores</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="/static/app.js?v=2.4"></script>
+</body>
+</html>

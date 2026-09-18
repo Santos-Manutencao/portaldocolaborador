@@ -1,0 +1,85 @@
+/* SGP SANTOS MANUTENÇÃO - Estilos Customizados & Print Engine */
+
+/* Transições suaves */
+* {
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+/* Scrollbar moderno */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Folha A4 para Visualização em Tela */
+.folha-a4 {
+    box-sizing: border-box;
+    position: relative;
+    background-color: #ffffff;
+    line-height: 1.6;
+}
+
+/* ========================================================================= */
+/* CSS PRINT ENGINE - CONFIGURAÇÃO EXATA PARA IMPRESSÃO EM FOLHA A4          */
+/* ========================================================================= */
+@media print {
+    @page {
+        size: A4 portrait;
+        margin: 15mm 15mm 15mm 15mm;
+    }
+
+    /* Oculta tudo na página exceto o container do documento */
+    body * {
+        visibility: hidden;
+    }
+
+    /* Exibe apenas a folha A4 e seus filhos */
+    #folhaA4, #folhaA4 * {
+        visibility: visible;
+    }
+
+    #folhaA4 {
+        position: absolute;
+        left: 0 !important;
+        top: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-height: auto !important;
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        background: transparent !important;
+        font-size: 12pt !important;
+    }
+
+    /* Garante fidelidade de cores e fundos na impressão */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    /* Oculta modais de fundo e barras */
+    #modalDocumentos {
+        position: static !important;
+        background: transparent !important;
+        padding: 0 !important;
+        overflow: visible !important;
+    }
+
+    .no-print {
+        display: none !important;
+    }
+}

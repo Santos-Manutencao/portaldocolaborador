@@ -1,0 +1,22 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# Ambientes virtuais
+.venv/
+venv/
+ENV/
+env/
+
+# Logs e arquivos temporários
+*.log
+.pytest_cache/
+*.tmp
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+~$*

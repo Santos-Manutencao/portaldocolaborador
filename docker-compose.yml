@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  portaldocolaborador:
+    build: .
+    container_name: portaldocolaborador
+    restart: always
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./sgp_database.db:/app/sgp_database.db
+      - ./UPLOADS:/app/UPLOADS
+    environment:
+      - PORT=8080
