@@ -339,12 +339,12 @@ function renderizarContrachequesLista(filtrados, token) {
             <table class="w-full text-left border-collapse text-xs">
                 <thead>
                     <tr class="bg-slate-50/90 text-slate-500 font-semibold border-b border-slate-200 uppercase text-[10px] tracking-wider">
-                        <th class="py-3 px-4">Competência</th>
-                        <th class="py-3 px-4">Documento</th>
-                        <th class="py-3 px-4 hidden sm:table-cell">Disponibilizado</th>
-                        <th class="py-3 px-4 hidden md:table-cell">Tamanho</th>
-                        <th class="py-3 px-4">Valor Líquido</th>
-                        <th class="py-3 px-4 text-right">Ações</th>
+                        <th class="py-3 px-3 sm:px-4">Competência</th>
+                        <th class="py-3 px-2 sm:px-3 text-left">Ações</th>
+                        <th class="py-3 px-3 sm:px-4">Valor Líquido</th>
+                        <th class="py-3 px-4 hidden md:table-cell">Documento</th>
+                        <th class="py-3 px-4 hidden lg:table-cell">Disponibilizado</th>
+                        <th class="py-3 px-4 hidden xl:table-cell">Tamanho</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-100">
@@ -358,40 +358,40 @@ function renderizarContrachequesLista(filtrados, token) {
 
                         return `
                             <tr class="hover:bg-blue-50/40 transition">
-                                <td class="py-3 px-4 whitespace-nowrap">
-                                    <div class="flex items-center space-x-2.5">
-                                        <div class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-sm shrink-0">
+                                <td class="py-3 px-3 sm:px-4 whitespace-nowrap">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-slate-100 flex items-center justify-center text-xs sm:text-sm shrink-0">
                                             <i class="fa-solid ${iconHeader}"></i>
                                         </div>
-                                        <span class="inline-block px-2.5 py-0.5 rounded text-[11px] font-black uppercase tracking-wider bg-blue-50 text-blue-800 border border-blue-200 font-mono">
+                                        <span class="inline-block px-2 sm:px-2.5 py-0.5 rounded text-[11px] font-black uppercase tracking-wider bg-blue-50 text-blue-800 border border-blue-200 font-mono">
                                             ${c.competencia}
                                         </span>
                                     </div>
                                 </td>
-                                <td class="py-3 px-4">
+                                <td class="py-3 px-2 sm:px-3 whitespace-nowrap">
+                                    <div class="inline-flex items-center gap-1.5">
+                                        <button onclick="visualizarHolerite(${c.id}, '${c.nome_arquivo.replace(/'/g, "\\'")}')" title="Visualizar Holerite" class="px-2.5 py-1.5 bg-blue-50 hover:bg-blue-600 hover:text-white text-blue-700 font-bold text-xs rounded-lg flex items-center transition shadow-2xs">
+                                            <i class="fa-solid fa-eye mr-1"></i> Visualizar
+                                        </button>
+                                        <a href="${downloadUrl}" download="${c.nome_arquivo}" title="Baixar PDF" class="px-2.5 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-lg flex items-center transition shadow-2xs">
+                                            <i class="fa-solid fa-download mr-1"></i> Baixar
+                                        </a>
+                                    </div>
+                                </td>
+                                <td class="py-3 px-3 sm:px-4 whitespace-nowrap">
+                                    ${valLiqHtml}
+                                </td>
+                                <td class="py-3 px-4 hidden md:table-cell">
                                     <div class="font-bold text-slate-800 text-xs truncate max-w-[200px] sm:max-w-xs" title="${c.nome_arquivo}">
                                         ${c.nome_arquivo}
                                     </div>
                                     ${c.observacoes ? `<div class="text-[10px] text-slate-400 italic">${c.observacoes}</div>` : ''}
                                 </td>
-                                <td class="py-3 px-4 text-slate-500 whitespace-nowrap hidden sm:table-cell">
+                                <td class="py-3 px-4 text-slate-500 whitespace-nowrap hidden lg:table-cell">
                                     <i class="fa-regular fa-calendar-check text-slate-400 mr-1"></i>${dtEnvio}
                                 </td>
-                                <td class="py-3 px-4 text-slate-500 font-mono whitespace-nowrap hidden md:table-cell">
+                                <td class="py-3 px-4 text-slate-500 font-mono whitespace-nowrap hidden xl:table-cell">
                                     ${tamFmt}
-                                </td>
-                                <td class="py-3 px-4 whitespace-nowrap">
-                                    ${valLiqHtml}
-                                </td>
-                                <td class="py-3 px-4 text-right whitespace-nowrap">
-                                    <div class="inline-flex items-center justify-end gap-1.5">
-                                        <button onclick="visualizarHolerite(${c.id}, '${c.nome_arquivo.replace(/'/g, "\\'")}')" class="px-2.5 py-1.5 bg-blue-50 hover:bg-blue-600 hover:text-white text-blue-700 font-bold text-xs rounded-lg flex items-center transition shadow-2xs">
-                                            <i class="fa-solid fa-eye mr-1"></i> Visualizar
-                                        </button>
-                                        <a href="${downloadUrl}" download="${c.nome_arquivo}" class="px-2.5 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-lg flex items-center transition shadow-2xs">
-                                            <i class="fa-solid fa-download mr-1"></i> Baixar
-                                        </a>
-                                    </div>
                                 </td>
                             </tr>
                         `;
@@ -401,6 +401,7 @@ function renderizarContrachequesLista(filtrados, token) {
         </div>
     `;
 }
+
 
 function renderizarContrachequesGrade(filtrados, token) {
     return `
