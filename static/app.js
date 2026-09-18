@@ -234,6 +234,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (autenticado) {
         carregarStats();
         carregarFuncionarios();
+        verificarStatusSyncOnline();
     }
 });
 
@@ -3000,6 +3001,140 @@ async function iniciarEnvioLote() {
         fecharModal('modalUploadLoteContracheques');
         carregarFuncionarios();
         carregarStats();
+        verificarStatusSyncOnline();
     }, 600);
+}
+
+// =========================================================================
+// SINCRONIZAÇÃO COM O SISTEMA ONLINE (GITHUB / NUVEM)
+// =========================================================================
+let syncOnlineEmAndamento = false;
+
+async function verificarStatusSyncOnline() {
+    const badge = document.getElementById('badgeSyncPendente');
+    const btn = document.getElementById('btnSyncOnline');
+    if (!btn) return;
+
+    try {
+        const res = await fetch('/api/sistema/status-sync');
+        if (!res.ok) return;
+        const data = await res.json();
+
+        if (badge) {
+            if (data.has_changes) {
+                badge.classList.remove('hidden');
+                btn.title = `Há ${data.total_pendentes} alteração(ões) locais pendentes de envio para o sistema online. Clique para atualizar!`;
+            } else {
+                badge.classList.add('hidden');
+                btn.title = 'Sistema online atualizado com o sistema local (GitHub / Nuvem).';
+            }
+        }
+
+        // Se o modal estiver aberto, atualiza seus dados
+        atualizarDadosModalSync(data);
+    } catch (err) {
+        console.warn('Não foi possível verificar status de sincronização online:', err);
+    }
+}
+
+function atualizarDadosModalSync(data) {
+    const badgeModal = document.getElementById('syncModalBadge');
+    const msgModal = document.getElementById('syncModalMensagem');
+    const ultimoModal = document.getElementById('syncModalUltimo');
+    const listaContainer = document.getElementById('syncModalListaArquivosContainer');
+    const lista = document.getElementById('syncModalListaArquivos');
+
+    if (!badgeModal) return;
+
+    if (ultimoModal && data.ultimo_sync) {
+        ultimoModal.textContent = data.ultimo_sync;
+    }
+
+    if (data.has_changes) {
+        badgeModal.className = 'px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-300 font-mono';
+        badgeModal.textContent = `${data.total_pendentes} pendente(s)`;
+        if (msgModal) {
+            msgModal.innerHTML = `Existem <strong>${data.total_pendentes}</strong> arquivos/dados modificados localmente que ainda não foram enviados para o sistema online.`;
+        }
+        if (listaContainer && lista) {
+            listaContainer.classList.remove('hidden');
+            lista.innerHTML = (data.arquivos_pendentes || []).map(a => `<div>• ${a}</div>`).join('');
+        }
+    } else {
+        badgeModal.className = 'px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300 font-mono';
+        badgeModal.textContent = 'Sincronizado';
+        if (msgModal) {
+            msgModal.textContent = 'O sistema online já está totalmente em dia com os seus dados locais. Nenhuma alteração pendente.';
+        }
+        if (listaContainer) {
+            listaContainer.classList.add('hidden');
+        }
+    }
+}
+
+function abrirModalSyncOnline() {
+    abrirModal('modalSyncOnline');
+    verificarStatusSyncOnline();
+}
+
+async function sincronizarSistemaOnline() {
+    // Disparo direto de 1 clique para atualizar o sistema online
+    await executarSincronizacaoOnline();
+}
+
+async function executarSincronizacaoOnline() {
+    if (syncOnlineEmAndamento) return;
+    syncOnlineEmAndamento = true;
+
+    const btnTop = document.getElementById('btnSyncOnline');
+    const iconTop = document.getElementById('iconSyncOnline');
+    const textoTop = document.getElementById('textoSyncOnline');
+
+    const btnModal = document.getElementById('btnExecutarSyncModal');
+    const iconModal = document.getElementById('iconExecutarSync');
+    const textoModal = document.getElementById('textoExecutarSync');
+
+    // Estado visual de carregamento no botão
+    if (btnTop) btnTop.disabled = true;
+    if (iconTop) iconTop.className = 'fa-solid fa-spinner fa-spin mr-1.5 text-sky-200';
+    if (textoTop) textoTop.textContent = 'Atualizando Online...';
+
+    if (btnModal) btnModal.disabled = true;
+    if (iconModal) iconModal.className = 'fa-solid fa-spinner fa-spin mr-2';
+    if (textoModal) textoModal.textContent = 'Sincronizando com GitHub...';
+
+    try {
+        const res = await fetch('/api/sistema/sincronizar-online', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        });
+
+        const data = await res.json();
+
+        if (res.ok && data.success) {
+            if (data.status === 'sincronizado') {
+                alert(`🚀 SISTEMA ONLINE ATUALIZADO COM SUCESSO!\n\n✔ ${data.total_arquivos} arquivo(s) foram enviados para o GitHub.\n✔ Repositório: ${data.repo_url}\n✔ Horário: ${data.timestamp}\n\nTodas as novidades, holerites e cadastros locais já estão disponíveis online!`);
+            } else {
+                alert(`✅ O sistema online já está 100% atualizado!\n\nNenhuma nova alteração pendente foi encontrada no sistema local.`);
+            }
+            fecharModal('modalSyncOnline');
+        } else {
+            alert(`❌ Falha ao atualizar sistema online:\n\n${data.error || 'Erro desconhecido na sincronização.'}`);
+        }
+    } catch (err) {
+        console.error('Erro na sincronização:', err);
+        alert('❌ Não foi possível conectar ao servidor para sincronização online. Verifique sua conexão com a internet.');
+    } finally {
+        syncOnlineEmAndamento = false;
+        if (btnTop) btnTop.disabled = false;
+        if (iconTop) iconTop.className = 'fa-solid fa-cloud-arrow-up mr-1.5 text-sky-200 group-hover:scale-110 transition';
+        if (textoTop) textoTop.textContent = 'Atualizar Online';
+
+        if (btnModal) btnModal.disabled = false;
+        if (iconModal) iconModal.className = 'fa-solid fa-cloud-arrow-up mr-2';
+        if (textoModal) textoModal.textContent = 'Sincronizar Agora';
+
+        await verificarStatusSyncOnline();
+    }
 }
 

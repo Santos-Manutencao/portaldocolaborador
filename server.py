@@ -11,6 +11,9 @@ import secrets
 import base64
 import unicodedata
 
+import subprocess
+import shutil
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PARENT_DIR = os.path.dirname(BASE_DIR)
 DB_PATH = os.path.join(BASE_DIR, 'sgp_database.db')
@@ -19,6 +22,32 @@ UPLOADS_DIR = os.path.join(BASE_DIR, 'UPLOADS')
 CONTRACHEQUES_DIR = os.path.join(UPLOADS_DIR, 'CONTRACHEQUES')
 FOTOS_DIR = os.path.join(UPLOADS_DIR, 'FOTOS')
 PORT = int(os.environ.get('PORT', 8080))
+
+def get_git_executable():
+    p = shutil.which('git')
+    if p:
+        return p
+    win_paths = [
+        r'C:\Users\rafae\AppData\Local\Microsoft\WinGet\Packages\Git.MinGit_Microsoft.Winget.Source_8wekyb3d8bbwe\cmd\git.exe',
+        r'C:\Program Files\Git\cmd\git.exe',
+        r'C:\Program Files (x86)\Git\cmd\git.exe',
+    ]
+    for wp in win_paths:
+        if os.path.isfile(wp):
+            return wp
+    return 'git'
+
+def get_git_env():
+    env = os.environ.copy()
+    extra_dirs = [
+        r'C:\Users\rafae\AppData\Local\Microsoft\WinGet\Packages\Git.MinGit_Microsoft.Winget.Source_8wekyb3d8bbwe\cmd',
+        r'C:\Users\rafae\AppData\Local\Microsoft\WinGet\Packages\Git.MinGit_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin',
+        r'C:\Users\rafae\AppData\Local\Microsoft\WinGet\Packages\GitHub.cli_Microsoft.Winget.Source_8wekyb3d8bbwe\bin',
+    ]
+    prepend = ';'.join([d for d in extra_dirs if os.path.isdir(d)])
+    if prepend:
+        env['PATH'] = f"{prepend};" + env.get('PATH', '')
+    return env
 
 def save_foto_base64(foto_b64_str, identifier=''):
     if not foto_b64_str or not isinstance(foto_b64_str, str):
@@ -830,6 +859,33 @@ class SGPHandler(BaseHTTPRequestHandler):
                         self.send_json({'error': 'Acesso restrito. Faça login como administrador.'}, 401)
                         return
 
+            # Status da Sincronização Online (GitHub / Nuvem)
+            if path == '/api/sistema/status-sync':
+                git_bin = get_git_executable()
+                env = get_git_env()
+                try:
+                    res_st = subprocess.run([git_bin, 'status', '--porcelain'], cwd=BASE_DIR, env=env, capture_output=True, text=True, timeout=10)
+                    changes = [line.strip() for line in res_st.stdout.splitlines() if line.strip()]
+
+                    res_log = subprocess.run([git_bin, 'log', '-1', '--format=%cd (%cr)', '--date=format:%d/%m/%Y %H:%M'], cwd=BASE_DIR, env=env, capture_output=True, text=True, timeout=10)
+                    last_commit = res_log.stdout.strip() if res_log.returncode == 0 else ''
+
+                    self.send_json({
+                        'has_changes': len(changes) > 0,
+                        'total_pendentes': len(changes),
+                        'arquivos_pendentes': changes[:10],
+                        'ultimo_sync': last_commit,
+                        'repo_url': 'https://github.com/Santos-Manutencao/portaldocolaborador'
+                    })
+                except Exception as e:
+                    self.send_json({
+                        'has_changes': False,
+                        'total_pendentes': 0,
+                        'error': str(e),
+                        'repo_url': 'https://github.com/Santos-Manutencao/portaldocolaborador'
+                    })
+                return
+
             # Stats endpoint with Vacation metrics
             if path == '/api/stats':
                 cursor.execute("SELECT COUNT(*) FROM funcionarios WHERE status = 'Ativo'")
@@ -1327,6 +1383,60 @@ class SGPHandler(BaseHTTPRequestHandler):
                 import import_excel
                 import_excel.run_import()
                 self.send_json({'message': 'Importação concluída com sucesso!'})
+                return
+
+            # Sincronização com o Sistema Online (GitHub / Nuvem)
+            if path == '/api/sistema/sincronizar-online':
+                git_bin = get_git_executable()
+                env = get_git_env()
+                try:
+                    # 1. Adiciona todas as alterações locais (banco de dados, uploads, fotos, código)
+                    add_res = subprocess.run([git_bin, 'add', '-A'], cwd=BASE_DIR, env=env, capture_output=True, text=True, timeout=30)
+                    if add_res.returncode != 0:
+                        self.send_json({'error': f'Falha ao indexar arquivos locais: {add_res.stderr or add_res.stdout}'}, 500)
+                        return
+
+                    # 2. Verifica se existem alterações em relação ao repositório
+                    st_res = subprocess.run([git_bin, 'status', '--porcelain'], cwd=BASE_DIR, env=env, capture_output=True, text=True, timeout=15)
+                    changes = [line.strip() for line in st_res.stdout.splitlines() if line.strip()]
+
+                    if not changes:
+                        self.send_json({
+                            'success': True,
+                            'status': 'sem_alteracoes',
+                            'message': 'O sistema online já está totalmente atualizado! Nenhuma nova alteração local pendente.',
+                            'total_arquivos': 0,
+                            'timestamp': datetime.datetime.now().strftime('%d/%m/%Y %H:%M:%S'),
+                            'repo_url': 'https://github.com/Santos-Manutencao/portaldocolaborador'
+                        })
+                        return
+
+                    # 3. Cria o commit automático com data e hora
+                    agora_str = datetime.datetime.now().strftime('%d/%m/%Y %H:%M:%S')
+                    commit_msg = f"sync: atualizacao automatica do sistema ({agora_str})"
+                    c_res = subprocess.run([git_bin, 'commit', '-m', commit_msg], cwd=BASE_DIR, env=env, capture_output=True, text=True, timeout=30)
+                    if c_res.returncode != 0:
+                        self.send_json({'error': f'Falha ao registrar versão (commit): {c_res.stderr or c_res.stdout}'}, 500)
+                        return
+
+                    # 4. Envia para o GitHub (push origin main)
+                    p_res = subprocess.run([git_bin, 'push', 'origin', 'main'], cwd=BASE_DIR, env=env, capture_output=True, text=True, timeout=60)
+                    if p_res.returncode != 0:
+                        self.send_json({'error': f'Falha ao enviar dados para o GitHub: {p_res.stderr or p_res.stdout}'}, 500)
+                        return
+
+                    self.send_json({
+                        'success': True,
+                        'status': 'sincronizado',
+                        'message': f'Sistema online atualizado com sucesso no GitHub! {len(changes)} arquivo(s) sincronizados.',
+                        'total_arquivos': len(changes),
+                        'timestamp': agora_str,
+                        'repo_url': 'https://github.com/Santos-Manutencao/portaldocolaborador'
+                    })
+                except subprocess.TimeoutExpired:
+                    self.send_json({'error': 'Tempo limite de conexão com o GitHub esgotado. Verifique sua conexão com a internet.'}, 504)
+                except Exception as e:
+                    self.send_json({'error': f'Erro interno durante sincronização: {str(e)}'}, 500)
                 return
 
             # Upload Employee Photo Endpoint

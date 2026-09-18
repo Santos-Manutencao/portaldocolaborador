@@ -139,6 +139,17 @@
             </div>
 
             <div class="flex items-center space-x-2.5 sm:space-x-3">
+                <!-- Botão de Sincronização Online -->
+                <button onclick="sincronizarSistemaOnline()" id="btnSyncOnline" title="Enviar alterações locais (cadastros, holerites, férias e banco de dados) para o sistema online no GitHub" class="relative bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-500 hover:to-blue-500 text-white text-xs px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-lg font-semibold flex items-center shadow-sm shadow-sky-500/30 transition group">
+                    <i class="fa-solid fa-cloud-arrow-up mr-1.5 text-sky-200 group-hover:scale-110 transition" id="iconSyncOnline"></i>
+                    <span id="textoSyncOnline" class="hidden md:inline">Atualizar Online</span>
+                    <!-- Indicador Pulsante de Alterações Pendentes -->
+                    <span id="badgeSyncPendente" class="hidden absolute -top-1 -right-1 flex h-2.5 w-2.5">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-500 border border-white"></span>
+                    </span>
+                </button>
+
                 <button onclick="abrirModalUploadLote()" title="Anexar Contracheques de todos os colaboradores de uma só vez com reconhecimento de nome" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-lg font-semibold flex items-center shadow-sm shadow-emerald-500/30 transition">
                     <i class="fa-solid fa-layer-group mr-1.5 text-amber-300"></i>
                     <span class="hidden md:inline">Anexar em Lote</span>
@@ -149,7 +160,7 @@
                 </a>
                 <button onclick="reimportarBase()" title="Sincronizar com a planilha Excel" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-lg font-medium flex items-center border border-slate-700 transition">
                     <i class="fa-solid fa-arrows-rotate mr-1.5 text-blue-400" id="syncIcon"></i>
-                    <span class="hidden md:inline">Sincronizar</span>
+                    <span class="hidden md:inline">Sincronizar Planilha</span>
                 </button>
                 <button onclick="abrirModalNovoFuncionario()" class="bg-blue-600 hover:bg-blue-500 text-white text-xs px-3 py-2 sm:px-4 sm:py-2.5 rounded-lg font-semibold flex items-center shadow-sm shadow-blue-500/40 transition">
                     <i class="fa-solid fa-user-plus mr-1.5"></i>
@@ -1545,7 +1556,78 @@
         </div>
     </div>
 
+    <!-- ========================================================================= -->
+    <!-- MODAL: SINCRONIZAÇÃO COM O SISTEMA ONLINE (GITHUB / NUVEM)               -->
+    <!-- ========================================================================= -->
+    <div id="modalSyncOnline" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden border border-slate-200 animate-in fade-in zoom-in duration-150">
+            <!-- Header -->
+            <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-sky-900 px-6 py-4 flex items-center justify-between text-white border-b border-slate-700">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-sky-500/20 border border-sky-400/30 flex items-center justify-center text-sky-400 text-lg">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-bold uppercase tracking-wider">Sincronização Online</h3>
+                        <p class="text-[11px] text-sky-200">Envio de cadastros, holerites e banco de dados para a nuvem</p>
+                    </div>
+                </div>
+                <button onclick="fecharModal('modalSyncOnline')" class="text-slate-400 hover:text-white transition">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Body -->
+            <div class="p-6 space-y-4 text-xs">
+                <!-- Status Card -->
+                <div id="syncModalStatusCard" class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="font-bold text-slate-700 uppercase tracking-wider text-[11px]">Status da Sincronização</span>
+                        <span id="syncModalBadge" class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-200 text-slate-700 font-mono">Verificando...</span>
+                    </div>
+                    <p id="syncModalMensagem" class="text-slate-600 text-xs leading-relaxed">
+                        Consultando alterações locais no banco de dados e arquivos...
+                    </p>
+                    <div class="pt-2 border-t border-slate-200 text-[11px] text-slate-400 flex items-center justify-between">
+                        <span>Última sincronização:</span>
+                        <strong id="syncModalUltimo" class="text-slate-700 font-mono">---</strong>
+                    </div>
+                </div>
+
+                <!-- Detalhes do Repositório -->
+                <div class="bg-sky-50/70 border border-sky-200 rounded-xl p-3 text-[11px] text-sky-900 flex items-center justify-between">
+                    <div class="flex items-center space-x-2">
+                        <i class="fa-brands fa-github text-sky-700 text-base"></i>
+                        <span>Repositório GitHub: <strong>Santos-Manutencao/portaldocolaborador</strong></span>
+                    </div>
+                    <a href="https://github.com/Santos-Manutencao/portaldocolaborador" target="_blank" class="text-sky-700 hover:text-sky-900 font-bold underline text-[11px] flex items-center">
+                        Abrir <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[10px]"></i>
+                    </a>
+                </div>
+
+                <!-- Lista de alterações pendentes (se houver) -->
+                <div id="syncModalListaArquivosContainer" class="hidden space-y-1.5">
+                    <span class="font-bold text-slate-700 text-[11px] uppercase tracking-wider block">Arquivos a serem atualizados:</span>
+                    <div id="syncModalListaArquivos" class="bg-slate-50 border border-slate-200 rounded-lg p-2.5 max-h-32 overflow-y-auto font-mono text-[10px] text-slate-600 space-y-1">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="bg-slate-50 px-6 py-3.5 border-t border-slate-200 flex items-center justify-between">
+                <button type="button" onclick="fecharModal('modalSyncOnline')" class="px-4 py-2 bg-white hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-semibold border border-slate-300 transition">
+                    Fechar
+                </button>
+                <button type="button" id="btnExecutarSyncModal" onclick="executarSincronizacaoOnline()"
+                    class="px-5 py-2.5 bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-500 hover:to-blue-500 text-white rounded-xl text-xs font-bold shadow-md shadow-sky-600/30 flex items-center transition">
+                    <i class="fa-solid fa-cloud-arrow-up mr-2" id="iconExecutarSync"></i>
+                    <span id="textoExecutarSync">Sincronizar Agora</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- SCRIPTS -->
-    <script src="/static/app.js?v=2.4"></script>
+    <script src="/static/app.js?v=2.5"></script>
 </body>
 </html>
