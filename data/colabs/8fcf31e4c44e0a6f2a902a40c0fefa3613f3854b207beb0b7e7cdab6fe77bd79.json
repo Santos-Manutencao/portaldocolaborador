@@ -115,6 +115,19 @@
       "arquivo_url": "UPLOADS/CONTRACHEQUES/12/2026_01_19d01d_HOLERITE_01_2026-DANIEL.pdf"
     },
     {
+      "id": 1347,
+      "ano": 2025,
+      "mes": 13,
+      "competencia": "13º Salário / 2025",
+      "nome_arquivo": "ADIANTAMENTO 13°-DANIEL.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5319,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-21 14:25:02",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/12/2025_13_272b88_ADIANTAMENTO_13_-DANIEL.pdf"
+    },
+    {
       "id": 987,
       "ano": 2025,
       "mes": 12,

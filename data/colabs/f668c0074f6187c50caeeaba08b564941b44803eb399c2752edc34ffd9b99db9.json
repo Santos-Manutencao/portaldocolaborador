@@ -11,6 +11,19 @@
   "default_senha_hash": "51c4b50e8ac9feb5cd9c10c3d7ab4d567a547727a48fcd16d37979e5758baf98",
   "contracheques": [
     {
+      "id": 1345,
+      "ano": 2025,
+      "mes": 13,
+      "competencia": "13º Salário / 2025",
+      "nome_arquivo": "ADIANTAMENTO 13°-CRISTIANO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5524,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-21 14:25:02",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/126/2025_13_5b5744_ADIANTAMENTO_13_-CRISTIANO.pdf"
+    },
+    {
       "id": 1109,
       "ano": 2025,
       "mes": 11,

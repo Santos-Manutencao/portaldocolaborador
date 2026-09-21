@@ -630,12 +630,10 @@ def calcular_ferias_colaborador(admissao_val, lista_ferias=None, ref_date=None):
 
         f_status = (f.get('status') if isinstance(f, dict) else f['status']) or 'Agendada'
         if f_status != 'Cancelada':
-            if f_status in ('Concluída', 'Gozada'):
+            if d_ret < ref_date:
                 f_status = 'Concluída'
             elif d_ini <= ref_date <= d_ret:
                 f_status = 'Em Gozo'
-            elif d_ret < ref_date:
-                f_status = 'Concluída'
             elif d_ini > ref_date:
                 f_status = 'Agendada'
 

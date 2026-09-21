@@ -115,6 +115,19 @@
       "arquivo_url": "UPLOADS/CONTRACHEQUES/6/2026_01_9f1729_HOLERITE_01_2026-ANGELICA.pdf"
     },
     {
+      "id": 1338,
+      "ano": 2025,
+      "mes": 13,
+      "competencia": "13º Salário / 2025",
+      "nome_arquivo": "ADIANTAMENTO 13°-ANGELICA.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5536,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-21 14:25:01",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/6/2025_13_35f940_ADIANTAMENTO_13_-ANGELICA.pdf"
+    },
+    {
       "id": 984,
       "ano": 2025,
       "mes": 12,

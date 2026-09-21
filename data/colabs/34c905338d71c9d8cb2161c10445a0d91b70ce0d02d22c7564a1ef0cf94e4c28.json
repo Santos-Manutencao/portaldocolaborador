@@ -141,6 +141,19 @@
       "arquivo_url": "UPLOADS/CONTRACHEQUES/33/2026_01_a50d95_HOLERITE_01_2026-JOCIEL-2.pdf"
     },
     {
+      "id": 1373,
+      "ano": 2025,
+      "mes": 13,
+      "competencia": "13º Salário / 2025",
+      "nome_arquivo": "ADIANTAMENTO 13°-JOCIEL.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5271,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-21 14:25:05",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/33/2025_13_89e4f6_ADIANTAMENTO_13_-JOCIEL.pdf"
+    },
+    {
       "id": 829,
       "ano": 2025,
       "mes": 12,

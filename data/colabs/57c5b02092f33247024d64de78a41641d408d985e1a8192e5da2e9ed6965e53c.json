@@ -141,6 +141,19 @@
       "arquivo_url": "UPLOADS/CONTRACHEQUES/28/2026_01_7b7b58_HOLERITE_01_2026-JANIR.pdf"
     },
     {
+      "id": 1369,
+      "ano": 2025,
+      "mes": 13,
+      "competencia": "13º Salário / 2025",
+      "nome_arquivo": "ADIANTAMENTO 13°-JANIR.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5275,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-21 14:25:04",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/28/2025_13_2e8bb8_ADIANTAMENTO_13_-JANIR.pdf"
+    },
+    {
       "id": 827,
       "ano": 2025,
       "mes": 12,

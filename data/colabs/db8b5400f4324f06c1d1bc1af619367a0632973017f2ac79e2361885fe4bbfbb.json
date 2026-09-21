@@ -11,6 +11,19 @@
   "default_senha_hash": "85fd7ab47dacd8a77126318be62799394b8a2d16adb8c4f100385c1d1c32313c",
   "contracheques": [
     {
+      "id": 1341,
+      "ano": 2025,
+      "mes": 13,
+      "competencia": "13º Salário / 2025",
+      "nome_arquivo": "ADIANTAMENTO 13°-CLAUDIMIR.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5524,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-21 14:25:01",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/133/2025_13_29e4fc_ADIANTAMENTO_13_-CLAUDIMIR.pdf"
+    },
+    {
       "id": 1018,
       "ano": 2025,
       "mes": 11,

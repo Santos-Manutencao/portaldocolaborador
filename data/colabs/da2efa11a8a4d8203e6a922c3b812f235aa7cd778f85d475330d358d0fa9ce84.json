@@ -115,6 +115,19 @@
       "arquivo_url": "UPLOADS/CONTRACHEQUES/71/2026_01_98a87d_HOLERITE_01_2026-SIDNEY.pdf"
     },
     {
+      "id": 1403,
+      "ano": 2025,
+      "mes": 13,
+      "competencia": "13º Salário / 2025",
+      "nome_arquivo": "ADIANTAMENTO 13°-SIDNEY.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5672,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-21 14:25:08",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/71/2025_13_7443a1_ADIANTAMENTO_13_-SIDNEY.pdf"
+    },
+    {
       "id": 942,
       "ano": 2025,
       "mes": 12,

@@ -115,6 +115,19 @@
       "arquivo_url": "UPLOADS/CONTRACHEQUES/3/2026_01_6b29eb_HOLERITE_01_2026-ANA-PAULA.pdf"
     },
     {
+      "id": 1335,
+      "ano": 2025,
+      "mes": 13,
+      "competencia": "13º Salário / 2025",
+      "nome_arquivo": "ADIANTAMENTO 13°-ANA PAULA.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5537,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-21 14:25:01",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/3/2025_13_495f7f_ADIANTAMENTO_13_-ANA_PAULA.pdf"
+    },
+    {
       "id": 981,
       "ano": 2025,
       "mes": 12,

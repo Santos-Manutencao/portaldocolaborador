@@ -115,6 +115,19 @@
       "arquivo_url": "UPLOADS/CONTRACHEQUES/21/2026_01_8eb38f_HOLERITE_01_2026-GABRIEL.pdf"
     },
     {
+      "id": 1360,
+      "ano": 2025,
+      "mes": 13,
+      "competencia": "13º Salário / 2025",
+      "nome_arquivo": "ADIANTAMENTO 13°-GABRIEL.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5663,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-21 14:25:03",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/21/2025_13_38f8ef_ADIANTAMENTO_13_-GABRIEL.pdf"
+    },
+    {
       "id": 976,
       "ano": 2025,
       "mes": 12,

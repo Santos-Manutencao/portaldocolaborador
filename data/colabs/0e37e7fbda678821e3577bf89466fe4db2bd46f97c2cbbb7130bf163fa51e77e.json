@@ -115,6 +115,19 @@
       "arquivo_url": "UPLOADS/CONTRACHEQUES/25/2026_01_03d9db_HOLERITE_01_2026-IRANI.pdf"
     },
     {
+      "id": 1366,
+      "ano": 2025,
+      "mes": 13,
+      "competencia": "13º Salário / 2025",
+      "nome_arquivo": "ADIANTAMENTO 13°-IRANI.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5199,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-21 14:25:04",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/25/2025_13_c7d88d_ADIANTAMENTO_13_-IRANI.pdf"
+    },
+    {
       "id": 825,
       "ano": 2025,
       "mes": 12,

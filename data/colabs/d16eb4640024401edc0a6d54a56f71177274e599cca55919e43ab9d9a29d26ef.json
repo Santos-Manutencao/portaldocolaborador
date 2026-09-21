@@ -11,6 +11,19 @@
   "default_senha_hash": "734d6066aee868e3a58b829e351599352c944abbaddc748f19df94a6dcd376ca",
   "contracheques": [
     {
+      "id": 1346,
+      "ano": 2025,
+      "mes": 13,
+      "competencia": "13º Salário / 2025",
+      "nome_arquivo": "ADIANTAMENTO 13°-CRISTINA.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5532,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-21 14:25:02",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/132/2025_13_8bbc20_ADIANTAMENTO_13_-CRISTINA.pdf"
+    },
+    {
       "id": 1110,
       "ano": 2025,
       "mes": 11,

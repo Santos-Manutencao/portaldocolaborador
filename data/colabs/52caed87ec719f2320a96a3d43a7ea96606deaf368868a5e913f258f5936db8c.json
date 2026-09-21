@@ -11,6 +11,19 @@
   "default_senha_hash": "0a2902d8b6db0caf73186f76e013c03e9a3c4379fd75015720c54f9c646ecfcc",
   "contracheques": [
     {
+      "id": 1342,
+      "ano": 2025,
+      "mes": 13,
+      "competencia": "13º Salário / 2025",
+      "nome_arquivo": "ADIANTAMENTO 13°-CLAUDINEI.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5525,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-21 14:25:01",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/137/2025_13_757a9c_ADIANTAMENTO_13_-CLAUDINEI.pdf"
+    },
+    {
       "id": 1019,
       "ano": 2025,
       "mes": 11,

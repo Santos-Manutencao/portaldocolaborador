@@ -115,6 +115,19 @@
       "arquivo_url": "UPLOADS/CONTRACHEQUES/75/2026_01_634539_HOLERITE_01_2026-VANDERLEI_LUCIO.pdf"
     },
     {
+      "id": 1406,
+      "ano": 2025,
+      "mes": 13,
+      "competencia": "13º Salário / 2025",
+      "nome_arquivo": "ADIANTAMENTO 13°-VANDERLEI LUCIO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5197,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-21 14:25:08",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/75/2025_13_a460a8_ADIANTAMENTO_13_-VANDERLEI_LUCIO.pdf"
+    },
+    {
       "id": 946,
       "ano": 2025,
       "mes": 12,

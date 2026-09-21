@@ -115,6 +115,19 @@
       "arquivo_url": "UPLOADS/CONTRACHEQUES/64/2026_01_1d3278_HOLERITE_01_2026-ROBSON_COSTA.pdf"
     },
     {
+      "id": 1397,
+      "ano": 2025,
+      "mes": 13,
+      "competencia": "13º Salário / 2025",
+      "nome_arquivo": "ADIANTAMENTO 13°-ROBSON COSTA.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5266,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-21 14:25:07",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/64/2025_13_c3ec7e_ADIANTAMENTO_13_-ROBSON_COSTA.pdf"
+    },
+    {
       "id": 839,
       "ano": 2025,
       "mes": 12,

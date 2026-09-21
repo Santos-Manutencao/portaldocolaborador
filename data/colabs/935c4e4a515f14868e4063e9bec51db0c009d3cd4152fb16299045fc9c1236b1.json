@@ -76,6 +76,19 @@
       "arquivo_url": "UPLOADS/CONTRACHEQUES/151/2026_02_dd4f86_HOLERITE_02-2026-LUCAS_FERNANDES.pdf"
     },
     {
+      "id": 1382,
+      "ano": 2025,
+      "mes": 13,
+      "competencia": "13º Salário / 2025",
+      "nome_arquivo": "ADIANTAMENTO 13°-LUCAS FERNANDES.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5617,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-21 14:25:05",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/151/2025_13_55eebe_ADIANTAMENTO_13_-LUCAS_FERNANDES.pdf"
+    },
+    {
       "id": 1021,
       "ano": 2025,
       "mes": 11,

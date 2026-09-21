@@ -115,6 +115,19 @@
       "arquivo_url": "UPLOADS/CONTRACHEQUES/16/2026_01_34b0e0_HOLERITE_01_2026-ENRIQUE.pdf"
     },
     {
+      "id": 1352,
+      "ano": 2025,
+      "mes": 13,
+      "competencia": "13º Salário / 2025",
+      "nome_arquivo": "ADIANTAMENTO 13°-ENRIQUE.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5210,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-21 14:25:03",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/16/2025_13_3ca1da_ADIANTAMENTO_13_-ENRIQUE.pdf"
+    },
+    {
       "id": 980,
       "ano": 2025,
       "mes": 12,

@@ -115,6 +115,19 @@
       "arquivo_url": "UPLOADS/CONTRACHEQUES/63/2026_01_614d9c_HOLERITE_01_2026-RENATO.pdf"
     },
     {
+      "id": 1396,
+      "ano": 2025,
+      "mes": 13,
+      "competencia": "13º Salário / 2025",
+      "nome_arquivo": "ADIANTAMENTO 13°-RENATO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5461,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-21 14:25:07",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/63/2025_13_76dbb0_ADIANTAMENTO_13_-RENATO.pdf"
+    },
+    {
       "id": 956,
       "ano": 2025,
       "mes": 12,

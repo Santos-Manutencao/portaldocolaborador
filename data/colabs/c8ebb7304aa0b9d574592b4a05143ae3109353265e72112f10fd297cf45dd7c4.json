@@ -115,6 +115,19 @@
       "arquivo_url": "UPLOADS/CONTRACHEQUES/42/2026_01_8fd4ca_HOLERITE_01_2026-LUCAS_PHILIP.pdf"
     },
     {
+      "id": 1383,
+      "ano": 2025,
+      "mes": 13,
+      "competencia": "13º Salário / 2025",
+      "nome_arquivo": "ADIANTAMENTO 13°-LUCAS PHILIP.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5651,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-21 14:25:06",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/42/2025_13_6353f1_ADIANTAMENTO_13_-LUCAS_PHILIP.pdf"
+    },
+    {
       "id": 960,
       "ano": 2025,
       "mes": 12,

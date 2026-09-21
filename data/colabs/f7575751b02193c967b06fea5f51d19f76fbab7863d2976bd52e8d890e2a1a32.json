@@ -115,6 +115,19 @@
       "arquivo_url": "UPLOADS/CONTRACHEQUES/79/2026_01_0ea969_HOLERITE_01_2026-WAGNER.pdf"
     },
     {
+      "id": 1410,
+      "ano": 2025,
+      "mes": 13,
+      "competencia": "13º Salário / 2025",
+      "nome_arquivo": "ADIANTAMENTO 13°-WAGNER.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5297,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-21 14:25:08",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/79/2025_13_3e9cdb_ADIANTAMENTO_13_-WAGNER.pdf"
+    },
+    {
       "id": 842,
       "ano": 2025,
       "mes": 12,

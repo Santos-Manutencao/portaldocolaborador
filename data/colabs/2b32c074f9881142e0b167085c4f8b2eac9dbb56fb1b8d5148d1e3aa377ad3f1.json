@@ -128,6 +128,19 @@
       "arquivo_url": "UPLOADS/CONTRACHEQUES/43/2026_01_9c948c_HOLERITE_01_2026-LUCIO_PASCHOAL.pdf"
     },
     {
+      "id": 1384,
+      "ano": 2025,
+      "mes": 13,
+      "competencia": "13º Salário / 2025",
+      "nome_arquivo": "ADIANTAMENTO 13°-LUCIO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5192,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-21 14:25:06",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/43/2025_13_7e6ab7_ADIANTAMENTO_13_-LUCIO.pdf"
+    },
+    {
       "id": 961,
       "ano": 2025,
       "mes": 12,

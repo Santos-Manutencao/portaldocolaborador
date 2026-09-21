@@ -89,6 +89,19 @@
       "arquivo_url": "UPLOADS/CONTRACHEQUES/150/2026_01_4b341e_HOLERITE_01_2026-VINICIUS.pdf"
     },
     {
+      "id": 1409,
+      "ano": 2025,
+      "mes": 13,
+      "competencia": "13º Salário / 2025",
+      "nome_arquivo": "ADIANTAMENTO 13°-VINICIUS.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5677,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-21 14:25:08",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/150/2025_13_2685ec_ADIANTAMENTO_13_-VINICIUS.pdf"
+    },
+    {
       "id": 949,
       "ano": 2025,
       "mes": 12,

@@ -115,6 +115,19 @@
       "arquivo_url": "UPLOADS/CONTRACHEQUES/65/2026_01_c7713c_HOLERITE_01_2026-ROBSON_FABRICIO.pdf"
     },
     {
+      "id": 1398,
+      "ano": 2025,
+      "mes": 13,
+      "competencia": "13º Salário / 2025",
+      "nome_arquivo": "ADIANTAMENTO 13°-ROBSON FABRICIO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5433,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-21 14:25:07",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/65/2025_13_9764fb_ADIANTAMENTO_13_-ROBSON_FABRICIO.pdf"
+    },
+    {
       "id": 957,
       "ano": 2025,
       "mes": 12,

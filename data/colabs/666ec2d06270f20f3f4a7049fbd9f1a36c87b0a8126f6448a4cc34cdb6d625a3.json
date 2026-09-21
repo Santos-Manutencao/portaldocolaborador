@@ -115,6 +115,19 @@
       "arquivo_url": "UPLOADS/CONTRACHEQUES/5/2026_01_3abeed_HOLERITE_01_2026-ANDRE.pdf"
     },
     {
+      "id": 1337,
+      "ano": 2025,
+      "mes": 13,
+      "competencia": "13º Salário / 2025",
+      "nome_arquivo": "ADIANTAMENTO 13°-ANDRE LUIZ.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5535,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-21 14:25:01",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/5/2025_13_5d2c92_ADIANTAMENTO_13_-ANDRE_LUIZ.pdf"
+    },
+    {
       "id": 983,
       "ano": 2025,
       "mes": 12,

@@ -24,6 +24,19 @@
       "arquivo_url": "UPLOADS/CONTRACHEQUES/139/2026_01_c995c7_HOLERITE_01_2026-JONATHAN.pdf"
     },
     {
+      "id": 1376,
+      "ano": 2025,
+      "mes": 13,
+      "competencia": "13º Salário / 2025",
+      "nome_arquivo": "ADIANTAMENTO 13°-JONATHAN.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5666,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-21 14:25:05",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/139/2025_13_e3dc5a_ADIANTAMENTO_13_-JONATHAN.pdf"
+    },
+    {
       "id": 968,
       "ano": 2025,
       "mes": 12,

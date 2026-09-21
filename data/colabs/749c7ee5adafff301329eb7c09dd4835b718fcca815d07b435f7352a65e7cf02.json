@@ -50,6 +50,19 @@
       "arquivo_url": "UPLOADS/CONTRACHEQUES/142/2026_01_16d6e6_HOLERITE_01_2026-FAGNER.pdf"
     },
     {
+      "id": 1356,
+      "ano": 2025,
+      "mes": 13,
+      "competencia": "13º Salário / 2025",
+      "nome_arquivo": "ADIANTAMENTO 13°-FAGNER.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5187,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-21 14:25:03",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/142/2025_13_a9a368_ADIANTAMENTO_13_-FAGNER.pdf"
+    },
+    {
       "id": 821,
       "ano": 2025,
       "mes": 12,

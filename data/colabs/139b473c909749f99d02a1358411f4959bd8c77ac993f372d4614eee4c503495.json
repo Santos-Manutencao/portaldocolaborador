@@ -115,6 +115,19 @@
       "arquivo_url": "UPLOADS/CONTRACHEQUES/17/2026_01_7d7e83_HOLERITE_01_2026-EPAMINONDAS.pdf"
     },
     {
+      "id": 1353,
+      "ano": 2025,
+      "mes": 13,
+      "competencia": "13º Salário / 2025",
+      "nome_arquivo": "ADIANTAMENTO 13°-EPAMINONDAS.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5239,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-21 14:25:03",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/17/2025_13_1bcb12_ADIANTAMENTO_13_-EPAMINONDAS.pdf"
+    },
+    {
       "id": 819,
       "ano": 2025,
       "mes": 12,

@@ -11,6 +11,19 @@
   "default_senha_hash": "0f7f2e973ead71a4146c65a5082ec3af11ebf6fdf0cef2dd69970508247ad904",
   "contracheques": [
     {
+      "id": 1392,
+      "ano": 2025,
+      "mes": 13,
+      "competencia": "13º Salário / 2025",
+      "nome_arquivo": "ADIANTAMENTO 13°-PASCOAL.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5187,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-21 14:25:07",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/124/2025_13_f6c38f_ADIANTAMENTO_13_-PASCOAL.pdf"
+    },
+    {
       "id": 1011,
       "ano": 2025,
       "mes": 11,

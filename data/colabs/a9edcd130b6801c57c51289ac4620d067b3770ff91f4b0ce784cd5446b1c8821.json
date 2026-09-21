@@ -115,6 +115,19 @@
       "arquivo_url": "UPLOADS/CONTRACHEQUES/49/2026_01_52b229_HOLERITE_01_2026-MARCELO.pdf"
     },
     {
+      "id": 1387,
+      "ano": 2025,
+      "mes": 13,
+      "competencia": "13º Salário / 2025",
+      "nome_arquivo": "ADIANTAMENTO 13°-MARCELO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5197,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-21 14:25:06",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/49/2025_13_0852ee_ADIANTAMENTO_13_-MARCELO.pdf"
+    },
+    {
       "id": 836,
       "ano": 2025,
       "mes": 12,

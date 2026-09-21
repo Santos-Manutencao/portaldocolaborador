@@ -115,6 +115,19 @@
       "arquivo_url": "UPLOADS/CONTRACHEQUES/31/2026_01_cc0ca9_HOLERITE_01_2026-JOAO_PAULO.pdf"
     },
     {
+      "id": 1371,
+      "ano": 2025,
+      "mes": 13,
+      "competencia": "13º Salário / 2025",
+      "nome_arquivo": "ADIANTAMENTO 13°-JOAO PAULO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5235,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-21 14:25:04",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/31/2025_13_f6045d_ADIANTAMENTO_13_-JOAO_PAULO.pdf"
+    },
+    {
       "id": 828,
       "ano": 2025,
       "mes": 12,
