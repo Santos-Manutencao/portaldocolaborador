@@ -1,0 +1,13 @@
+{
+  "id": 122,
+  "matricula": "131",
+  "nome": "RONALDO DOS SANTOS GOMES",
+  "cpf_limpo": "68743424600",
+  "cargo": "AUXILIAR DE SERVICOS DE DESCARGA",
+  "admissao": "2025-08-06",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "c3173648799ba9a20fb2e51c768d4d0c8f11d362067c31b63cd5c0f190147ee0",
+  "contracheques": []
+}

@@ -1,0 +1,13 @@
+{
+  "id": 86,
+  "matricula": "117",
+  "nome": "CLEUTON DE OLIVEIRA COSTA",
+  "cpf_limpo": "10040660664",
+  "cargo": "ARMADOR",
+  "admissao": "2025-06-24",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "9d9a4314c7d20cd0b2ec28ef0d2bbf25b291bb00421e78db5d8ed03dd8b38df6",
+  "contracheques": []
+}

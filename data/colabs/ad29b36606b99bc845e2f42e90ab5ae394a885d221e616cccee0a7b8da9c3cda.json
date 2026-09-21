@@ -1,0 +1,66 @@
+{
+  "id": 56,
+  "matricula": "217",
+  "nome": "NILSON SIMAO LOPES",
+  "cpf_limpo": "96952393668",
+  "cargo": "AUXILIAR DE SERVICOS DE DESCARGA",
+  "admissao": "2026-05-28",
+  "local_trabalho": "CDA",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "30ff195df15e029826342f7dca78bb7db0b4c0e90c4cb482197055b2b30b10c0",
+  "contracheques": [
+    {
+      "id": 793,
+      "ano": 2026,
+      "mes": 8,
+      "competencia": "Agosto / 2026",
+      "nome_arquivo": "HOLERITE 08_2026_NILSON.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 8108,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:16:16",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/56/2026_08_6a094b_HOLERITE_08_2026_NILSON.pdf"
+    },
+    {
+      "id": 710,
+      "ano": 2026,
+      "mes": 7,
+      "competencia": "Julho / 2026",
+      "nome_arquivo": "HOLERITE_07_2026_NILSON.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5536,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:14:30",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/56/2026_07_c7678a_HOLERITE_07_2026_NILSON.pdf"
+    },
+    {
+      "id": 630,
+      "ano": 2026,
+      "mes": 6,
+      "competencia": "Junho / 2026",
+      "nome_arquivo": "HOLERITE 06_2026-NILSON.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5586,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:12:30",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/56/2026_06_2f9d9c_HOLERITE_06_2026-NILSON.pdf"
+    },
+    {
+      "id": 549,
+      "ano": 2026,
+      "mes": 5,
+      "competencia": "Maio / 2026",
+      "nome_arquivo": "HOLERITE 05_2026-NILSON.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5334,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:10:43",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/56/2026_05_aef0a9_HOLERITE_05_2026-NILSON.pdf"
+    }
+  ]
+}

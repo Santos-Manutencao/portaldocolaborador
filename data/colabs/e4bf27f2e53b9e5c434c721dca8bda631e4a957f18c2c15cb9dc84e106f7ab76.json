@@ -1,0 +1,66 @@
+{
+  "id": 149,
+  "matricula": "212",
+  "nome": "PAULO RICARDO NEVES DAMAS",
+  "cpf_limpo": "02247048692",
+  "cargo": "MANTENEDOR",
+  "admissao": "2026-03-19",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "f42e9362bf8b37b3579db63b69c752a7bf42087bcf679232516a9b3eccde5638",
+  "contracheques": [
+    {
+      "id": 632,
+      "ano": 2026,
+      "mes": 6,
+      "competencia": "Junho / 2026",
+      "nome_arquivo": "HOLERITE 06_2026-PAULO RICARDO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5694,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:12:30",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/149/2026_06_c08618_HOLERITE_06_2026-PAULO_RICARDO.pdf"
+    },
+    {
+      "id": 551,
+      "ano": 2026,
+      "mes": 5,
+      "competencia": "Maio / 2026",
+      "nome_arquivo": "HOLERITE 05_2026-PAULO RICARDO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 6071,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:10:43",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/149/2026_05_fa51e8_HOLERITE_05_2026-PAULO_RICARDO.pdf"
+    },
+    {
+      "id": 465,
+      "ano": 2026,
+      "mes": 4,
+      "competencia": "Abril / 2026",
+      "nome_arquivo": "HOLERITE 04_2025-PAULO RICARDO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5941,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:08:11",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/149/2026_04_f9632e_HOLERITE_04_2025-PAULO_RICARDO.pdf"
+    },
+    {
+      "id": 399,
+      "ano": 2026,
+      "mes": 3,
+      "competencia": "Março / 2026",
+      "nome_arquivo": "HOLERITE 03_2026-PAULO RICARDO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5394,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:06:00",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/149/2026_03_70f7d8_HOLERITE_03_2026-PAULO_RICARDO.pdf"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": 111,
+  "matricula": "167",
+  "nome": "ERICK HENRIQUE SANTOS",
+  "cpf_limpo": "15461138608",
+  "cargo": "AUXILIAR DE SERVICOS DE DESCARGA",
+  "admissao": "",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "c6f6c9b967430796910e16cac133f3ba483b29397c537ff60155052f00ba8edd",
+  "contracheques": [
+    {
+      "id": 922,
+      "ano": 2026,
+      "mes": 1,
+      "competencia": "Janeiro / 2026",
+      "nome_arquivo": "HOLERITE 01_2026-MACOS HENRIQUE.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5426,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 13:38:57",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/111/2026_01_3026ab_HOLERITE_01_2026-MACOS_HENRIQUE.pdf"
+    }
+  ]
+}

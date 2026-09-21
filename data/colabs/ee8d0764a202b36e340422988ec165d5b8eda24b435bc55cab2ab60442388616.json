@@ -1,0 +1,40 @@
+{
+  "id": 61,
+  "matricula": "219",
+  "nome": "RAFAELLY IZAURA DA SILVA PEREIRA",
+  "cpf_limpo": "13702299688",
+  "cargo": "AUXILIAR DE SERVICOS DE DESCARGA",
+  "admissao": "2026-07-09",
+  "local_trabalho": "CDA",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "b2ccc439604a6072560773cd2395701a00fbf5fa90cb9c5a522b71f3bc978b8d",
+  "contracheques": [
+    {
+      "id": 797,
+      "ano": 2026,
+      "mes": 8,
+      "competencia": "Agosto / 2026",
+      "nome_arquivo": "HOLERITE 08_2026_RAFAELLY.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 8117,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:16:17",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/61/2026_08_99e8aa_HOLERITE_08_2026_RAFAELLY.pdf"
+    },
+    {
+      "id": 715,
+      "ano": 2026,
+      "mes": 7,
+      "competencia": "Julho / 2026",
+      "nome_arquivo": "HOLERITE_07_2026_RAFAELLY.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5453,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:14:31",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/61/2026_07_4cfe18_HOLERITE_07_2026_RAFAELLY.pdf"
+    }
+  ]
+}

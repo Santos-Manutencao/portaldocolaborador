@@ -1,0 +1,13 @@
+{
+  "id": 81,
+  "matricula": "124",
+  "nome": "AILTON SILVA SOUZA",
+  "cpf_limpo": "01746109556",
+  "cargo": "ARMADOR",
+  "admissao": "2025-07-17",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "a7be4e4348fa2ecb261023a989edcca82240d7d2cf5a8445bf176f89396ffc2c",
+  "contracheques": []
+}

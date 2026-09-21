@@ -1,0 +1,27 @@
+{
+  "id": 113,
+  "matricula": "138",
+  "nome": "MARCELO AUGUSTO DE LIMA DA SILVEIRA",
+  "cpf_limpo": "12440985660",
+  "cargo": "AUXILIAR DE SERVICOS DE DESCARGA",
+  "admissao": "",
+  "local_trabalho": "",
+  "foto_path": "FOTOS CRACHAS/MARCELO AUGUSTO DE LIMA DA SILVEIRA.jpeg",
+  "senha_hash": null,
+  "default_senha_hash": "f6c60cfa1078b7fb05b13648d96fb3fe5865e329f1df01c2567a4dd800adf70a",
+  "contracheques": [
+    {
+      "id": 1294,
+      "ano": 2025,
+      "mes": 8,
+      "competencia": "Agosto / 2025",
+      "nome_arquivo": "08_2025_MARCELO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5437,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 18:43:23",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/113/2025_08_b59cfb_08_2025_MARCELO.pdf"
+    }
+  ]
+}

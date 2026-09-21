@@ -1,0 +1,13 @@
+{
+  "id": 70,
+  "matricula": "0",
+  "nome": "SALVIANO SILVA SANTOS",
+  "cpf_limpo": "12608606636",
+  "cargo": "DIRETOR",
+  "admissao": "",
+  "local_trabalho": "ADM",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "d6d922c4201abe23c9db6081ad9386de1e57391309d95fec7210c9b1c50383aa",
+  "contracheques": []
+}

@@ -1,0 +1,13 @@
+{
+  "id": 102,
+  "matricula": "0",
+  "nome": "SAMUEL NASCIMENTO",
+  "cpf_limpo": "06844212674",
+  "cargo": "ARMADOR",
+  "admissao": "",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "c73f58eec0f3c89d29e47f959863ab57110712bbd1d656fb5aca1de0f4195bf3",
+  "contracheques": []
+}

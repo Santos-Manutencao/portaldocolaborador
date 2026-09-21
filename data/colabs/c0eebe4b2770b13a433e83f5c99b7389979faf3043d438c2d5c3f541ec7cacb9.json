@@ -1,0 +1,13 @@
+{
+  "id": 105,
+  "matricula": "154",
+  "nome": "JEFFERSON SOUZA SILVA",
+  "cpf_limpo": "10051135647",
+  "cargo": "",
+  "admissao": "",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "f8a66bcc5351d2ac191bb7d49aa03ad43d64a274308b348131af7914b24a06e1",
+  "contracheques": []
+}

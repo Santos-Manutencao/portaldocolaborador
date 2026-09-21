@@ -1,0 +1,66 @@
+{
+  "id": 133,
+  "matricula": "113",
+  "nome": "CLAUDIMIR JOSE FERREIRA",
+  "cpf_limpo": "04869379686",
+  "cargo": "ARMADOR",
+  "admissao": "2025-05-26",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "85fd7ab47dacd8a77126318be62799394b8a2d16adb8c4f100385c1d1c32313c",
+  "contracheques": [
+    {
+      "id": 1018,
+      "ano": 2025,
+      "mes": 11,
+      "competencia": "Novembro / 2025",
+      "nome_arquivo": "HOLERITES 11 2025- CLAUDIMIR.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5514,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 14:06:26",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/133/2025_11_eb4d5f_HOLERITES_11_2025-_CLAUDIMIR.pdf"
+    },
+    {
+      "id": 1147,
+      "ano": 2025,
+      "mes": 10,
+      "competencia": "Outubro / 2025",
+      "nome_arquivo": "HOLERITES 10 2025-CLAUDIMIR.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 199890,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 14:13:10",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/133/2025_10_258824_HOLERITES_10_2025-CLAUDIMIR.pdf"
+    },
+    {
+      "id": 1223,
+      "ano": 2025,
+      "mes": 9,
+      "competencia": "Setembro / 2025",
+      "nome_arquivo": "HOLERITES 09 2025-CLAUDIMIR.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 200065,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 18:40:19",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/133/2025_09_c59753_HOLERITES_09_2025-CLAUDIMIR.pdf"
+    },
+    {
+      "id": 1269,
+      "ano": 2025,
+      "mes": 8,
+      "competencia": "Agosto / 2025",
+      "nome_arquivo": "08_2025_CLAUDIMIR.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5647,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 18:42:00",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/133/2025_08_ab3c75_08_2025_CLAUDIMIR.pdf"
+    }
+  ]
+}

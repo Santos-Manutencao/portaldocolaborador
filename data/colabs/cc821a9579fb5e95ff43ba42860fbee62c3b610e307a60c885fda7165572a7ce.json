@@ -1,0 +1,40 @@
+{
+  "id": 125,
+  "matricula": "87",
+  "nome": "DARVISON DA SILVA MEDEIROS",
+  "cpf_limpo": "15791714785",
+  "cargo": "MANTENEDOR",
+  "admissao": "2024-09-17",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "c32c70c27d9d42c7ffe56b88d46af9c157182067a13dfad991882afe956f97d8",
+  "contracheques": [
+    {
+      "id": 1200,
+      "ano": 2025,
+      "mes": 9,
+      "competencia": "Setembro / 2025",
+      "nome_arquivo": "HOLERITES 09 2025-DARVISON.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 200106,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 18:39:34",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/125/2025_09_64bafb_HOLERITES_09_2025-DARVISON.pdf"
+    },
+    {
+      "id": 1312,
+      "ano": 2025,
+      "mes": 8,
+      "competencia": "Agosto / 2025",
+      "nome_arquivo": "08-2025-DARVISON.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5608,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 18:44:38",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/125/2025_08_2ab50a_08-2025-DARVISON.pdf"
+    }
+  ]
+}

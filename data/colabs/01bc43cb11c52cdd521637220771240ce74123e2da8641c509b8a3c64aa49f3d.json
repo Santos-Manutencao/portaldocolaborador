@@ -1,0 +1,66 @@
+{
+  "id": 137,
+  "matricula": "111",
+  "nome": "CLAUDINEI BENTO GOMES",
+  "cpf_limpo": "04668118613",
+  "cargo": "SERVIÇOS GERAIS",
+  "admissao": "2025-05-26",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "0a2902d8b6db0caf73186f76e013c03e9a3c4379fd75015720c54f9c646ecfcc",
+  "contracheques": [
+    {
+      "id": 1019,
+      "ano": 2025,
+      "mes": 11,
+      "competencia": "Novembro / 2025",
+      "nome_arquivo": "HOLERITES 11 2025- CLAUDINEI.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5522,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 14:06:27",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/137/2025_11_9ee868_HOLERITES_11_2025-_CLAUDINEI.pdf"
+    },
+    {
+      "id": 1148,
+      "ano": 2025,
+      "mes": 10,
+      "competencia": "Outubro / 2025",
+      "nome_arquivo": "HOLERITES 10 2025-CLAUDINEI.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 199907,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 14:13:11",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/137/2025_10_043264_HOLERITES_10_2025-CLAUDINEI.pdf"
+    },
+    {
+      "id": 1224,
+      "ano": 2025,
+      "mes": 9,
+      "competencia": "Setembro / 2025",
+      "nome_arquivo": "HOLERITES 09 2025-CLAUDINEI.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 199907,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 18:40:20",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/137/2025_09_51d3e1_HOLERITES_09_2025-CLAUDINEI.pdf"
+    },
+    {
+      "id": 1270,
+      "ano": 2025,
+      "mes": 8,
+      "competencia": "Agosto / 2025",
+      "nome_arquivo": "08_2025_CLAUDINEI.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5656,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 18:42:01",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/137/2025_08_f85b69_08_2025_CLAUDINEI.pdf"
+    }
+  ]
+}

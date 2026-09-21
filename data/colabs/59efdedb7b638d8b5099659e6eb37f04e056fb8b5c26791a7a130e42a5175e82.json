@@ -1,0 +1,13 @@
+{
+  "id": 100,
+  "matricula": "106",
+  "nome": "PEDRO HENRIQUE BARBOSA DE ARRUDA",
+  "cpf_limpo": "12399527674",
+  "cargo": "",
+  "admissao": "",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "d91125574bfa7dedad0ea2451164c360538fcc85bd9d6efe120d5c46d82eeb3c",
+  "contracheques": []
+}

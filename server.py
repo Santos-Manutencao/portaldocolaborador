@@ -350,6 +350,116 @@ def get_portal_session_user(handler):
         return None
     return sess['funcionario_id']
 
+def export_static_portal_data():
+    """
+    Exporta colaboradores e contracheques para JSONs estáticos em data/colabs/
+    permitindo que o Portal do Colaborador funcione 100% online diretamente no
+    GitHub Pages sem necessidade de backend hospedado (Render/Railway).
+    """
+    colabs_dir = os.path.join(BASE_DIR, 'data', 'colabs')
+    os.makedirs(colabs_dir, exist_ok=True)
+
+    # 1. Sincroniza static/portal.html com index.html na raiz (GitHub Pages)
+    src_portal_html = os.path.join(STATIC_DIR, 'portal.html')
+    root_index_html = os.path.join(BASE_DIR, 'index.html')
+    if os.path.isfile(src_portal_html):
+        try:
+            shutil.copyfile(src_portal_html, root_index_html)
+        except Exception as e:
+            print(f"[export_static_portal_data] Erro ao sincronizar index.html: {e}")
+
+    # 2. Garante arquivos essenciais do GitHub Pages
+    nojekyll_file = os.path.join(BASE_DIR, '.nojekyll')
+    if not os.path.exists(nojekyll_file):
+        with open(nojekyll_file, 'w', encoding='utf-8') as f:
+            f.write('')
+
+    robots_file = os.path.join(BASE_DIR, 'robots.txt')
+    if not os.path.exists(robots_file):
+        with open(robots_file, 'w', encoding='utf-8') as f:
+            f.write("User-agent: *\nDisallow: /data/\nDisallow: /UPLOADS/\n")
+
+    # 3. Consulta base de dados SQLite
+    conn = get_db()
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM funcionarios")
+    emps = [dict(r) for r in cursor.fetchall()]
+
+    cursor.execute("SELECT * FROM contracheques ORDER BY ano DESC, mes DESC")
+    ccs = [dict(r) for r in cursor.fetchall()]
+    conn.close()
+
+    ccs_by_emp = {}
+    for c in ccs:
+        fid = c['funcionario_id']
+        if fid not in ccs_by_emp:
+            ccs_by_emp[fid] = []
+        arq_url = (c['arquivo_path'] or '').replace('\\', '/').lstrip('/')
+        ccs_by_emp[fid].append({
+            'id': c['id'],
+            'ano': c['ano'],
+            'mes': c['mes'],
+            'competencia': c['competencia'],
+            'nome_arquivo': c['nome_arquivo'],
+            'tipo_arquivo': c['tipo_arquivo'],
+            'tamanho_bytes': c['tamanho_bytes'],
+            'valor_liquido': c['valor_liquido'],
+            'observacoes': c['observacoes'],
+            'created_at': c['created_at'],
+            'arquivo_url': arq_url
+        })
+
+    files_written = 0
+    for emp in emps:
+        cpf_limpo = re.sub(r'\D', '', str(emp.get('cpf') or ''))
+        mat = str(emp.get('matricula') or '').strip()
+
+        if len(cpf_limpo) >= 4:
+            def_pwd = cpf_limpo[:4]
+        elif len(mat) >= 4:
+            def_pwd = mat[:4]
+        else:
+            def_pwd = '1234'
+
+        def_hash = hash_password(def_pwd)
+
+        payload = {
+            'id': emp['id'],
+            'matricula': emp['matricula'],
+            'nome': emp['nome'],
+            'cpf_limpo': cpf_limpo,
+            'cargo': emp['cargo'],
+            'admissao': emp['admissao'],
+            'local_trabalho': emp['local_trabalho'],
+            'foto_path': emp['foto_path'],
+            'senha_hash': emp['senha_hash'],
+            'default_senha_hash': def_hash,
+            'contracheques': ccs_by_emp.get(emp['id'], [])
+        }
+
+        payload_str = json.dumps(payload, ensure_ascii=False, indent=2)
+
+        hashes_to_write = set()
+        if cpf_limpo:
+            hashes_to_write.add(hashlib.sha256(f"sgp_colab_{cpf_limpo}".encode('utf-8')).hexdigest())
+        if mat:
+            hashes_to_write.add(hashlib.sha256(f"sgp_colab_{mat}".encode('utf-8')).hexdigest())
+            if mat.upper() != mat:
+                hashes_to_write.add(hashlib.sha256(f"sgp_colab_{mat.upper()}".encode('utf-8')).hexdigest())
+
+        for h in hashes_to_write:
+            target_f = os.path.join(colabs_dir, f"{h}.json")
+            with open(target_f, 'w', encoding='utf-8') as f:
+                f.write(payload_str)
+            files_written += 1
+
+    return {
+        'total_colabs': len(emps),
+        'total_arquivos_json': files_written,
+        'total_contracheques': len(ccs)
+    }
+
 # =========================================================================
 # MOTOR DE CONCILIAÇÃO INTELIGENTE DE CONTRACHEQUES EM LOTE
 # =========================================================================
@@ -805,9 +915,28 @@ class SGPHandler(BaseHTTPRequestHandler):
         elif path in ('/portal', '/portal/', '/portal/index.html'):
             self.serve_file(os.path.join(STATIC_DIR, 'portal.html'))
             return
+        elif path_lower.startswith('/portal/static/'):
+            rel_file = path[len('/portal/static/'):]
+            self.serve_file(os.path.join(STATIC_DIR, rel_file))
+            return
+        elif path_lower.startswith('/portal/data/'):
+            rel_file = path[len('/portal/data/'):]
+            self.serve_file(os.path.join(BASE_DIR, 'data', rel_file))
+            return
+        elif path_lower.startswith('/portal/uploads/'):
+            rel = path[len('/portal/uploads/'):]
+            target = os.path.join(UPLOADS_DIR, rel)
+            if not os.path.isfile(target):
+                target = os.path.join(BASE_DIR, 'UPLOADS', rel)
+            self.serve_file(target)
+            return
         elif path_lower.startswith('/static/'):
             rel_file = path[8:]
             self.serve_file(os.path.join(STATIC_DIR, rel_file))
+            return
+        elif path_lower.startswith('/data/'):
+            rel_file = path[6:]
+            self.serve_file(os.path.join(BASE_DIR, 'data', rel_file))
             return
         elif path_lower.startswith('/uploads/'):
             rel = path[9:]
@@ -1390,15 +1519,20 @@ class SGPHandler(BaseHTTPRequestHandler):
                 git_bin = get_git_executable()
                 env = get_git_env()
                 try:
-                    # 1. Adiciona todas as alterações locais (banco de dados, uploads, fotos, código)
+                    # 1. Atualiza base estática e página do Portal do Colaborador para GitHub Pages
+                    export_stats = export_static_portal_data()
+
+                    # 2. Adiciona todas as alterações locais (banco de dados, uploads, fotos, dados estáticos, código)
                     add_res = subprocess.run([git_bin, 'add', '-A'], cwd=BASE_DIR, env=env, capture_output=True, text=True, timeout=30)
                     if add_res.returncode != 0:
                         self.send_json({'error': f'Falha ao indexar arquivos locais: {add_res.stderr or add_res.stdout}'}, 500)
                         return
 
-                    # 2. Verifica se existem alterações em relação ao repositório
+                    # 3. Verifica se existem alterações em relação ao repositório
                     st_res = subprocess.run([git_bin, 'status', '--porcelain'], cwd=BASE_DIR, env=env, capture_output=True, text=True, timeout=15)
                     changes = [line.strip() for line in st_res.stdout.splitlines() if line.strip()]
+
+                    portal_url = 'https://santos-manutencao.github.io/portaldocolaborador/'
 
                     if not changes:
                         self.send_json({
@@ -1407,11 +1541,12 @@ class SGPHandler(BaseHTTPRequestHandler):
                             'message': 'O sistema online já está totalmente atualizado! Nenhuma nova alteração local pendente.',
                             'total_arquivos': 0,
                             'timestamp': datetime.datetime.now().strftime('%d/%m/%Y %H:%M:%S'),
+                            'portal_url': portal_url,
                             'repo_url': 'https://github.com/Santos-Manutencao/portaldocolaborador'
                         })
                         return
 
-                    # 3. Cria o commit automático com data e hora
+                    # 4. Cria o commit automático com data e hora
                     agora_str = datetime.datetime.now().strftime('%d/%m/%Y %H:%M:%S')
                     commit_msg = f"sync: atualizacao automatica do sistema ({agora_str})"
                     c_res = subprocess.run([git_bin, 'commit', '-m', commit_msg], cwd=BASE_DIR, env=env, capture_output=True, text=True, timeout=30)
@@ -1419,7 +1554,7 @@ class SGPHandler(BaseHTTPRequestHandler):
                         self.send_json({'error': f'Falha ao registrar versão (commit): {c_res.stderr or c_res.stdout}'}, 500)
                         return
 
-                    # 4. Envia para o GitHub (push origin main)
+                    # 5. Envia para o GitHub (push origin main)
                     p_res = subprocess.run([git_bin, 'push', 'origin', 'main'], cwd=BASE_DIR, env=env, capture_output=True, text=True, timeout=60)
                     if p_res.returncode != 0:
                         self.send_json({'error': f'Falha ao enviar dados para o GitHub: {p_res.stderr or p_res.stdout}'}, 500)
@@ -1428,8 +1563,9 @@ class SGPHandler(BaseHTTPRequestHandler):
                     self.send_json({
                         'success': True,
                         'status': 'sincronizado',
-                        'message': f'Sistema online atualizado com sucesso no GitHub! {len(changes)} arquivo(s) sincronizados.',
+                        'message': f'Sistema online atualizado com sucesso no GitHub Pages! {len(changes)} arquivo(s) sincronizados.',
                         'total_arquivos': len(changes),
+                        'portal_url': portal_url,
                         'timestamp': agora_str,
                         'repo_url': 'https://github.com/Santos-Manutencao/portaldocolaborador'
                     })

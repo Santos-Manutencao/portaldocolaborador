@@ -1,0 +1,13 @@
+{
+  "id": 107,
+  "matricula": "34",
+  "nome": "RODRIGO SILVA DOS SANTOS",
+  "cpf_limpo": "07353253673",
+  "cargo": "CONFERENTE DE PRODUÇÃO",
+  "admissao": "2022-05-31",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "9919e44e234048acdfe021280c09bb2f9f8002a59a7fa848fc767cda87a491fe",
+  "contracheques": []
+}

@@ -1,0 +1,92 @@
+{
+  "id": 139,
+  "matricula": "139",
+  "nome": "JONATHAN AMARO COELHO",
+  "cpf_limpo": "15088970692",
+  "cargo": "AUXILIAR DE SERVICOS DE DESCARGA",
+  "admissao": "2025-08-11",
+  "local_trabalho": "",
+  "foto_path": "FOTOS CRACHAS/JONATHAN AMARO COELHO.jpeg",
+  "senha_hash": null,
+  "default_senha_hash": "0bd42c815b054741bcab14d050ef53ef4ba5e6408442e0d596a94e1a4d7ae316",
+  "contracheques": [
+    {
+      "id": 916,
+      "ano": 2026,
+      "mes": 1,
+      "competencia": "Janeiro / 2026",
+      "nome_arquivo": "HOLERITE 01_2026-JONATHAN.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5785,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 13:38:56",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/139/2026_01_c995c7_HOLERITE_01_2026-JONATHAN.pdf"
+    },
+    {
+      "id": 968,
+      "ano": 2025,
+      "mes": 12,
+      "competencia": "Dezembro / 2025",
+      "nome_arquivo": "HOLERITE 12 2025 JONATHAN.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 6084,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 13:41:55",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/139/2025_12_20815c_HOLERITE_12_2025_JONATHAN.pdf"
+    },
+    {
+      "id": 1093,
+      "ano": 2025,
+      "mes": 11,
+      "competencia": "Novembro / 2025",
+      "nome_arquivo": "HOLERITES 11 2025- JONATHAN.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5778,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 14:10:16",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/139/2025_11_d45fae_HOLERITES_11_2025-_JONATHAN.pdf"
+    },
+    {
+      "id": 1175,
+      "ano": 2025,
+      "mes": 10,
+      "competencia": "Outubro / 2025",
+      "nome_arquivo": "HOLERITES 10 2025-JONATHAN.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 200345,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 14:14:38",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/139/2025_10_3c9fb1_HOLERITES_10_2025-JONATHAN.pdf"
+    },
+    {
+      "id": 1250,
+      "ano": 2025,
+      "mes": 9,
+      "competencia": "Setembro / 2025",
+      "nome_arquivo": "HOLERITES 09 2025-JONATHAN.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 200499,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 18:41:23",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/139/2025_09_39e700_HOLERITES_09_2025-JONATHAN.pdf"
+    },
+    {
+      "id": 1292,
+      "ano": 2025,
+      "mes": 8,
+      "competencia": "Agosto / 2025",
+      "nome_arquivo": "08_2025_JONATHAN.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5429,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 18:43:22",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/139/2025_08_a3a545_08_2025_JONATHAN.pdf"
+    }
+  ]
+}

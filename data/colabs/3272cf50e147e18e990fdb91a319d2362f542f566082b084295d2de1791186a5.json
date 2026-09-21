@@ -1,0 +1,13 @@
+{
+  "id": 104,
+  "matricula": "73",
+  "nome": "WELINGTON SANTOS LOMBA",
+  "cpf_limpo": "",
+  "cargo": "SERVIÇOS GERAIS",
+  "admissao": "2024-03-28",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "e7239ebf2832f4fd7291f17341097d875f3f6bc0cbd7af9196e552f86bc808bc",
+  "contracheques": []
+}

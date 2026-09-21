@@ -1,0 +1,66 @@
+{
+  "id": 127,
+  "matricula": "80",
+  "nome": "WELLINTON ASSUNCAO DE OLIVEIRA",
+  "cpf_limpo": "05937405641",
+  "cargo": "CONFERENTE DE PRODUÇÃO",
+  "admissao": "2024-08-07",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "30ff0c78bf2bc6ac6db83951528bdc1552f51fe3408cd06b48916caafc5f84db",
+  "contracheques": [
+    {
+      "id": 1017,
+      "ano": 2025,
+      "mes": 11,
+      "competencia": "Novembro / 2025",
+      "nome_arquivo": "HOLERITES 11 2025- WELLINGTON.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5557,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 13:53:09",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/127/2025_11_80d56b_HOLERITES_11_2025-_WELLINGTON.pdf"
+    },
+    {
+      "id": 1146,
+      "ano": 2025,
+      "mes": 10,
+      "competencia": "Outubro / 2025",
+      "nome_arquivo": "HOLERITES 10 2025-WELLINTON.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 200111,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 14:12:02",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/127/2025_10_295837_HOLERITES_10_2025-WELLINTON.pdf"
+    },
+    {
+      "id": 1222,
+      "ano": 2025,
+      "mes": 9,
+      "competencia": "Setembro / 2025",
+      "nome_arquivo": "HOLERITES 09 2025-WELLINGTON.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 200215,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 18:39:38",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/127/2025_09_04aa96_HOLERITES_09_2025-WELLINGTON.pdf"
+    },
+    {
+      "id": 1333,
+      "ano": 2025,
+      "mes": 8,
+      "competencia": "Agosto / 2025",
+      "nome_arquivo": "08-2025-WELLINGTON.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5557,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 18:44:42",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/127/2025_08_160946_08-2025-WELLINGTON.pdf"
+    }
+  ]
+}

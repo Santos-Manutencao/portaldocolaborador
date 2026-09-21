@@ -1,0 +1,40 @@
+{
+  "id": 118,
+  "matricula": "156",
+  "nome": "RONI DE SOUSA FERNANDES",
+  "cpf_limpo": "07368605686",
+  "cargo": "AUXILIAR DE SERVICOS DE DESCARGA",
+  "admissao": "2025-08-20",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "8f8aafc00bf81c69d3f8075d81ba480ca40829dfce3782257d54f25cdc6f45ca",
+  "contracheques": [
+    {
+      "id": 1219,
+      "ano": 2025,
+      "mes": 9,
+      "competencia": "Setembro / 2025",
+      "nome_arquivo": "HOLERITES 09 2025-RONI.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 199944,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 18:39:38",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/118/2025_09_0f5bb1_HOLERITES_09_2025-RONI.pdf"
+    },
+    {
+      "id": 1330,
+      "ano": 2025,
+      "mes": 8,
+      "competencia": "Agosto / 2025",
+      "nome_arquivo": "08-2025-RONI.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5325,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 18:44:41",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/118/2025_08_106939_08-2025-RONI.pdf"
+    }
+  ]
+}

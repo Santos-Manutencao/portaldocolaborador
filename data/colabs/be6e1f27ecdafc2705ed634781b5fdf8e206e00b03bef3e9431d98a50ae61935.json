@@ -1,0 +1,13 @@
+{
+  "id": 89,
+  "matricula": "123",
+  "nome": "ISAQUE EMANUEL PAULINO DA CRUZ",
+  "cpf_limpo": "16437294620",
+  "cargo": "ARMADOR",
+  "admissao": "2025-07-15",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "1c2eac1d49523736deb9f37a46686686197a4596f8bf2f448260e735e8bdc4dd",
+  "contracheques": []
+}

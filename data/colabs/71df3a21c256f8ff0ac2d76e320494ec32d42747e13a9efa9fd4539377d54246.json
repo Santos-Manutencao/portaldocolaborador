@@ -1,0 +1,92 @@
+{
+  "id": 55,
+  "matricula": "210",
+  "nome": "NATANIEL HENRIQUE GOMES DE LIMA",
+  "cpf_limpo": "14496375664",
+  "cargo": "MANTENEDOR",
+  "admissao": "2026-03-13",
+  "local_trabalho": "TCS",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "68508cd5f8313d84f606ec1f5387b4664c644021cb38ecc5aa9d2c141321d0db",
+  "contracheques": [
+    {
+      "id": 792,
+      "ano": 2026,
+      "mes": 8,
+      "competencia": "Agosto / 2026",
+      "nome_arquivo": "HOLERITE 08_2026_NATANIEL.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 8103,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:16:16",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/55/2026_08_f3ffc6_HOLERITE_08_2026_NATANIEL.pdf"
+    },
+    {
+      "id": 709,
+      "ano": 2026,
+      "mes": 7,
+      "competencia": "Julho / 2026",
+      "nome_arquivo": "HOLERITE_07_2026_NATANIEL.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5928,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:14:29",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/55/2026_07_a7ed1a_HOLERITE_07_2026_NATANIEL.pdf"
+    },
+    {
+      "id": 629,
+      "ano": 2026,
+      "mes": 6,
+      "competencia": "Junho / 2026",
+      "nome_arquivo": "HOLERITE 06_2026-NATANIEL.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5509,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:12:30",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/55/2026_06_3715db_HOLERITE_06_2026-NATANIEL.pdf"
+    },
+    {
+      "id": 548,
+      "ano": 2026,
+      "mes": 5,
+      "competencia": "Maio / 2026",
+      "nome_arquivo": "HOLERITE 05_2026-NATANIEL.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5508,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:10:43",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/55/2026_05_baa7c9_HOLERITE_05_2026-NATANIEL.pdf"
+    },
+    {
+      "id": 464,
+      "ano": 2026,
+      "mes": 4,
+      "competencia": "Abril / 2026",
+      "nome_arquivo": "HOLERITE 04_2025-NATANIEL.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 6041,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:08:11",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/55/2026_04_26d020_HOLERITE_04_2025-NATANIEL.pdf"
+    },
+    {
+      "id": 398,
+      "ano": 2026,
+      "mes": 3,
+      "competencia": "Março / 2026",
+      "nome_arquivo": "HOLERITE 03_2026-NATANIEL.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5493,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:06:00",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/55/2026_03_8b177f_HOLERITE_03_2026-NATANIEL.pdf"
+    }
+  ]
+}

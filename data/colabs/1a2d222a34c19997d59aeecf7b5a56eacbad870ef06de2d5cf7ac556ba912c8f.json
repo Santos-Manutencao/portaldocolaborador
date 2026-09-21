@@ -1,0 +1,92 @@
+{
+  "id": 140,
+  "matricula": "163",
+  "nome": "ROGERIO SANTOS OLIVEIRA",
+  "cpf_limpo": "04104044547",
+  "cargo": "MANTENEDOR",
+  "admissao": "",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "9fd3137557fa62ea190940e3b108dc40c88af31ceeec43a250c6594448a6e305",
+  "contracheques": [
+    {
+      "id": 307,
+      "ano": 2026,
+      "mes": 2,
+      "competencia": "Fevereiro / 2026",
+      "nome_arquivo": "HOLERITE 02-2026-ROGERIO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5859,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:03:27",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/140/2026_02_b86568_HOLERITE_02-2026-ROGERIO.pdf"
+    },
+    {
+      "id": 186,
+      "ano": 2026,
+      "mes": 1,
+      "competencia": "Janeiro / 2026",
+      "nome_arquivo": "HOLERITE 01_2026-ROGERIO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5625,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:00:53",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/140/2026_01_782011_HOLERITE_01_2026-ROGERIO.pdf"
+    },
+    {
+      "id": 840,
+      "ano": 2025,
+      "mes": 12,
+      "competencia": "Dezembro / 2025",
+      "nome_arquivo": "HOLERITE 12 2025 ROGERIO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5625,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 13:32:38",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/140/2025_12_e22c4a_HOLERITE_12_2025_ROGERIO.pdf"
+    },
+    {
+      "id": 1014,
+      "ano": 2025,
+      "mes": 11,
+      "competencia": "Novembro / 2025",
+      "nome_arquivo": "HOLERITES 11 2025- ROGERIO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5497,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 13:53:09",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/140/2025_11_a5fae2_HOLERITES_11_2025-_ROGERIO.pdf"
+    },
+    {
+      "id": 1143,
+      "ano": 2025,
+      "mes": 10,
+      "competencia": "Outubro / 2025",
+      "nome_arquivo": "HOLERITES 10 2025-ROGERIO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 199907,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 14:12:02",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/140/2025_10_627fb5_HOLERITES_10_2025-ROGERIO.pdf"
+    },
+    {
+      "id": 1218,
+      "ano": 2025,
+      "mes": 9,
+      "competencia": "Setembro / 2025",
+      "nome_arquivo": "HOLERITES 09 2025-ROGERIO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 199962,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 18:39:38",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/140/2025_09_ac7813_HOLERITES_09_2025-ROGERIO.pdf"
+    }
+  ]
+}

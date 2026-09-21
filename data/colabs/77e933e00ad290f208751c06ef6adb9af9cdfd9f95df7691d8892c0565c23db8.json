@@ -1,0 +1,79 @@
+{
+  "id": 145,
+  "matricula": "201",
+  "nome": "MAILSON DOS SANTOS DA SILVA",
+  "cpf_limpo": "11562000594",
+  "cargo": "MANTENEDOR",
+  "admissao": "2026-01-14",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "532ffde129fcd285d3ca99e61f3558c4fdab9926bfa96107a24d1067c9c934c3",
+  "contracheques": [
+    {
+      "id": 541,
+      "ano": 2026,
+      "mes": 5,
+      "competencia": "Maio / 2026",
+      "nome_arquivo": "HOLERITE 05_2026-MAILSON.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5899,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:10:41",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/145/2026_05_449722_HOLERITE_05_2026-MAILSON.pdf"
+    },
+    {
+      "id": 457,
+      "ano": 2026,
+      "mes": 4,
+      "competencia": "Abril / 2026",
+      "nome_arquivo": "HOLERITE 04_2025-MAILSON.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5846,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:08:09",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/145/2026_04_649301_HOLERITE_04_2025-MAILSON.pdf"
+    },
+    {
+      "id": 394,
+      "ano": 2026,
+      "mes": 3,
+      "competencia": "Março / 2026",
+      "nome_arquivo": "HOLERITE 03_2026-MAILSON.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5624,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:05:59",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/145/2026_03_20a88d_HOLERITE_03_2026-MAILSON.pdf"
+    },
+    {
+      "id": 293,
+      "ano": 2026,
+      "mes": 2,
+      "competencia": "Fevereiro / 2026",
+      "nome_arquivo": "HOLERITE 02-2026-MAILSON.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5949,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:03:23",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/145/2026_02_fec650_HOLERITE_02-2026-MAILSON.pdf"
+    },
+    {
+      "id": 180,
+      "ano": 2026,
+      "mes": 1,
+      "competencia": "Janeiro / 2026",
+      "nome_arquivo": "HOLERITE 01_2026-MAILSON.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5492,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:00:51",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/145/2026_01_c8b451_HOLERITE_01_2026-MAILSON.pdf"
+    }
+  ]
+}

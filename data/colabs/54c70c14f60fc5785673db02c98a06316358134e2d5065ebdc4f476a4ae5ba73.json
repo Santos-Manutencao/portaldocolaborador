@@ -1,0 +1,13 @@
+{
+  "id": 84,
+  "matricula": "81",
+  "nome": "ARLINDO MONTEIRO DA SILVA",
+  "cpf_limpo": "71629568406",
+  "cargo": "MANTENEDOR",
+  "admissao": "2024-08-15",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "eb221063223a26b5e0dc42e6de6d8268893a27ec874e1ab68e26b9d21ac6d752",
+  "contracheques": []
+}

@@ -1,0 +1,13 @@
+{
+  "id": 90,
+  "matricula": "120",
+  "nome": "JOÃO VICTOR CORREA DOS SANTOS",
+  "cpf_limpo": "16722250601",
+  "cargo": "",
+  "admissao": "",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "4c625afc7f4c0a0aca184b6164c680cfea8cbac818ae42f978d662a4d65abbb6",
+  "contracheques": []
+}

@@ -1,0 +1,53 @@
+{
+  "id": 120,
+  "matricula": "151",
+  "nome": "EMERSON HERNERT MILITAO",
+  "cpf_limpo": "14112554613",
+  "cargo": "AUXILIAR DE SERVICOS DE DESCARGA",
+  "admissao": "2025-08-20",
+  "local_trabalho": "",
+  "foto_path": "FOTOS CRACHAS/EMERSON HERNERT MILITAO.jpeg",
+  "senha_hash": null,
+  "default_senha_hash": "8ce17c709b8e15280385630c174848c4553a2095b40c55d982e950f508fa9d8d",
+  "contracheques": [
+    {
+      "id": 1163,
+      "ano": 2025,
+      "mes": 10,
+      "competencia": "Outubro / 2025",
+      "nome_arquivo": "HOLERITES 10 2025-EMERSON.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 200351,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 14:14:32",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/120/2025_10_d9fd01_HOLERITES_10_2025-EMERSON.pdf"
+    },
+    {
+      "id": 1239,
+      "ano": 2025,
+      "mes": 9,
+      "competencia": "Setembro / 2025",
+      "nome_arquivo": "HOLERITES 09 2025-EMERSON.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 200314,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 18:41:21",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/120/2025_09_85e6e6_HOLERITES_09_2025-EMERSON.pdf"
+    },
+    {
+      "id": 1282,
+      "ano": 2025,
+      "mes": 8,
+      "competencia": "Agosto / 2025",
+      "nome_arquivo": "08_2025_EMERSON.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5413,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 18:43:20",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/120/2025_08_de18ff_08_2025_EMERSON.pdf"
+    }
+  ]
+}

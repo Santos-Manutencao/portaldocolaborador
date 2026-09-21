@@ -1,0 +1,27 @@
+{
+  "id": 141,
+  "matricula": "207",
+  "nome": "LUCIANO CONCEICAO PINTO",
+  "cpf_limpo": "10258287551",
+  "cargo": "MANTENEDOR",
+  "admissao": "2026-02-03",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "f6c544deaeb152b47b20b355516cb4ebad92ee5d6f6db51273e1931211f60ce2",
+  "contracheques": [
+    {
+      "id": 286,
+      "ano": 2026,
+      "mes": 2,
+      "competencia": "Fevereiro / 2026",
+      "nome_arquivo": "HOLERITE 02-2026-LUCIANO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 336223,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:03:21",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/141/2026_02_fa4276_HOLERITE_02-2026-LUCIANO.pdf"
+    }
+  ]
+}

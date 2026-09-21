@@ -1,0 +1,40 @@
+{
+  "id": 128,
+  "matricula": "174",
+  "nome": "WILLIAM PEREIRA DOS SANTOS",
+  "cpf_limpo": "12824723645",
+  "cargo": "AUXILIAR DE SERVICOS DE DESCARGA",
+  "admissao": "2025-09-18",
+  "local_trabalho": "",
+  "foto_path": "FOTOS CRACHAS/FOTOS-CRACHA-14-10-2025/WILLIAM PEREIRA DOS SANTOS.jpeg",
+  "senha_hash": null,
+  "default_senha_hash": "49ddab25faa86ede0cbe340700134a6cdd12eeb6f0f2ac6c70d985d8ea064122",
+  "contracheques": [
+    {
+      "id": 1073,
+      "ano": 2025,
+      "mes": 11,
+      "competencia": "Novembro / 2025",
+      "nome_arquivo": "HOLERITES 11 2025- WILLIAM.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5781,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 14:10:09",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/128/2025_11_0bf83c_HOLERITES_11_2025-_WILLIAM.pdf"
+    },
+    {
+      "id": 1196,
+      "ano": 2025,
+      "mes": 10,
+      "competencia": "Outubro / 2025",
+      "nome_arquivo": "HOLERITES 10 2025-WILLIAM.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 200004,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 14:14:43",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/128/2025_10_26fdf0_HOLERITES_10_2025-WILLIAM.pdf"
+    }
+  ]
+}

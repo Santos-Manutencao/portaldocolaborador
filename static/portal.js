@@ -1,5 +1,6 @@
 // =========================================================================
 // SGP SANTOS MANUTENÇÃO - PORTAL DO COLABORADOR (FRONTEND)
+// Suporte Dual: Execução Local (Servidor Python) e Online (GitHub Pages 100% Estático)
 // =========================================================================
 const TOKEN_KEY = 'sgp_portal_token';
 const USER_KEY = 'sgp_portal_user';
@@ -16,10 +17,111 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // =========================================================================
+// FUNÇÃO CRIPTOGRÁFICA SHA-256 (Web Crypto com Fallback Seguro)
+// =========================================================================
+async function calcularSHA256(str) {
+    if (window.crypto && crypto.subtle && crypto.subtle.digest) {
+        try {
+            const encoder = new TextEncoder();
+            const data = encoder.encode(str);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        } catch (e) {
+            console.warn('crypto.subtle indisponível, usando fallback pure JS:', e);
+        }
+    }
+    return sha256PureJs(str);
+}
+
+function sha256PureJs(ascii) {
+    function rightRotate(value, amount) {
+        return (value >>> amount) | (value << (32 - amount));
+    }
+    let i, j;
+    const words = [];
+    const hash = [
+        0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a,
+        0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19
+    ];
+    const k = [
+        0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
+        0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174,
+        0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc, 0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,
+        0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7, 0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967,
+        0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13, 0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85,
+        0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070,
+        0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
+        0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2
+    ];
+
+    let utf8 = unescape(encodeURIComponent(ascii));
+    for (i = 0; i < utf8.length; i++) {
+        words[i >> 2] |= (utf8.charCodeAt(i) & 0xff) << (24 - (i % 4) * 8);
+    }
+    words[utf8.length >> 2] |= 0x80 << (24 - (utf8.length % 4) * 8);
+    words[(((utf8.length + 8) >> 6) << 4) + 15] = utf8.length * 8;
+
+    const w = new Array(64);
+    for (i = 0; i < words.length; i += 16) {
+        let [a, b, c, d, e, f, g, h] = hash;
+        for (j = 0; j < 64; j++) {
+            if (j < 16) {
+                w[j] = words[i + j] | 0;
+            } else {
+                const gamma0 = rightRotate(w[j - 15], 7) ^ rightRotate(w[j - 15], 18) ^ (w[j - 15] >>> 3);
+                const gamma1 = rightRotate(w[j - 2], 17) ^ rightRotate(w[j - 2], 19) ^ (w[j - 2] >>> 10);
+                w[j] = (w[j - 16] + gamma0 + w[j - 7] + gamma1) | 0;
+            }
+            const s1 = rightRotate(e, 6) ^ rightRotate(e, 11) ^ rightRotate(e, 25);
+            const ch = (e & f) ^ ((~e) & g);
+            const temp1 = (h + s1 + ch + k[j] + w[j]) | 0;
+            const s0 = rightRotate(a, 2) ^ rightRotate(a, 13) ^ rightRotate(a, 22);
+            const maj = (a & b) ^ (a & c) ^ (b & c);
+            const temp2 = (s0 + maj) | 0;
+
+            h = g;
+            g = f;
+            f = e;
+            e = (d + temp1) | 0;
+            d = c;
+            c = b;
+            b = a;
+            a = (temp1 + temp2) | 0;
+        }
+
+        hash[0] = (hash[0] + a) | 0;
+        hash[1] = (hash[1] + b) | 0;
+        hash[2] = (hash[2] + c) | 0;
+        hash[3] = (hash[3] + d) | 0;
+        hash[4] = (hash[4] + e) | 0;
+        hash[5] = (hash[5] + f) | 0;
+        hash[6] = (hash[6] + g) | 0;
+        hash[7] = (hash[7] + h) | 0;
+    }
+
+    let hex = '';
+    for (i = 0; i < 8; i++) {
+        for (j = 3; j >= 0; j--) {
+            const b = (hash[i] >> (8 * j)) & 255;
+            hex += (b < 16 ? '0' : '') + b.toString(16);
+        }
+    }
+    return hex;
+}
+
+// =========================================================================
 // SESSÃO & AUTENTICAÇÃO
 // =========================================================================
 function getToken() {
     return localStorage.getItem(TOKEN_KEY);
+}
+
+function isModoEstatico() {
+    const token = getToken();
+    if (token && token.startsWith('static_')) return true;
+    const host = window.location.hostname;
+    return host.includes('github.io') || window.location.protocol === 'file:';
 }
 
 function verificarSessao() {
@@ -97,24 +199,121 @@ async function realizarLogin(e) {
     btnSubmit.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin mr-2"></i> Autenticando...`;
 
     try {
-        const res = await fetch('/api/portal/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ login, senha })
-        });
+        const cleanLogin = login.replace(/\D/g, '');
+        const rawLogin = login.trim().toUpperCase();
+        const isOnlineGithub = window.location.hostname.includes('github.io') || window.location.protocol === 'file:';
 
-        const data = await res.json();
-        if (res.ok && data.token) {
-            localStorage.setItem(TOKEN_KEY, data.token);
-            localStorage.setItem(USER_KEY, JSON.stringify(data.funcionario));
-            await carregarPortal();
-        } else {
-            erroTexto.textContent = data.error || 'Credenciais inválidas. Verifique seu CPF/matrícula e senha.';
-            erroDiv.classList.remove('hidden');
+        // 1. Se estiver rodando localmente (servidor python), tenta a API dinâmica primeiro
+        if (!isOnlineGithub && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
+            try {
+                const res = await fetch('/api/portal/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ login, senha })
+                });
+
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.token) {
+                        localStorage.setItem(TOKEN_KEY, data.token);
+                        localStorage.setItem(USER_KEY, JSON.stringify(data.funcionario));
+                        await carregarPortal();
+                        return;
+                    }
+                } else if (res.status === 401) {
+                    const data = await res.json();
+                    erroTexto.textContent = data.error || 'Credenciais inválidas. Verifique seu CPF/matrícula e senha.';
+                    erroDiv.classList.remove('hidden');
+                    return;
+                }
+            } catch (apiErr) {
+                console.warn('API local indisponível, recorrendo à autenticação estática direta...', apiErr);
+            }
         }
+
+        // 2. Autenticação 100% Estática (GitHub Pages ou Standalone)
+        const hClean = cleanLogin ? await calcularSHA256('sgp_colab_' + cleanLogin) : null;
+        const hRaw = rawLogin ? await calcularSHA256('sgp_colab_' + rawLogin) : null;
+
+        let colabData = null;
+        let foundHash = null;
+
+        const hashesToTry = [hClean, hRaw].filter((h, idx, self) => h && self.indexOf(h) === idx);
+
+        for (const h of hashesToTry) {
+            try {
+                const res = await fetch(`data/colabs/${h}.json?_t=${Date.now()}`);
+                if (res.ok) {
+                    colabData = await res.json();
+                    foundHash = h;
+                    break;
+                }
+            } catch (fetchErr) {
+                console.warn('Erro ao consultar data/colabs:', fetchErr);
+            }
+        }
+
+        if (!colabData) {
+            erroTexto.textContent = 'Colaborador não encontrado. Verifique seu CPF ou Matrícula.';
+            erroDiv.classList.remove('hidden');
+            return;
+        }
+
+        // Validação de senha estática
+        const inputHash = await calcularSHA256('SGP_SANTOS_PORTAL_2026' + senha);
+        const localSavedHash = localStorage.getItem('sgp_pwd_hash_' + colabData.id);
+
+        let senhaValida = false;
+
+        // Regra A: Senha alterada e salva neste dispositivo
+        if (localSavedHash && inputHash === localSavedHash) {
+            senhaValida = true;
+        }
+        // Regra B: Senha definida no sistema remoto
+        else if (colabData.senha_hash && inputHash === colabData.senha_hash) {
+            senhaValida = true;
+        }
+        // Regra C: Senha padrão inicial (primeiros 4 dígitos do CPF ou matrícula)
+        else if (!colabData.senha_hash) {
+            const defCpf = colabData.cpf_limpo || '';
+            const defMat = colabData.matricula || '';
+            let defPwd = '1234';
+            if (defCpf.length >= 4) defPwd = defCpf.substring(0, 4);
+            else if (defMat.length >= 4) defPwd = defMat.substring(0, 4);
+
+            if (senha === defPwd) {
+                senhaValida = true;
+            } else if (colabData.default_senha_hash && inputHash === colabData.default_senha_hash) {
+                senhaValida = true;
+            }
+        }
+
+        if (!senhaValida) {
+            erroTexto.textContent = 'Senha incorreta. No seu primeiro acesso, use os 4 primeiros dígitos do seu CPF.';
+            erroDiv.classList.remove('hidden');
+            return;
+        }
+
+        // Login efetuado com sucesso em modo estático
+        colabData.active_hash = foundHash;
+        const staticToken = 'static_' + colabData.id + '_' + Date.now();
+        localStorage.setItem(TOKEN_KEY, staticToken);
+        localStorage.setItem(USER_KEY, JSON.stringify(colabData));
+
+        colaboradorLogado = colabData;
+        todosContracheques = colabData.contracheques || [];
+
+        atualizarCabecalhoUsuario(colaboradorLogado);
+        mostrarTelaApp();
+
+        document.getElementById('appStatTotalHolerites').textContent = todosContracheques.length;
+        atualizarFiltrosAnos(todosContracheques);
+        atualizarBotoesAlternador();
+        renderizarContracheques(anoFiltroAtual);
+
     } catch (err) {
         console.error('Erro no login:', err);
-        erroTexto.textContent = 'Falha de conexão com o servidor. Verifique sua conexão e tente novamente.';
+        erroTexto.textContent = 'Falha de conexão. Verifique sua internet e tente novamente.';
         erroDiv.classList.remove('hidden');
     } finally {
         btnSubmit.disabled = false;
@@ -137,8 +336,44 @@ async function carregarPortal() {
     const token = getToken();
     if (!token) return mostrarTelaLogin();
 
+    // 1. Modo Estático (GitHub Pages ou token static_)
+    if (isModoEstatico()) {
+        const saved = localStorage.getItem(USER_KEY);
+        if (saved) {
+            try {
+                colaboradorLogado = JSON.parse(saved);
+
+                // Tenta atualizar em segundo plano se houver conexão
+                if (colaboradorLogado.active_hash) {
+                    try {
+                        const res = await fetch(`data/colabs/${colaboradorLogado.active_hash}.json?_t=${Date.now()}`);
+                        if (res.ok) {
+                            const fresh = await res.json();
+                            colaboradorLogado = { ...colaboradorLogado, ...fresh };
+                            localStorage.setItem(USER_KEY, JSON.stringify(colaboradorLogado));
+                        }
+                    } catch (e) {
+                        // Modo tolerante
+                    }
+                }
+
+                atualizarCabecalhoUsuario(colaboradorLogado);
+                mostrarTelaApp();
+
+                todosContracheques = colaboradorLogado.contracheques || [];
+                document.getElementById('appStatTotalHolerites').textContent = todosContracheques.length;
+                atualizarFiltrosAnos(todosContracheques);
+                atualizarBotoesAlternador();
+                renderizarContracheques(anoFiltroAtual);
+                return;
+            } catch (e) {
+                console.error('Erro ao ler usuário salvo:', e);
+            }
+        }
+    }
+
+    // 2. Modo Dinâmico Local
     try {
-        // Carrega dados cadastrais
         const resDados = await fetch('/api/portal/meus-dados', {
             headers: { 'Authorization': `Bearer ${token}` }
         });
@@ -150,14 +385,24 @@ async function carregarPortal() {
 
         colaboradorLogado = await resDados.json();
         atualizarCabecalhoUsuario(colaboradorLogado);
-
         mostrarTelaApp();
 
-        // Carrega contracheques
         await carregarMeusContracheques();
     } catch (err) {
-        console.error('Erro ao carregar dados do portal:', err);
-        mostrarTelaLogin();
+        console.warn('Falha na API dinâmica, verificando dados locais salvos:', err);
+        const saved = localStorage.getItem(USER_KEY);
+        if (saved) {
+            colaboradorLogado = JSON.parse(saved);
+            atualizarCabecalhoUsuario(colaboradorLogado);
+            mostrarTelaApp();
+            todosContracheques = colaboradorLogado.contracheques || [];
+            document.getElementById('appStatTotalHolerites').textContent = todosContracheques.length;
+            atualizarFiltrosAnos(todosContracheques);
+            atualizarBotoesAlternador();
+            renderizarContracheques(anoFiltroAtual);
+        } else {
+            mostrarTelaLogin();
+        }
     }
 }
 
@@ -172,7 +417,7 @@ function atualizarCabecalhoUsuario(f) {
     const iniciais = (nomeSeguro.replace(/[^a-zA-Z0-9]/g, '').substring(0, 2) || 'FC').toUpperCase();
     const avatarEl = document.getElementById('appUserAvatar');
     if (f.foto_path && f.foto_path.trim()) {
-        const fotoUrl = '/' + f.foto_path.trim().replace(/\\/g, '/').replace(/^\//, '');
+        const fotoUrl = f.foto_path.trim().replace(/\\/g, '/').replace(/^\//, '');
         avatarEl.innerHTML = `<img src="${fotoUrl}" alt="${nomeSeguro}" class="w-full h-full rounded-2xl object-cover" onerror="this.onerror=null; this.parentNode.textContent='${iniciais}';">`;
     } else {
         avatarEl.textContent = iniciais;
@@ -212,10 +457,8 @@ async function carregarMeusContracheques() {
         todosContracheques = await res.json();
         document.getElementById('appStatTotalHolerites').textContent = todosContracheques.length;
 
-        // Atualiza botões de filtro de ano e alternador de visualização
         atualizarFiltrosAnos(todosContracheques);
         atualizarBotoesAlternador();
-
         renderizarContracheques(anoFiltroAtual);
     } catch (err) {
         console.error('Erro ao carregar contracheques:', err);
@@ -226,6 +469,20 @@ async function carregarMeusContracheques() {
             </div>
         `;
     }
+}
+
+function obterUrlContracheque(c, inline = false) {
+    const token = getToken();
+    const staticMode = isModoEstatico();
+
+    if (staticMode && c.arquivo_url) {
+        // No GitHub Pages, acessa o arquivo PDF relativo diretamente no repositório
+        const rel = c.arquivo_url.replace(/\\/g, '/').replace(/^\//, '');
+        return encodeURI(rel);
+    }
+
+    // No servidor local com backend Python
+    return `/api/portal/contracheques/${c.id}/arquivo?token=${encodeURIComponent(token)}${inline ? '&inline=1' : ''}`;
 }
 
 function atualizarFiltrosAnos(lista) {
@@ -279,14 +536,9 @@ function filtrarContrachequesPorAno(ano) {
     renderizarContracheques(ano);
 }
 
-function renderizarGradeContracheques(ano) {
-    renderizarContracheques(ano);
-}
-
 function renderizarContracheques(ano) {
     const container = document.getElementById('appGridContracheques');
     if (!container) return;
-    const token = getToken();
 
     let filtrados = todosContracheques;
     if (ano !== 'Todos') {
@@ -305,13 +557,13 @@ function renderizarContracheques(ano) {
     }
 
     if (modoVisualizacaoAtual === 'grade') {
-        container.innerHTML = renderizarContrachequesGrade(filtrados, token);
+        container.innerHTML = renderizarContrachequesGrade(filtrados);
     } else {
-        container.innerHTML = renderizarContrachequesLista(filtrados, token);
+        container.innerHTML = renderizarContrachequesLista(filtrados);
     }
 }
 
-function renderizarContrachequesLista(filtrados, token) {
+function renderizarContrachequesLista(filtrados) {
     return `
         <div class="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-xs">
             <table class="w-full text-left border-collapse text-xs">
@@ -332,7 +584,7 @@ function renderizarContrachequesLista(filtrados, token) {
                         const tamFmt = c.tamanho_bytes ? (c.tamanho_bytes > 1048576 ? `${(c.tamanho_bytes / 1048576).toFixed(1)} MB` : `${Math.round(c.tamanho_bytes / 1024)} KB`) : '---';
                         const valLiqHtml = c.valor_liquido ? `<span class="font-mono font-bold text-emerald-700">${formatarMoeda(c.valor_liquido)}</span>` : '<span class="text-slate-400 font-normal">---</span>';
                         const dtEnvio = c.created_at ? formatarData(c.created_at.split(' ')[0]) : '---';
-                        const downloadUrl = `/api/portal/contracheques/${c.id}/arquivo?token=${encodeURIComponent(token)}`;
+                        const downloadUrl = obterUrlContracheque(c, false);
 
                         return `
                             <tr class="hover:bg-blue-50/40 transition">
@@ -348,7 +600,7 @@ function renderizarContrachequesLista(filtrados, token) {
                                 </td>
                                 <td class="py-3 px-2 sm:px-3 whitespace-nowrap">
                                     <div class="inline-flex items-center gap-1.5">
-                                        <button onclick="visualizarHolerite(${c.id}, '${c.nome_arquivo.replace(/'/g, "\\'")}')" title="Visualizar Holerite" class="px-2.5 py-1.5 bg-blue-50 hover:bg-blue-600 hover:text-white text-blue-700 font-bold text-xs rounded-lg flex items-center transition shadow-2xs">
+                                        <button onclick="visualizarHolerite(${c.id}, '${c.nome_arquivo.replace(/'/g, "\'")}')" title="Visualizar Holerite" class="px-2.5 py-1.5 bg-blue-50 hover:bg-blue-600 hover:text-white text-blue-700 font-bold text-xs rounded-lg flex items-center transition shadow-2xs">
                                             <i class="fa-solid fa-eye mr-1"></i> Visualizar
                                         </button>
                                         <a href="${downloadUrl}" download="${c.nome_arquivo}" title="Baixar PDF" class="px-2.5 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-lg flex items-center transition shadow-2xs">
@@ -380,8 +632,7 @@ function renderizarContrachequesLista(filtrados, token) {
     `;
 }
 
-
-function renderizarContrachequesGrade(filtrados, token) {
+function renderizarContrachequesGrade(filtrados) {
     return `
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             ${filtrados.map(c => {
@@ -390,7 +641,7 @@ function renderizarContrachequesGrade(filtrados, token) {
                 const tamFmt = c.tamanho_bytes ? (c.tamanho_bytes > 1048576 ? `${(c.tamanho_bytes / 1048576).toFixed(1)} MB` : `${Math.round(c.tamanho_bytes / 1024)} KB`) : '---';
                 const valLiqHtml = c.valor_liquido ? `<div class="text-xs font-mono font-bold text-emerald-700 mt-1"><span class="text-[10px] text-slate-500 font-normal">Líquido:</span> ${formatarMoeda(c.valor_liquido)}</div>` : '';
                 const dtEnvio = c.created_at ? formatarData(c.created_at.split(' ')[0]) : '';
-                const downloadUrl = `/api/portal/contracheques/${c.id}/arquivo?token=${encodeURIComponent(token)}`;
+                const downloadUrl = obterUrlContracheque(c, false);
 
                 return `
                     <div class="bg-white rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition p-4 flex flex-col justify-between space-y-3">
@@ -423,7 +674,7 @@ function renderizarContrachequesGrade(filtrados, token) {
                         </div>
 
                         <div class="grid grid-cols-2 gap-2 pt-1">
-                            <button onclick="visualizarHolerite(${c.id}, '${c.nome_arquivo.replace(/'/g, "\\'")}')" class="w-full py-2 bg-blue-50 hover:bg-blue-600 hover:text-white text-blue-700 font-bold text-xs rounded-lg flex items-center justify-center transition shadow-2xs">
+                            <button onclick="visualizarHolerite(${c.id}, '${c.nome_arquivo.replace(/'/g, "\'")}')" class="w-full py-2 bg-blue-50 hover:bg-blue-600 hover:text-white text-blue-700 font-bold text-xs rounded-lg flex items-center justify-center transition shadow-2xs">
                                 <i class="fa-solid fa-eye mr-1.5"></i> Visualizar
                             </button>
                             <a href="${downloadUrl}" download="${c.nome_arquivo}" class="w-full py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-lg flex items-center justify-center transition shadow-2xs">
@@ -441,19 +692,21 @@ function renderizarContrachequesGrade(filtrados, token) {
 // VISUALIZADOR DE DOCUMENTOS (MODAL INTEGRADO)
 // =========================================================================
 function visualizarHolerite(ccId, nomeArquivo) {
-    const token = getToken();
-    const url = `/api/portal/contracheques/${ccId}/arquivo?token=${encodeURIComponent(token)}&inline=1`;
+    const c = todosContracheques.find(item => item.id === ccId) || { id: ccId, nome_arquivo: nomeArquivo };
+    const inlineUrl = obterUrlContracheque(c, true);
+    const downloadUrl = obterUrlContracheque(c, false);
     const isPdf = nomeArquivo.toLowerCase().endsWith('.pdf');
 
     document.getElementById('viewerTituloArquivo').textContent = nomeArquivo;
-    document.getElementById('viewerBtnDownload').href = `/api/portal/contracheques/${ccId}/arquivo?token=${encodeURIComponent(token)}`;
-    document.getElementById('viewerBtnDownload').setAttribute('download', nomeArquivo);
+    const btnDl = document.getElementById('viewerBtnDownload');
+    btnDl.href = downloadUrl;
+    btnDl.setAttribute('download', nomeArquivo);
 
     const container = document.getElementById('viewerContainer');
     if (isPdf) {
-        container.innerHTML = `<iframe src="${url}" class="w-full h-full rounded-xl border border-slate-300 bg-white" title="${nomeArquivo}"></iframe>`;
+        container.innerHTML = `<iframe src="${inlineUrl}" class="w-full h-full rounded-xl border border-slate-300 bg-white" title="${nomeArquivo}"></iframe>`;
     } else {
-        container.innerHTML = `<div class="overflow-auto max-h-full max-w-full flex items-center justify-center p-2"><img src="${url}" class="max-h-[85vh] max-w-full object-contain rounded-lg shadow-lg border border-slate-300" alt="${nomeArquivo}"></div>`;
+        container.innerHTML = `<div class="overflow-auto max-h-full max-w-full flex items-center justify-center p-2"><img src="${inlineUrl}" class="max-h-[85vh] max-w-full object-contain rounded-lg shadow-lg border border-slate-300" alt="${nomeArquivo}"></div>`;
     }
 
     document.getElementById('modalVisualizador').classList.remove('hidden');
@@ -505,30 +758,77 @@ async function submeterTrocaSenha(e) {
     btn.disabled = true;
     btn.textContent = 'Salvando...';
 
-    try {
-        const res = await fetch('/api/portal/alterar-senha', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify({
-                senha_atual: senhaAtual,
-                nova_senha: novaSenha
-            })
-        });
+    const staticMode = isModoEstatico();
 
-        const data = await res.json();
-        if (res.ok) {
-            alert('Sua senha foi alterada com sucesso! Guarde-a com segurança.');
-            fecharModalTrocarSenha();
-        } else {
-            erroBox.textContent = data.error || 'Erro ao alterar senha.';
-            erroBox.classList.remove('hidden');
+    try {
+        if (!staticMode) {
+            const res = await fetch('/api/portal/alterar-senha', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    senha_atual: senhaAtual,
+                    nova_senha: novaSenha
+                })
+            });
+
+            const data = await res.json();
+            if (res.ok) {
+                const novoHash = await calcularSHA256('SGP_SANTOS_PORTAL_2026' + novaSenha);
+                if (colaboradorLogado && colaboradorLogado.id) {
+                    localStorage.setItem('sgp_pwd_hash_' + colaboradorLogado.id, novoHash);
+                }
+                alert('Sua senha foi alterada com sucesso! Guarde-a com segurança.');
+                fecharModalTrocarSenha();
+                return;
+            } else {
+                erroBox.textContent = data.error || 'Erro ao alterar senha.';
+                erroBox.classList.remove('hidden');
+                return;
+            }
         }
+
+        // Modo Estático (GitHub Pages):
+        const atualHash = await calcularSHA256('SGP_SANTOS_PORTAL_2026' + senhaAtual);
+        const localSavedHash = localStorage.getItem('sgp_pwd_hash_' + (colaboradorLogado ? colaboradorLogado.id : ''));
+        let atualConfere = false;
+
+        if (localSavedHash && atualHash === localSavedHash) {
+            atualConfere = true;
+        } else if (colaboradorLogado && colaboradorLogado.senha_hash && atualHash === colaboradorLogado.senha_hash) {
+            atualConfere = true;
+        } else if (colaboradorLogado && !colaboradorLogado.senha_hash) {
+            const defCpf = colaboradorLogado.cpf_limpo || '';
+            const defMat = colaboradorLogado.matricula || '';
+            let defPwd = '1234';
+            if (defCpf.length >= 4) defPwd = defCpf.substring(0, 4);
+            else if (defMat.length >= 4) defPwd = defMat.substring(0, 4);
+
+            if (senhaAtual === defPwd || (colaboradorLogado.default_senha_hash && atualHash === colaboradorLogado.default_senha_hash)) {
+                atualConfere = true;
+            }
+        }
+
+        if (!atualConfere) {
+            erroBox.textContent = 'A senha atual informada está incorreta.';
+            erroBox.classList.remove('hidden');
+            return;
+        }
+
+        const novoHash = await calcularSHA256('SGP_SANTOS_PORTAL_2026' + novaSenha);
+        if (colaboradorLogado && colaboradorLogado.id) {
+            localStorage.setItem('sgp_pwd_hash_' + colaboradorLogado.id, novoHash);
+            colaboradorLogado.senha_hash = novoHash;
+            localStorage.setItem(USER_KEY, JSON.stringify(colaboradorLogado));
+        }
+
+        alert('✅ Sua senha foi alterada com sucesso para este dispositivo! Guarde-a com segurança.');
+        fecharModalTrocarSenha();
     } catch (err) {
         console.error('Erro na troca de senha:', err);
-        erroBox.textContent = 'Falha de comunicação com o servidor.';
+        erroBox.textContent = 'Falha ao salvar nova senha.';
         erroBox.classList.remove('hidden');
     } finally {
         btn.disabled = false;

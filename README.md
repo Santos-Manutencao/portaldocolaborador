@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="https://render.com/deploy"><img src="https://render.com/images/deploy-to-render-button.svg" alt="Deploy to Render"></a>
+  <a href="https://santos-manutencao.github.io/portaldocolaborador/"><img src="https://img.shields.io/badge/Acessar%20Online-GitHub%20Pages-2563eb?style=for-the-badge&logo=github" alt="Acessar Online no GitHub Pages"></a>
 </p>
 
 ---
@@ -40,45 +40,32 @@
 
 ---
 
-## 🚀 Como Colocar Funcionando Online
+## 🌐 Acesso Online Oficial (GitHub Pages)
 
-### Opção 1: Deploy no Render (Recomendado - Gratuito)
-1. Acesse [render.com](https://render.com) e conecte sua conta do GitHub.
-2. Clique em **New +** -> **Web Service**.
-3. Selecione o repositório `Santos-Manutencao/portaldocolaborador`.
-4. O Render detectará automaticamente as configurações através do arquivo `render.yaml` ou configure:
-   - **Environment**: `Python`
-   - **Build Command**: `pip install -r requirements.txt`
-   - **Start Command**: `python server.py`
-5. Clique em **Create Web Service**. Em instantes seu sistema estará online com HTTPS gratuito!
+O **Portal do Colaborador** está hospedado de forma 100% gratuita e de alta disponibilidade diretamente pelo **GitHub Pages**:
 
-### Opção 2: Deploy no Railway
-1. Acesse [railway.app](https://railway.app).
-2. Clique em **New Project** -> **Deploy from GitHub repo**.
-3. Selecione `Santos-Manutencao/portaldocolaborador`.
-4. O Railway detectará o `Procfile` / `Dockerfile` e iniciará o sistema online imediatamente.
+🔗 **Link Oficial do Portal:** [https://santos-manutencao.github.io/portaldocolaborador/](https://santos-manutencao.github.io/portaldocolaborador/)
 
-### Opção 3: Executar com Docker
+- 📱 **Otimizado para Celulares**: Visualização em lista limpa, download direto de PDF e leitor integrado.
+- ⚡ **Sem Servidores Externos**: Não necessita de Render, Railway ou VPS.
+- 🔄 **Sincronização com 1 Clique**: No painel administrativo local, clique no botão **"Atualizar Online"** para publicar instantaneamente novos contracheques ou atualizações cadastrais.
+
+---
+
+## 🚀 Execução Local (Painel Administrativo RH)
+
+Para gerenciar colaboradores, cadastrar holerites e emitir férias:
 ```bash
-# Construir a imagem Docker
-docker build -t portaldocolaborador .
-
-# Rodar o container na porta 8080
-docker run -d -p 8080:8080 -v $(pwd)/sgp_database.db:/app/sgp_database.db --name portaldocolaborador portaldocolaborador
+python server.py
 ```
-Ou utilizando `docker-compose`:
+Acesse:
+- **Painel Administrativo RH**: [http://localhost:8080](http://localhost:8080)
+- **Portal Local de Testes**: [http://localhost:8080/portal](http://localhost:8080/portal)
+
+### Execução com Docker (Opcional)
 ```bash
 docker-compose up -d
 ```
-
-### Opção 4: Execução Local (Windows / Linux / Mac)
-```bash
-# Iniciar o servidor
-python server.py
-```
-Acesse no seu navegador:
-- **Painel Administrativo**: [http://localhost:8080](http://localhost:8080)
-- **Portal do Colaborador**: [http://localhost:8080/portal](http://localhost:8080/portal)
 
 ---
 

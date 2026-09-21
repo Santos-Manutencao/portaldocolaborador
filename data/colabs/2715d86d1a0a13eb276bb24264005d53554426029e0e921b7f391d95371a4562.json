@@ -1,0 +1,13 @@
+{
+  "id": 87,
+  "matricula": "83",
+  "nome": "EDUARDO LIMA DO NASCIMENTO",
+  "cpf_limpo": "46041412821",
+  "cargo": "MANTENEDOR",
+  "admissao": "2024-09-17",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "dfdff4ad25537ca66e5dc4cee061b19f6ee209428482ae0edaee8f951e64a32a",
+  "contracheques": []
+}

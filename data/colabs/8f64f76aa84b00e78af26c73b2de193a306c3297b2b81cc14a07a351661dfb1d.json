@@ -1,0 +1,13 @@
+{
+  "id": 97,
+  "matricula": "105",
+  "nome": "MARCOS VINICIOS DOS SANTOS PEREIRA",
+  "cpf_limpo": "02284830692",
+  "cargo": "",
+  "admissao": "",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "567b0b7b39d10dfce9509e2c04b95b5a53ce9d8e9179c2df0853b0a39d2eb9b2",
+  "contracheques": []
+}

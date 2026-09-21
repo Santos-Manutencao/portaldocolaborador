@@ -1,0 +1,13 @@
+{
+  "id": 106,
+  "matricula": "118",
+  "nome": "AIRON RIBEIRO DOS SANTOS",
+  "cpf_limpo": "08124410526",
+  "cargo": "MANTENEDOR",
+  "admissao": "2025-07-04",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "1d12d7fbf6610eb5645171249390a7be15d148393869728de55a0375ea6cf5d3",
+  "contracheques": []
+}

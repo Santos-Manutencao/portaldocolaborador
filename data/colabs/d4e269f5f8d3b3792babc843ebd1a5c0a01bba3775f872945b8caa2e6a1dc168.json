@@ -1,0 +1,13 @@
+{
+  "id": 82,
+  "matricula": "150",
+  "nome": "ANDRÉ ARTUR DE FREITAS MOTA",
+  "cpf_limpo": "19272267676",
+  "cargo": "",
+  "admissao": "",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "54ecc03a7608321b7df637771c5ac96d067830ff971a613217866cdf8738d661",
+  "contracheques": []
+}

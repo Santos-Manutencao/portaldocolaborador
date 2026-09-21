@@ -1,0 +1,66 @@
+{
+  "id": 9,
+  "matricula": "216",
+  "nome": "CARLOS BEGUINHO DE MELO",
+  "cpf_limpo": "65964829600",
+  "cargo": "SERVIÇOS GERAIS",
+  "admissao": "2026-05-04",
+  "local_trabalho": "ITAMINAS",
+  "foto_path": "UPLOADS/FOTOS/foto_9_1789668607.jpg",
+  "senha_hash": null,
+  "default_senha_hash": "a40d4e36c6b3e9491b1aa52cf0e900c071350c9fb4eb112574af312921925b4f",
+  "contracheques": [
+    {
+      "id": 744,
+      "ano": 2026,
+      "mes": 8,
+      "competencia": "Agosto / 2026",
+      "nome_arquivo": "HOLERITE 08_2026_CARLOS.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 8170,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:16:01",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/9/2026_08_d70634_HOLERITE_08_2026_CARLOS.pdf"
+    },
+    {
+      "id": 663,
+      "ano": 2026,
+      "mes": 7,
+      "competencia": "Julho / 2026",
+      "nome_arquivo": "HOLERITE_07_2026_CARLOS.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5868,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:14:17",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/9/2026_07_4a2cd6_HOLERITE_07_2026_CARLOS.pdf"
+    },
+    {
+      "id": 582,
+      "ano": 2026,
+      "mes": 6,
+      "competencia": "Junho / 2026",
+      "nome_arquivo": "HOLERITE 06_2026-CARLOS.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5854,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:12:11",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/9/2026_06_c9178d_HOLERITE_06_2026-CARLOS.pdf"
+    },
+    {
+      "id": 497,
+      "ano": 2026,
+      "mes": 5,
+      "competencia": "Maio / 2026",
+      "nome_arquivo": "HOLERITE 05_2026-CARLOS.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5868,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:10:32",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/9/2026_05_c82a10_HOLERITE_05_2026-CARLOS.pdf"
+    }
+  ]
+}

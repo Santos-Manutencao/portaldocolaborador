@@ -1,0 +1,66 @@
+{
+  "id": 138,
+  "matricula": "183",
+  "nome": "NATHAN FILIPE SANTOS SAMPAIO",
+  "cpf_limpo": "10540961639",
+  "cargo": "AUXILIAR DE SERVICOS DE DESCARGA",
+  "admissao": "2025-10-14",
+  "local_trabalho": "",
+  "foto_path": "FOTOS CRACHAS/FOTOS-CRACHA-14-10-2025/NATHAN FILIPE SANTOS SAMPAIO.jpeg",
+  "senha_hash": null,
+  "default_senha_hash": "64e3803693d696cce5f13fdb3f064080581f9d4d9871e2f3731c697059fca690",
+  "contracheques": [
+    {
+      "id": 925,
+      "ano": 2026,
+      "mes": 1,
+      "competencia": "Janeiro / 2026",
+      "nome_arquivo": "HOLERITE 01_2026-NATHAN.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5898,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 13:38:58",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/138/2026_01_41a180_HOLERITE_01_2026-NATHAN.pdf"
+    },
+    {
+      "id": 953,
+      "ano": 2025,
+      "mes": 12,
+      "competencia": "Dezembro / 2025",
+      "nome_arquivo": "HOLERITE 12 2025 NATHAN.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 6099,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 13:41:51",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/138/2025_12_738259_HOLERITE_12_2025_NATHAN.pdf"
+    },
+    {
+      "id": 1086,
+      "ano": 2025,
+      "mes": 11,
+      "competencia": "Novembro / 2025",
+      "nome_arquivo": "HOLERITES 11 2025- NATHAN.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5679,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 14:10:15",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/138/2025_11_99995e_HOLERITES_11_2025-_NATHAN.pdf"
+    },
+    {
+      "id": 1181,
+      "ano": 2025,
+      "mes": 10,
+      "competencia": "Outubro / 2025",
+      "nome_arquivo": "HOLERITES 10 2025-NATHAN.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 120995,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 14:14:39",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/138/2025_10_956c74_HOLERITES_10_2025-NATHAN.pdf"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": 117,
+  "matricula": "169",
+  "nome": "LUCAS AMORIM FERREIRA",
+  "cpf_limpo": "05805552167",
+  "cargo": "AUXILIAR DE SERVICOS DE DESCARGA",
+  "admissao": "2025-09-10",
+  "local_trabalho": "",
+  "foto_path": "FOTOS CRACHAS/LUCAS AMORIM FERREIRA.jpeg",
+  "senha_hash": null,
+  "default_senha_hash": "83a5a2a2ac7f22bc330d264db5373ec600fb6bfef42e9a3392038e9a6444e1d4",
+  "contracheques": [
+    {
+      "id": 1251,
+      "ano": 2025,
+      "mes": 9,
+      "competencia": "Setembro / 2025",
+      "nome_arquivo": "HOLERITES 09 2025-LUCAS AMORIM.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 199979,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 18:41:23",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/117/2025_09_0c998d_HOLERITES_09_2025-LUCAS_AMORIM.pdf"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": 124,
+  "matricula": "179",
+  "nome": "PASCOAL SENA DOS SANTOS",
+  "cpf_limpo": "02078601578",
+  "cargo": "MANTENEDOR",
+  "admissao": "2025-10-07",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "0f7f2e973ead71a4146c65a5082ec3af11ebf6fdf0cef2dd69970508247ad904",
+  "contracheques": [
+    {
+      "id": 1011,
+      "ano": 2025,
+      "mes": 11,
+      "competencia": "Novembro / 2025",
+      "nome_arquivo": "HOLERITES 11 2025- PASCOAL.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5497,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 13:53:08",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/124/2025_11_0d8a81_HOLERITES_11_2025-_PASCOAL.pdf"
+    },
+    {
+      "id": 1140,
+      "ano": 2025,
+      "mes": 10,
+      "competencia": "Outubro / 2025",
+      "nome_arquivo": "HOLERITES 10 2025-PASCOAL.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 200011,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 14:12:01",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/124/2025_10_7f6def_HOLERITES_10_2025-PASCOAL.pdf"
+    }
+  ]
+}

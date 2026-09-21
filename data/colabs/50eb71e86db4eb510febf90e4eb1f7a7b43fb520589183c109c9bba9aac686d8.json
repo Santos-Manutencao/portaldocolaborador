@@ -1,0 +1,92 @@
+{
+  "id": 146,
+  "matricula": "178",
+  "nome": "FELIPE HENRIQUE PARREIRA DOS SANTOS",
+  "cpf_limpo": "11169140696",
+  "cargo": "MANTENEDOR",
+  "admissao": "2025-10-07",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "655d35a62b3ad3c3e651e36b206383f36fe0f5a391fb86cf1c104fc7c6ad9fca",
+  "contracheques": [
+    {
+      "id": 509,
+      "ano": 2026,
+      "mes": 5,
+      "competencia": "Maio / 2026",
+      "nome_arquivo": "HOLERITE 05_2026-FELIPE.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 6356,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:10:35",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/146/2026_05_824ac4_HOLERITE_05_2026-FELIPE.pdf"
+    },
+    {
+      "id": 426,
+      "ano": 2026,
+      "mes": 4,
+      "competencia": "Abril / 2026",
+      "nome_arquivo": "HOLERITE 04_2025-FELIPE.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 409641,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:08:00",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/146/2026_04_6107a5_HOLERITE_04_2025-FELIPE.pdf"
+    },
+    {
+      "id": 381,
+      "ano": 2026,
+      "mes": 3,
+      "competencia": "Março / 2026",
+      "nome_arquivo": "HOLERITE 03_2026-FELIPE.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5620,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:05:56",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/146/2026_03_70093e_HOLERITE_03_2026-FELIPE.pdf"
+    },
+    {
+      "id": 822,
+      "ano": 2025,
+      "mes": 12,
+      "competencia": "Dezembro / 2025",
+      "nome_arquivo": "HOLERITE 12 2025 FELIPE HENRIQUE.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5633,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 13:32:22",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/146/2025_12_a0fcd7_HOLERITE_12_2025_FELIPE_HENRIQUE.pdf"
+    },
+    {
+      "id": 992,
+      "ano": 2025,
+      "mes": 11,
+      "competencia": "Novembro / 2025",
+      "nome_arquivo": "HOLERITES 11 2025-  FELIPE HENRIQUE.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5619,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 13:52:57",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/146/2025_11_b0f5ee_HOLERITES_11_2025-__FELIPE_HENRIQUE.pdf"
+    },
+    {
+      "id": 1126,
+      "ano": 2025,
+      "mes": 10,
+      "competencia": "Outubro / 2025",
+      "nome_arquivo": "HOLERITES 10 2025-FELIPE HENRIQUE.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 200087,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 14:11:57",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/146/2025_10_46e024_HOLERITES_10_2025-FELIPE_HENRIQUE.pdf"
+    }
+  ]
+}

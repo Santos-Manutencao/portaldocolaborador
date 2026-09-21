@@ -1,0 +1,27 @@
+{
+  "id": 108,
+  "matricula": "119",
+  "nome": "GERISVALDO DA SILVA MELO",
+  "cpf_limpo": "07275284596",
+  "cargo": "MANTENEDOR",
+  "admissao": "2025-07-04",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "75217b7daf8b0bac088991f2c232cf4cef647cf335c3fb25c478df7a0013b2a7",
+  "contracheques": [
+    {
+      "id": 1317,
+      "ano": 2025,
+      "mes": 8,
+      "competencia": "Agosto / 2025",
+      "nome_arquivo": "08-2025-GERISVALDO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5500,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 18:44:39",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/108/2025_08_65175c_08-2025-GERISVALDO.pdf"
+    }
+  ]
+}

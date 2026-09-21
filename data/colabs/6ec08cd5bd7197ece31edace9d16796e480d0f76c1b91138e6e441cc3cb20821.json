@@ -1,0 +1,27 @@
+{
+  "id": 37,
+  "matricula": "221",
+  "nome": "JOSE GERALDO DOS SANTOS HENRIQUETA",
+  "cpf_limpo": "04285886626",
+  "cargo": "AUXILIAR DE SERVICOS DE DESCARGA",
+  "admissao": "2026-08-03",
+  "local_trabalho": "CDA",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "99e50768717eb9ffc493ed05a019863b3950bdacefd9d843b5888468e5895c27",
+  "contracheques": [
+    {
+      "id": 774,
+      "ano": 2026,
+      "mes": 8,
+      "competencia": "Agosto / 2026",
+      "nome_arquivo": "HOLERITE 08_2026_JOSE GERALDO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 8017,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:16:11",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/37/2026_08_ff6bd7_HOLERITE_08_2026_JOSE_GERALDO.pdf"
+    }
+  ]
+}

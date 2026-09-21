@@ -1,0 +1,79 @@
+{
+  "id": 57,
+  "matricula": "215",
+  "nome": "PAULO HENRIQUE DE ARAUJO MENEZES",
+  "cpf_limpo": "86582759574",
+  "cargo": "MANTENEDOR",
+  "admissao": "2026-04-01",
+  "local_trabalho": "TCS",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "3459b5fecd9df2514fd26d205b243a1255f94d9c9eb7705f9fa5e642bf03e12f",
+  "contracheques": [
+    {
+      "id": 794,
+      "ano": 2026,
+      "mes": 8,
+      "competencia": "Agosto / 2026",
+      "nome_arquivo": "HOLERITE 08_2026_PAULO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 8247,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:16:16",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/57/2026_08_002915_HOLERITE_08_2026_PAULO.pdf"
+    },
+    {
+      "id": 711,
+      "ano": 2026,
+      "mes": 7,
+      "competencia": "Julho / 2026",
+      "nome_arquivo": "HOLERITE_07_2026_PAULO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 6242,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:14:30",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/57/2026_07_ccd58d_HOLERITE_07_2026_PAULO.pdf"
+    },
+    {
+      "id": 631,
+      "ano": 2026,
+      "mes": 6,
+      "competencia": "Junho / 2026",
+      "nome_arquivo": "HOLERITE 06_2026-PAULO HENRIQUE.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5855,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:12:30",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/57/2026_06_15dc03_HOLERITE_06_2026-PAULO_HENRIQUE.pdf"
+    },
+    {
+      "id": 550,
+      "ano": 2026,
+      "mes": 5,
+      "competencia": "Maio / 2026",
+      "nome_arquivo": "HOLERITE 05_2026-PAULO HENRIQUE.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 352559,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:10:43",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/57/2026_05_a9f556_HOLERITE_05_2026-PAULO_HENRIQUE.pdf"
+    },
+    {
+      "id": 466,
+      "ano": 2026,
+      "mes": 4,
+      "competencia": "Abril / 2026",
+      "nome_arquivo": "HOLERITE 04_2025-PAULO_HENRIQUE.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 6285,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:08:11",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/57/2026_04_9833e8_HOLERITE_04_2025-PAULO_HENRIQUE.pdf"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": 115,
+  "matricula": "112",
+  "nome": "LANDERLEI DE ASSIS DOS SANTOS",
+  "cpf_limpo": "10537005633",
+  "cargo": "OPERADOR DE MAQUINAS",
+  "admissao": "2025-05-26",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "fa8fcbdc2a33aca68221f765cef4f798e08db9e8f26d4694b975d2339e2e83f2",
+  "contracheques": [
+    {
+      "id": 1226,
+      "ano": 2025,
+      "mes": 9,
+      "competencia": "Setembro / 2025",
+      "nome_arquivo": "HOLERITES 09 2025-LANDIRLEI.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 199579,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 18:40:20",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/115/2025_09_e8d54b_HOLERITES_09_2025-LANDIRLEI.pdf"
+    },
+    {
+      "id": 1274,
+      "ano": 2025,
+      "mes": 8,
+      "competencia": "Agosto / 2025",
+      "nome_arquivo": "08_2025_LANDIRLEI.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5307,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 18:42:01",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/115/2025_08_100a5e_08_2025_LANDIRLEI.pdf"
+    }
+  ]
+}

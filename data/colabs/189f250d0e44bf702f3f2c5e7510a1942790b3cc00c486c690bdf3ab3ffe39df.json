@@ -1,0 +1,27 @@
+{
+  "id": 148,
+  "matricula": "203",
+  "nome": "IGOR SAMUEL COELHO DOS SANTOS",
+  "cpf_limpo": "13668915628",
+  "cargo": "AUXILIAR DE SERVICOS DE DESCARGA",
+  "admissao": "2026-01-21",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "74d5a765e2d52b564c547c20f278aaffc63c4083a19f8d7caf54655464478965",
+  "contracheques": [
+    {
+      "id": 908,
+      "ano": 2026,
+      "mes": 1,
+      "competencia": "Janeiro / 2026",
+      "nome_arquivo": "HOLERITE 01_2026-IGOR SAMUEL.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5419,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 13:38:55",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/148/2026_01_bcf1f3_HOLERITE_01_2026-IGOR_SAMUEL.pdf"
+    }
+  ]
+}

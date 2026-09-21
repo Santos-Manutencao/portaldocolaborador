@@ -1,0 +1,53 @@
+{
+  "id": 121,
+  "matricula": "160",
+  "nome": "ROMULO RICHARD GONCALVES CALIXTO",
+  "cpf_limpo": "14006541651",
+  "cargo": "AUXILIAR DE SERVICOS DE DESCARGA",
+  "admissao": "2025-08-27",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "eaf92808aae4489e68f6922bead661135af68cf6b8d001e30d9c1c3563ad7b5d",
+  "contracheques": [
+    {
+      "id": 1187,
+      "ano": 2025,
+      "mes": 10,
+      "competencia": "Outubro / 2025",
+      "nome_arquivo": "HOLERITES 10 2025-ROMULO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 200378,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 14:14:40",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/121/2025_10_65d92e_HOLERITES_10_2025-ROMULO.pdf"
+    },
+    {
+      "id": 1260,
+      "ano": 2025,
+      "mes": 9,
+      "competencia": "Setembro / 2025",
+      "nome_arquivo": "HOLERITES 09 2025-ROMULO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 200000,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 18:41:25",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/121/2025_09_01b054_HOLERITES_09_2025-ROMULO.pdf"
+    },
+    {
+      "id": 1300,
+      "ano": 2025,
+      "mes": 8,
+      "competencia": "Agosto / 2025",
+      "nome_arquivo": "08_2025_ROMULO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5330,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 18:43:24",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/121/2025_08_811c49_08_2025_ROMULO.pdf"
+    }
+  ]
+}

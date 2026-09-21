@@ -1,0 +1,27 @@
+{
+  "id": 7,
+  "matricula": "220",
+  "nome": "ANTONIO FERREIRA CARDOSO",
+  "cpf_limpo": "03029234622",
+  "cargo": "AUXILIAR DE SERVICOS DE DESCARGA",
+  "admissao": "2026-08-03",
+  "local_trabalho": "CDA",
+  "foto_path": "",
+  "senha_hash": null,
+  "default_senha_hash": "e2034682038f98ec8e7492fab7f1009f3f57f4d19fad45b596cac25fb588001f",
+  "contracheques": [
+    {
+      "id": 742,
+      "ano": 2026,
+      "mes": 8,
+      "competencia": "Agosto / 2026",
+      "nome_arquivo": "HOLERITE 08_2026_ANTONIO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 8007,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:16:01",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/7/2026_08_72bea9_HOLERITE_08_2026_ANTONIO.pdf"
+    }
+  ]
+}

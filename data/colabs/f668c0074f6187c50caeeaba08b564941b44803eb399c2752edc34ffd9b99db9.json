@@ -1,0 +1,53 @@
+{
+  "id": 126,
+  "matricula": "165",
+  "nome": "CRISTIANO MARCUS DZIEUNIK",
+  "cpf_limpo": "10305208799",
+  "cargo": "MECANICO",
+  "admissao": "2025-09-10",
+  "local_trabalho": "",
+  "foto_path": "FOTOS CRACHAS/CRISTIANO MARCOS DZIEUNIK.jpeg",
+  "senha_hash": null,
+  "default_senha_hash": "51c4b50e8ac9feb5cd9c10c3d7ab4d567a547727a48fcd16d37979e5758baf98",
+  "contracheques": [
+    {
+      "id": 1109,
+      "ano": 2025,
+      "mes": 11,
+      "competencia": "Novembro / 2025",
+      "nome_arquivo": "HOLERITES 11 2025- CRISTIANO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5909,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 14:10:18",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/126/2025_11_a8ff57_HOLERITES_11_2025-_CRISTIANO.pdf"
+    },
+    {
+      "id": 1158,
+      "ano": 2025,
+      "mes": 10,
+      "competencia": "Outubro / 2025",
+      "nome_arquivo": "HOLERITES 10 2025-CRISTIANO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 200426,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 14:14:31",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/126/2025_10_b62587_HOLERITES_10_2025-CRISTIANO.pdf"
+    },
+    {
+      "id": 1234,
+      "ano": 2025,
+      "mes": 9,
+      "competencia": "Setembro / 2025",
+      "nome_arquivo": "HOLERITES 09 2025-CRISTIANO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 199956,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 18:41:20",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/126/2025_09_ad1a02_HOLERITES_09_2025-CRISTIANO.pdf"
+    }
+  ]
+}

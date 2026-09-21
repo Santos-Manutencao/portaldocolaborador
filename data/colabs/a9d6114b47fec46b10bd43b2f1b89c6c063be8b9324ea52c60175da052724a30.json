@@ -1,0 +1,13 @@
+{
+  "id": 130,
+  "matricula": "197",
+  "nome": "ERNESIO RIBEIRO",
+  "cpf_limpo": "95540032691",
+  "cargo": "SERVIÇOS GERAIS",
+  "admissao": "2025-12-16",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "76df3d920aa1bcc468ec7b6bf535755ac9abeed8d3aee2278ff55ec655aac147",
+  "contracheques": []
+}

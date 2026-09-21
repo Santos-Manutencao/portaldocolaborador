@@ -1,0 +1,40 @@
+{
+  "id": 129,
+  "matricula": "175",
+  "nome": "ARLINDO APARECIDO TEIXEIRA",
+  "cpf_limpo": "06837150626",
+  "cargo": "AUXILIAR DE SERVICOS DE DESCARGA",
+  "admissao": "2025-09-18",
+  "local_trabalho": "",
+  "foto_path": "FOTOS CRACHAS/FOTOS-CRACHA-14-10-2025/ARLINDO APARECIDO TEIXEIRA.jpeg",
+  "senha_hash": null,
+  "default_senha_hash": "c436f311fdf5efa38154fc8929024bdfbf12181b52b57ae4bb3ff38857601c7c",
+  "contracheques": [
+    {
+      "id": 1106,
+      "ano": 2025,
+      "mes": 11,
+      "competencia": "Novembro / 2025",
+      "nome_arquivo": "HOLERITES 11 2025- ARLINDO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5781,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 14:10:18",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/129/2025_11_d02ec1_HOLERITES_11_2025-_ARLINDO.pdf"
+    },
+    {
+      "id": 1155,
+      "ano": 2025,
+      "mes": 10,
+      "competencia": "Outubro / 2025",
+      "nome_arquivo": "HOLERITES 10 2025-ARLINDO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 200003,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 14:14:30",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/129/2025_10_e5fc69_HOLERITES_10_2025-ARLINDO.pdf"
+    }
+  ]
+}

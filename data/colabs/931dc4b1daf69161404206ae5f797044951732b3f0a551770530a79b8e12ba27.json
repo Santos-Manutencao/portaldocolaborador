@@ -1,0 +1,27 @@
+{
+  "id": 116,
+  "matricula": "164",
+  "nome": "ALEX RIBEIRO DA SILVA",
+  "cpf_limpo": "10222151676",
+  "cargo": "AUXILIAR DE SERVICOS DE DESCARGA",
+  "admissao": "2025-09-10",
+  "local_trabalho": "",
+  "foto_path": "FOTOS CRACHAS/ALEX RIBEIRO DA SILVA.jpeg",
+  "senha_hash": null,
+  "default_senha_hash": "33298b3a95ed088f823e744f2c03416874abcab26e9555f9d3bd6eeddee12fd5",
+  "contracheques": [
+    {
+      "id": 1228,
+      "ano": 2025,
+      "mes": 9,
+      "competencia": "Setembro / 2025",
+      "nome_arquivo": "HOLERITES 09 2025-ALEX.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 199795,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 18:41:19",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/116/2025_09_523108_HOLERITES_09_2025-ALEX.pdf"
+    }
+  ]
+}

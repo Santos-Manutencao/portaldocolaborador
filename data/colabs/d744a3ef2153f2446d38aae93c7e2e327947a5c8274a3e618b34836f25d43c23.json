@@ -1,0 +1,13 @@
+{
+  "id": 92,
+  "matricula": "142",
+  "nome": "JOSE HENRIQUE SANTOS DE SOUZA",
+  "cpf_limpo": "07911934622",
+  "cargo": "",
+  "admissao": "",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "cb5ded312869c41d066681051d5da2869ebb23cee8d6dca21825ba295d3af597",
+  "contracheques": []
+}

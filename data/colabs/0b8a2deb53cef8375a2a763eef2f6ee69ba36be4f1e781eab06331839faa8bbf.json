@@ -1,0 +1,13 @@
+{
+  "id": 98,
+  "matricula": "116",
+  "nome": "MICHAEL FRANCIS DO CARMO FREITAS",
+  "cpf_limpo": "07251540630",
+  "cargo": "ARMADOR",
+  "admissao": "2025-06-24",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "045f591a3c346655da3fbe75542c4c232061737fe14ce27af2c77e4be85b076c",
+  "contracheques": []
+}

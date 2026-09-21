@@ -1,0 +1,79 @@
+{
+  "id": 142,
+  "matricula": "191",
+  "nome": "FAGNER SILVIO DE SALES",
+  "cpf_limpo": "06817471613",
+  "cargo": "MANTENEDOR",
+  "admissao": "2025-11-17",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "5565a8012746f1813aa01eeb161bc4abe38e6a91698a3aa38288e0aec7231c0b",
+  "contracheques": [
+    {
+      "id": 380,
+      "ano": 2026,
+      "mes": 3,
+      "competencia": "Março / 2026",
+      "nome_arquivo": "HOLERITE 03_2026-FAGNER.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 6064,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:05:56",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/142/2026_03_27c801_HOLERITE_03_2026-FAGNER.pdf"
+    },
+    {
+      "id": 259,
+      "ano": 2026,
+      "mes": 2,
+      "competencia": "Fevereiro / 2026",
+      "nome_arquivo": "HOLERITE 02-2026-FAGNER.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5868,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:03:14",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/142/2026_02_3bfe6e_HOLERITE_02-2026-FAGNER.pdf"
+    },
+    {
+      "id": 166,
+      "ano": 2026,
+      "mes": 1,
+      "competencia": "Janeiro / 2026",
+      "nome_arquivo": "HOLERITE 01_2026-FAGNER.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5911,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:00:48",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/142/2026_01_16d6e6_HOLERITE_01_2026-FAGNER.pdf"
+    },
+    {
+      "id": 821,
+      "ano": 2025,
+      "mes": 12,
+      "competencia": "Dezembro / 2025",
+      "nome_arquivo": "HOLERITE 12 2025 FAGNER.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 6245,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 13:32:22",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/142/2025_12_958505_HOLERITE_12_2025_FAGNER.pdf"
+    },
+    {
+      "id": 996,
+      "ano": 2025,
+      "mes": 11,
+      "competencia": "Novembro / 2025",
+      "nome_arquivo": "HOLERITES 11 2025- FAGNER.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5390,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 13:52:59",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/142/2025_11_c6be97_HOLERITES_11_2025-_FAGNER.pdf"
+    }
+  ]
+}

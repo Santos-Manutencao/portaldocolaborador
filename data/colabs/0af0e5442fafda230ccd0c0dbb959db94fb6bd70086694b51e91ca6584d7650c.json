@@ -1,0 +1,13 @@
+{
+  "id": 83,
+  "matricula": "103",
+  "nome": "APARECIDO ALVES CORREA",
+  "cpf_limpo": "0762728670",
+  "cargo": "ARMADOR",
+  "admissao": "2025-04-02",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "cd2e0e8b11cd89c4790c1ec9e589cd4a44904ae35b88aea3ee7ea83b1bd83bd1",
+  "contracheques": []
+}

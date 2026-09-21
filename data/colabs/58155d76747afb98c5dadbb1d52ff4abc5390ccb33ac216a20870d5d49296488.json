@@ -1,0 +1,53 @@
+{
+  "id": 119,
+  "matricula": "141",
+  "nome": "GUSTAVO GOMES DA SILVA",
+  "cpf_limpo": "05306229719",
+  "cargo": "MOTORISTA",
+  "admissao": "2025-08-12",
+  "local_trabalho": "",
+  "foto_path": "FOTOS CRACHAS/GUSTAVO GOMES DA SILVA.jpeg",
+  "senha_hash": null,
+  "default_senha_hash": "df898c5ce3f3287d973d7bca4e7efe0465cece27e8cfb6b2cd77509380cae141",
+  "contracheques": [
+    {
+      "id": 1129,
+      "ano": 2025,
+      "mes": 10,
+      "competencia": "Outubro / 2025",
+      "nome_arquivo": "HOLERITES 10 2025-GUSTAVO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 199907,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 14:11:58",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/119/2025_10_c90dee_HOLERITES_10_2025-GUSTAVO.pdf"
+    },
+    {
+      "id": 1206,
+      "ano": 2025,
+      "mes": 9,
+      "competencia": "Setembro / 2025",
+      "nome_arquivo": "HOLERITES 09 2025-GUSTAVO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 199909,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 18:39:35",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/119/2025_09_6f0449_HOLERITES_09_2025-GUSTAVO.pdf"
+    },
+    {
+      "id": 1319,
+      "ano": 2025,
+      "mes": 8,
+      "competencia": "Agosto / 2025",
+      "nome_arquivo": "08-2025-GUSTAVO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5506,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 18:44:39",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/119/2025_08_297358_08-2025-GUSTAVO.pdf"
+    }
+  ]
+}

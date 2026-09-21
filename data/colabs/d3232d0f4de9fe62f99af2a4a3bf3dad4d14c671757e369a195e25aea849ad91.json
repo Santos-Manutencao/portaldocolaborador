@@ -1,0 +1,79 @@
+{
+  "id": 147,
+  "matricula": "202",
+  "nome": "EDERSON ARTUR MODESTO COSTA",
+  "cpf_limpo": "14509316690",
+  "cargo": "AUXILIAR DE SERVICOS DE DESCARGA",
+  "admissao": "2026-01-21",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "8dbad832e8b966e6f497fec0f8d08a00b611ba41bd6d6a7078d89ca5e40f56ca",
+  "contracheques": [
+    {
+      "id": 503,
+      "ano": 2026,
+      "mes": 5,
+      "competencia": "Maio / 2026",
+      "nome_arquivo": "HOLERITE 05_2026-EDERSON.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 6274,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:10:33",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/147/2026_05_2a53f3_HOLERITE_05_2026-EDERSON.pdf"
+    },
+    {
+      "id": 419,
+      "ano": 2026,
+      "mes": 4,
+      "competencia": "Abril / 2026",
+      "nome_arquivo": "HOLERITE 04_2025-EDERSON.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 6212,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:07:58",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/147/2026_04_c97295_HOLERITE_04_2025-EDERSON.pdf"
+    },
+    {
+      "id": 333,
+      "ano": 2026,
+      "mes": 3,
+      "competencia": "Março / 2026",
+      "nome_arquivo": "HOLERITE 03_2026-EDERSON.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5909,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:04:58",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/147/2026_03_ff60dd_HOLERITE_03_2026-EDERSON.pdf"
+    },
+    {
+      "id": 252,
+      "ano": 2026,
+      "mes": 2,
+      "competencia": "Fevereiro / 2026",
+      "nome_arquivo": "HOLERITE 02-2026-EDERSON.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5651,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:03:12",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/147/2026_02_c98a9c_HOLERITE_02-2026-EDERSON.pdf"
+    },
+    {
+      "id": 900,
+      "ano": 2026,
+      "mes": 1,
+      "competencia": "Janeiro / 2026",
+      "nome_arquivo": "HOLERITE 01_2026-EDERSON.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5418,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-17 13:38:50",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/147/2026_01_7a1c65_HOLERITE_01_2026-EDERSON.pdf"
+    }
+  ]
+}

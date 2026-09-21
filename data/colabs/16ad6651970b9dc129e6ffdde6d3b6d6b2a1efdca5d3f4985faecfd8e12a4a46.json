@@ -1,0 +1,13 @@
+{
+  "id": 131,
+  "matricula": "198",
+  "nome": "IURY HENRIQUE DAMAS",
+  "cpf_limpo": "14607833606",
+  "cargo": "SERVIÇOS GERAIS",
+  "admissao": "2025-12-16",
+  "local_trabalho": "",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "f5c7cbe44889d98f2cf8107b7b5ecbf59c0195fd506cd91cf751e6d795074eda",
+  "contracheques": []
+}

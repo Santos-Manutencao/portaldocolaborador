@@ -1,0 +1,92 @@
+{
+  "id": 80,
+  "matricula": "213",
+  "nome": "WAGNER MARCELINO PEREIRA",
+  "cpf_limpo": "06259459645",
+  "cargo": "MOTORISTA",
+  "admissao": "2026-03-19",
+  "local_trabalho": "TSA",
+  "foto_path": "UPLOADS/FOTOS/foto_80_1789668895.jpg",
+  "senha_hash": null,
+  "default_senha_hash": "289a836beac1bcebe0a616ab3754b9028123415d9660e582b535b510a1eed89f",
+  "contracheques": [
+    {
+      "id": 815,
+      "ano": 2026,
+      "mes": 8,
+      "competencia": "Agosto / 2026",
+      "nome_arquivo": "HOLERITE 08_2026_WAGNER MARCELINO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 7805,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:16:21",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/80/2026_08_ef6fa6_HOLERITE_08_2026_WAGNER_MARCELINO.pdf"
+    },
+    {
+      "id": 734,
+      "ano": 2026,
+      "mes": 7,
+      "competencia": "Julho / 2026",
+      "nome_arquivo": "HOLERITE_07_2026_WAGNER MARCELINO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5492,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:14:37",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/80/2026_07_762e2b_HOLERITE_07_2026_WAGNER_MARCELINO.pdf"
+    },
+    {
+      "id": 655,
+      "ano": 2026,
+      "mes": 6,
+      "competencia": "Junho / 2026",
+      "nome_arquivo": "HOLERITE 06_2026-WAGNER MARCELINO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5493,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:12:38",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/80/2026_06_c9992b_HOLERITE_06_2026-WAGNER_MARCELINO.pdf"
+    },
+    {
+      "id": 574,
+      "ano": 2026,
+      "mes": 5,
+      "competencia": "Maio / 2026",
+      "nome_arquivo": "HOLERITE 05_2026-WAGNER MARCELINO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5492,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:10:48",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/80/2026_05_7a79cc_HOLERITE_05_2026-WAGNER_MARCELINO.pdf"
+    },
+    {
+      "id": 489,
+      "ano": 2026,
+      "mes": 4,
+      "competencia": "Abril / 2026",
+      "nome_arquivo": "HOLERITE 04_2026-WAGNER MARCELINO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5493,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:08:18",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/80/2026_04_64b009_HOLERITE_04_2026-WAGNER_MARCELINO.pdf"
+    },
+    {
+      "id": 405,
+      "ano": 2026,
+      "mes": 3,
+      "competencia": "Março / 2026",
+      "nome_arquivo": "HOLERITE 03_2026-WAGNER MARCELINO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5394,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:06:01",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/80/2026_03_ae4b9a_HOLERITE_03_2026-WAGNER_MARCELINO.pdf"
+    }
+  ]
+}

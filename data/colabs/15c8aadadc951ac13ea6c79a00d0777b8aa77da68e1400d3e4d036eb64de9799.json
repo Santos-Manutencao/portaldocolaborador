@@ -1,0 +1,40 @@
+{
+  "id": 45,
+  "matricula": "218",
+  "nome": "LUIS MANUEL GARRIDO PARRA",
+  "cpf_limpo": "06555185767",
+  "cargo": "MANTENEDOR",
+  "admissao": "2026-07-02",
+  "local_trabalho": "ITAMINAS",
+  "foto_path": null,
+  "senha_hash": null,
+  "default_senha_hash": "3050b0245d3ad50f54f8601e2244f27f60a9bd99679713f78669d6d383d6cdd6",
+  "contracheques": [
+    {
+      "id": 782,
+      "ano": 2026,
+      "mes": 8,
+      "competencia": "Agosto / 2026",
+      "nome_arquivo": "HOLERITE 08_2026_LUIS MANUEL.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 8027,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:16:14",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/45/2026_08_6f6a32_HOLERITE_08_2026_LUIS_MANUEL.pdf"
+    },
+    {
+      "id": 699,
+      "ano": 2026,
+      "mes": 7,
+      "competencia": "Julho / 2026",
+      "nome_arquivo": "HOLERITE_07_2026_LUIS MANUEL.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5515,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-16 15:14:27",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/45/2026_07_bc16c0_HOLERITE_07_2026_LUIS_MANUEL.pdf"
+    }
+  ]
+}
