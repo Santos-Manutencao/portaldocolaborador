@@ -6,7 +6,7 @@
   "cargo": "SUPERVISOR",
   "admissao": "2021-08-02",
   "local_trabalho": "ADM",
-  "foto_path": null,
+  "foto_path": "UPLOADS/FOTOS/foto_41_1790002523.jpg",
   "senha_hash": null,
   "default_senha_hash": "a3f7bd3bc988e8ef9f91f981bf395ef349a1f5e00672696a58a7599d273d2377",
   "contracheques": [

@@ -6,7 +6,7 @@
   "cargo": "MANTENEDOR",
   "admissao": "2025-10-29",
   "local_trabalho": "ITAMINAS",
-  "foto_path": null,
+  "foto_path": "UPLOADS/FOTOS/foto_62_1790007545.png",
   "senha_hash": null,
   "default_senha_hash": "387ff65f323408c45f0d3d7ddde07bd3428fbb3ff89df87a2099d921af5b360a",
   "contracheques": [

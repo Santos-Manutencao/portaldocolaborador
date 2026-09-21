@@ -6,7 +6,7 @@
   "cargo": "MANTENEDOR",
   "admissao": "2025-11-11",
   "local_trabalho": "TCS",
-  "foto_path": null,
+  "foto_path": "UPLOADS/FOTOS/foto_44_1790007312.png",
   "senha_hash": null,
   "default_senha_hash": "a7b6f37b5636c998d34c3ce548e361bd12ed80c41efd07b67fa941d3ca707215",
   "contracheques": [
