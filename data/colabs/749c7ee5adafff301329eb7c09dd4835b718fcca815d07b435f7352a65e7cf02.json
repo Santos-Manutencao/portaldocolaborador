@@ -63,6 +63,19 @@
       "arquivo_url": "UPLOADS/CONTRACHEQUES/142/2025_13_a9a368_ADIANTAMENTO_13_-FAGNER.pdf"
     },
     {
+      "id": 1435,
+      "ano": 2025,
+      "mes": 13,
+      "competencia": "13º Salário / 2025",
+      "nome_arquivo": "SEGUNDA PARCELA 13°-FAGNER.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5405,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-21 14:27:13",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/142/2025_13_ba5fdc_SEGUNDA_PARCELA_13_-FAGNER.pdf"
+    },
+    {
       "id": 821,
       "ano": 2025,
       "mes": 12,

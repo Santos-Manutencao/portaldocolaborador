@@ -76,6 +76,19 @@
       "arquivo_url": "UPLOADS/CONTRACHEQUES/143/2025_13_26475e_ADIANTAMENTO_13_-DIEGO.pdf"
     },
     {
+      "id": 1427,
+      "ano": 2025,
+      "mes": 13,
+      "competencia": "13º Salário / 2025",
+      "nome_arquivo": "SEGUNDA PARCELA 13°-DIEGO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5683,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-21 14:27:12",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/143/2025_13_4f2ce7_SEGUNDA_PARCELA_13_-DIEGO.pdf"
+    },
+    {
       "id": 977,
       "ano": 2025,
       "mes": 12,

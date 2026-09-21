@@ -115,6 +115,19 @@
       "arquivo_url": "UPLOADS/CONTRACHEQUES/44/2026_01_f31993_HOLERITE_01_2026-LUCIO_WAGNE.pdf"
     },
     {
+      "id": 1463,
+      "ano": 2025,
+      "mes": 13,
+      "competencia": "13º Salário / 2025",
+      "nome_arquivo": "SEGUNDA PARCELA 13°-LUCIO WAGNE.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5406,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-21 14:27:16",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/44/2025_13_d4d6b6_SEGUNDA_PARCELA_13_-LUCIO_WAGNE.pdf"
+    },
+    {
       "id": 834,
       "ano": 2025,
       "mes": 12,
