@@ -196,7 +196,7 @@
         <!-- CARDS DE MÉTRICAS -->
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
             <!-- Card 1: Ativos -->
-            <div class="bg-white rounded-xl p-3.5 shadow-sm border border-slate-200 flex items-center justify-between">
+            <div class="bg-white rounded-xl p-3.5 shadow-sm border border-slate-200 flex items-center justify-between cursor-pointer hover:border-emerald-400 hover:shadow-md transition" onclick="filtrarPorAtivos()" title="Filtrar colaboradores ativos">
                 <div>
                     <p class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Ativos</p>
                     <h3 class="text-2xl font-bold text-slate-900 mt-0.5" id="statAtivos">--</h3>
@@ -208,7 +208,7 @@
             </div>
 
             <!-- Card 2: Em Atestado -->
-            <div class="bg-white rounded-xl p-3.5 shadow-sm border border-slate-200 flex items-center justify-between">
+            <div class="bg-white rounded-xl p-3.5 shadow-sm border border-slate-200 flex items-center justify-between cursor-pointer hover:border-amber-400 hover:shadow-md transition" onclick="filtrarPorAtestado()" title="Filtrar colaboradores em atestado médico">
                 <div>
                     <p class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Em Atestado</p>
                     <h3 class="text-2xl font-bold text-amber-600 mt-0.5" id="statAtestados">--</h3>
@@ -247,7 +247,7 @@
             </div>
 
             <!-- Card 5: Desligados -->
-            <div class="bg-white rounded-xl p-3.5 shadow-sm border border-slate-200 flex items-center justify-between">
+            <div class="bg-white rounded-xl p-3.5 shadow-sm border border-slate-200 flex items-center justify-between cursor-pointer hover:border-slate-400 hover:shadow-md transition" onclick="filtrarPorDesligados()" title="Filtrar colaboradores desligados">
                 <div>
                     <p class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Desligados</p>
                     <h3 class="text-2xl font-bold text-slate-600 mt-0.5" id="statDesligados">--</h3>
@@ -300,11 +300,14 @@
                 </div>
 
                 <!-- Filtro Status -->
-                <div class="w-[calc(50%-0.625rem)] sm:w-32">
-                    <select id="filtroStatus" onchange="carregarFuncionarios()" class="w-full py-2 px-3 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium">
-                        <option value="Ativo">Ativos</option>
+                <div class="w-[calc(50%-0.625rem)] sm:w-40">
+                    <select id="filtroStatus" onchange="carregarFuncionarios()" class="w-full py-2 px-3 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium text-slate-700">
+                        <option value="Ativo">Todos Ativos</option>
+                        <option value="Em Operacao">🟢 Em Atividade</option>
+                        <option value="De Ferias">🏖️ De Férias</option>
+                        <option value="Atestado">🏥 Em Atestado</option>
                         <option value="Desligado">Desligados</option>
-                        <option value="Todos">Todos</option>
+                        <option value="Todos">Todos os Status</option>
                     </select>
                 </div>
             </div>

@@ -287,10 +287,33 @@ function filtrarPorFeriasAlertas() {
     if (sel.value === 'VENCIDA') {
         sel.value = 'RISCO_DOBRAR';
     } else if (sel.value === 'RISCO_DOBRAR') {
+        sel.value = 'EM_GOZO';
+    } else if (sel.value === 'EM_GOZO') {
         sel.value = 'Todos';
     } else {
         sel.value = 'VENCIDA';
     }
+    carregarFuncionarios();
+}
+
+function filtrarPorAtivos() {
+    const sel = document.getElementById('filtroStatus');
+    if (!sel) return;
+    sel.value = 'Ativo';
+    carregarFuncionarios();
+}
+
+function filtrarPorAtestado() {
+    const sel = document.getElementById('filtroStatus');
+    if (!sel) return;
+    sel.value = (sel.value === 'Atestado') ? 'Ativo' : 'Atestado';
+    carregarFuncionarios();
+}
+
+function filtrarPorDesligados() {
+    const sel = document.getElementById('filtroStatus');
+    if (!sel) return;
+    sel.value = (sel.value === 'Desligado') ? 'Ativo' : 'Desligado';
     carregarFuncionarios();
 }
 
@@ -337,12 +360,18 @@ async function carregarFuncionarios() {
                 : `<div class="w-10 h-10 rounded-full bg-gradient-to-tr from-slate-200 to-slate-300 text-slate-700 flex items-center justify-center font-bold text-xs shadow-inner">${iniciais}</div>`;
 
             let statusBadge = '';
-            if (f.em_atestado_agora) {
-                statusBadge = `<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-300 animate-pulse"><i class="fa-solid fa-notes-medical mr-1"></i>Atestado</span>`;
-            } else if (f.status === 'Ativo') {
-                statusBadge = `<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold bg-emerald-100 text-emerald-800"><i class="fa-solid fa-circle text-[7px] text-emerald-500 mr-1"></i>Ativo</span>`;
+            const statusDisplay = f.status_display || (f.status === 'Desligado' ? 'Desligado' : (f.em_ferias_agora ? 'De Férias' : (f.em_atestado_agora ? 'Atestado' : 'Ativo')));
+
+            if (statusDisplay === 'Desligado' || f.status === 'Desligado') {
+                statusBadge = `<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold bg-slate-100 text-slate-600 border border-slate-200"><i class="fa-solid fa-user-xmark mr-1 text-[9px] text-slate-400"></i>Desligado</span>`;
+            } else if (statusDisplay === 'De Férias' || f.em_ferias_agora || f.ferias_status === 'EM_GOZO') {
+                const retInfo = f.ferias_retorno_br ? ` title="De férias (Retorno previsto em ${f.ferias_retorno_br})"` : (f.ferias_retorno ? ` title="De férias (Retorno em ${f.ferias_retorno})"` : ' title="Colaborador em período de férias"');
+                statusBadge = `<span${retInfo} class="inline-flex items-center px-2.5 py-0.5 rounded text-[10px] font-bold bg-purple-100 text-purple-800 border border-purple-300 shadow-xs animate-pulse cursor-pointer" onclick="abrirModalFerias(${f.id})"><i class="fa-solid fa-umbrella-beach mr-1 text-purple-600"></i>De Férias</span>`;
+            } else if (statusDisplay === 'Atestado' || f.em_atestado_agora) {
+                const retInfo = f.atestado_retorno_br ? ` title="Atestado médico (Retorno previsto em ${f.atestado_retorno_br})"` : (f.atestado_retorno ? ` title="Atestado médico (Retorno em ${f.atestado_retorno})"` : ' title="Colaborador em afastamento por atestado"');
+                statusBadge = `<span${retInfo} class="inline-flex items-center px-2.5 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-300 shadow-xs animate-pulse cursor-pointer" onclick="abrirModalAtestados(${f.id})"><i class="fa-solid fa-notes-medical mr-1 text-amber-600"></i>Atestado</span>`;
             } else {
-                statusBadge = `<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold bg-slate-100 text-slate-600">Desligado</span>`;
+                statusBadge = `<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold bg-emerald-100 text-emerald-800 border border-emerald-200"><i class="fa-solid fa-circle text-[7px] text-emerald-500 mr-1"></i>Ativo</span>`;
             }
 
             // Férias CLT Badge

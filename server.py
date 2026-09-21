@@ -1024,8 +1024,11 @@ class SGPHandler(BaseHTTPRequestHandler):
                 today_str = datetime.date.today().strftime('%Y-%m-%d')
                 cursor.execute('''
                     SELECT COUNT(DISTINCT funcionario_id) FROM atestados 
-                    WHERE data_retorno >= ? OR data_inicio = ?
-                ''', (today_str, today_str))
+                    WHERE data_inicio <= ? AND (
+                        (data_retorno IS NOT NULL AND (data_retorno > ? OR (data_retorno = data_inicio AND data_inicio = ?)))
+                        OR (dias_afastamento IS NOT NULL AND date(data_inicio, '+' || (dias_afastamento - 1) || ' days') >= ?)
+                    )
+                ''', (today_str, today_str, today_str, today_str))
                 em_atestado = cursor.fetchone()[0]
 
                 cursor.execute("SELECT SUM(quantidade_horas) FROM horas_extras")
@@ -1057,12 +1060,12 @@ class SGPHandler(BaseHTTPRequestHandler):
 
                 for emp in active_emps:
                     diag = calcular_ferias_colaborador(emp['admissao'], ferias_map.get(emp['id'], []))
+                    if diag.get('em_gozo_registro'):
+                        gozo_cnt += 1
                     if diag['status'] == 'VENCIDA':
                         vencidas_cnt += 1
                     elif diag['status'] == 'RISCO_DOBRAR':
                         risco_cnt += 1
-                    elif diag['status'] == 'EM_GOZO':
-                        gozo_cnt += 1
                     elif diag['status'] == 'AGENDADA':
                         agendadas_cnt += 1
 
@@ -1110,15 +1113,64 @@ class SGPHandler(BaseHTTPRequestHandler):
                     (SELECT COUNT(*) FROM ferias fer WHERE fer.funcionario_id = f.id) as total_ferias,
                     (SELECT COUNT(*) FROM contracheques c WHERE c.funcionario_id = f.id) as total_contracheques,
                     (SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END FROM atestados a 
-                     WHERE a.funcionario_id = f.id AND (a.data_retorno >= date('now') OR a.data_inicio = date('now'))) as em_atestado_agora
+                     WHERE a.funcionario_id = f.id 
+                       AND a.data_inicio <= date('now', 'localtime') 
+                       AND (
+                           (a.data_retorno IS NOT NULL AND (a.data_retorno > date('now', 'localtime') OR (a.data_retorno = a.data_inicio AND a.data_inicio = date('now', 'localtime'))))
+                           OR (a.dias_afastamento IS NOT NULL AND date(a.data_inicio, '+' || (a.dias_afastamento - 1) || ' days') >= date('now', 'localtime'))
+                       )
+                    ) as em_atestado_agora,
+                    (SELECT a.data_retorno FROM atestados a 
+                     WHERE a.funcionario_id = f.id 
+                       AND a.data_inicio <= date('now', 'localtime') 
+                       AND (
+                           (a.data_retorno IS NOT NULL AND (a.data_retorno > date('now', 'localtime') OR (a.data_retorno = a.data_inicio AND a.data_inicio = date('now', 'localtime'))))
+                           OR (a.dias_afastamento IS NOT NULL AND date(a.data_inicio, '+' || (a.dias_afastamento - 1) || ' days') >= date('now', 'localtime'))
+                       )
+                     ORDER BY a.data_retorno DESC LIMIT 1
+                    ) as atestado_retorno,
+                    (SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END FROM ferias fer
+                     WHERE fer.funcionario_id = f.id 
+                       AND fer.status != 'Cancelada'
+                       AND fer.data_inicio <= date('now', 'localtime') 
+                       AND (
+                           (fer.data_retorno IS NOT NULL AND fer.data_retorno >= date('now', 'localtime'))
+                           OR date(fer.data_inicio, '+' || fer.dias || ' days') >= date('now', 'localtime')
+                       )
+                    ) as em_ferias_agora,
+                    (SELECT fer.data_retorno FROM ferias fer
+                     WHERE fer.funcionario_id = f.id 
+                       AND fer.status != 'Cancelada'
+                       AND fer.data_inicio <= date('now', 'localtime') 
+                       AND (
+                           (fer.data_retorno IS NOT NULL AND fer.data_retorno >= date('now', 'localtime'))
+                           OR date(fer.data_inicio, '+' || fer.dias || ' days') >= date('now', 'localtime')
+                       )
+                     ORDER BY fer.data_retorno DESC LIMIT 1
+                    ) as ferias_retorno
                 FROM funcionarios f
                 WHERE 1=1
                 '''
                 params = []
 
+                custom_status_filter = None
                 if status and status != 'Todos':
-                    sql += " AND f.status = ?"
-                    params.append(status)
+                    if status in ('De Férias', 'De Ferias'):
+                        custom_status_filter = 'De Férias'
+                        sql += " AND f.status = 'Ativo'"
+                    elif status == 'Atestado':
+                        custom_status_filter = 'Atestado'
+                        sql += " AND f.status = 'Ativo'"
+                    elif status in ('Em Operação', 'Em Operacao'):
+                        custom_status_filter = 'Ativo'
+                        sql += " AND f.status = 'Ativo'"
+                    elif status == 'Ativo':
+                        sql += " AND f.status = 'Ativo'"
+                    elif status == 'Desligado':
+                        sql += " AND f.status = 'Desligado'"
+                    else:
+                        sql += " AND f.status = ?"
+                        params.append(status)
 
                 if local and local != 'Todos':
                     sql += " AND f.local_trabalho = ?"
@@ -1151,12 +1203,45 @@ class SGPHandler(BaseHTTPRequestHandler):
                     emp['ferias_limite'] = f_diag['proxima_data_limite']
                     emp['ferias_dias_limite'] = f_diag['dias_restantes_menor']
 
+                    em_gozo_reg = f_diag.get('em_gozo_registro')
+                    if em_gozo_reg:
+                        emp['em_ferias_agora'] = 1
+                        emp['ferias_retorno'] = em_gozo_reg.get('data_retorno_str') or emp.get('ferias_retorno')
+                        emp['ferias_retorno_br'] = em_gozo_reg.get('data_retorno_br')
+                    else:
+                        emp['em_ferias_agora'] = 1 if emp.get('em_ferias_agora') else 0
+                        if emp.get('ferias_retorno'):
+                            try:
+                                d_ret = datetime.datetime.strptime(emp['ferias_retorno'], '%Y-%m-%d').date()
+                                emp['ferias_retorno_br'] = d_ret.strftime('%d/%m/%Y')
+                            except Exception:
+                                emp['ferias_retorno_br'] = emp['ferias_retorno']
+
+                    if emp.get('atestado_retorno'):
+                        try:
+                            d_at = datetime.datetime.strptime(emp['atestado_retorno'], '%Y-%m-%d').date()
+                            emp['atestado_retorno_br'] = d_at.strftime('%d/%m/%Y')
+                        except Exception:
+                            emp['atestado_retorno_br'] = emp['atestado_retorno']
+
+                    if emp.get('status') == 'Desligado':
+                        emp['status_display'] = 'Desligado'
+                    elif emp.get('em_ferias_agora'):
+                        emp['status_display'] = 'De Férias'
+                    elif emp.get('em_atestado_agora'):
+                        emp['status_display'] = 'Atestado'
+                    else:
+                        emp['status_display'] = 'Ativo'
+
+                    if custom_status_filter and emp['status_display'] != custom_status_filter:
+                        continue
+
                     if ferias_filter and ferias_filter != 'Todos':
                         if ferias_filter == 'VENCIDA' and emp['ferias_status'] != 'VENCIDA':
                             continue
                         elif ferias_filter == 'RISCO_DOBRAR' and emp['ferias_status'] != 'RISCO_DOBRAR':
                             continue
-                        elif ferias_filter == 'EM_GOZO' and emp['ferias_status'] != 'EM_GOZO':
+                        elif ferias_filter == 'EM_GOZO' and emp['ferias_status'] != 'EM_GOZO' and not emp.get('em_ferias_agora'):
                             continue
                         elif ferias_filter == 'AGENDADA' and emp['ferias_status'] != 'AGENDADA':
                             continue
@@ -1193,6 +1278,37 @@ class SGPHandler(BaseHTTPRequestHandler):
                 ferias_rows = [dict(r) for r in cursor.fetchall()]
                 emp_dict['ferias'] = ferias_rows
                 emp_dict['diagnostico_ferias'] = calcular_ferias_colaborador(emp_dict['admissao'], ferias_rows)
+
+                # Diagnostic for active status
+                today_str = datetime.date.today().strftime('%Y-%m-%d')
+                em_atest = 0
+                for a in emp_dict['atestados']:
+                    d_ini = a.get('data_inicio')
+                    d_ret = a.get('data_retorno')
+                    dias = int(a.get('dias_afastamento') or 1)
+                    if d_ini and d_ini <= today_str:
+                        if (d_ret and (d_ret > today_str or (d_ret == d_ini and d_ini == today_str))) or (dias and parse_date(d_ini) and (parse_date(d_ini) + datetime.timedelta(days=dias-1)).strftime('%Y-%m-%d') >= today_str):
+                            em_atest = 1
+                            emp_dict['atestado_retorno'] = d_ret
+                            break
+                emp_dict['em_atestado_agora'] = em_atest
+
+                em_gozo = emp_dict['diagnostico_ferias'].get('em_gozo_registro')
+                if em_gozo:
+                    emp_dict['em_ferias_agora'] = 1
+                    emp_dict['ferias_retorno'] = em_gozo.get('data_retorno_str')
+                    emp_dict['ferias_retorno_br'] = em_gozo.get('data_retorno_br')
+                else:
+                    emp_dict['em_ferias_agora'] = 0
+
+                if emp_dict.get('status') == 'Desligado':
+                    emp_dict['status_display'] = 'Desligado'
+                elif emp_dict.get('em_ferias_agora'):
+                    emp_dict['status_display'] = 'De Férias'
+                elif emp_dict.get('em_atestado_agora'):
+                    emp_dict['status_display'] = 'Atestado'
+                else:
+                    emp_dict['status_display'] = 'Ativo'
 
                 self.send_json(emp_dict)
                 return
