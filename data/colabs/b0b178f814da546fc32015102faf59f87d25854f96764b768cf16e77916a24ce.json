@@ -11,6 +11,19 @@
   "default_senha_hash": "a7b6f37b5636c998d34c3ce548e361bd12ed80c41efd07b67fa941d3ca707215",
   "contracheques": [
     {
+      "id": 1494,
+      "ano": 2026,
+      "mes": 9,
+      "competencia": "Setembro / 2026",
+      "nome_arquivo": "ADIANTAMENTO 13°-LUCIO WAGNE.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 5192,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-09-25 18:28:11",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/44/2026_09_1eb338_ADIANTAMENTO_13_-LUCIO_WAGNE.pdf"
+    },
+    {
       "id": 781,
       "ano": 2026,
       "mes": 8,
