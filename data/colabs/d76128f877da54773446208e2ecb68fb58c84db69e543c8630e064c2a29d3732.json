@@ -152,19 +152,6 @@
       "observacoes": "Upload em Lote Automatizado",
       "created_at": "2026-09-17 14:10:09",
       "arquivo_url": "UPLOADS/CONTRACHEQUES/74/2025_11_2b9155_HOLERITES_11_2025-_VANDERLEI_JOSE.pdf"
-    },
-    {
-      "id": 1192,
-      "ano": 2025,
-      "mes": 10,
-      "competencia": "Outubro / 2025",
-      "nome_arquivo": "HOLERITES 10 2025-VANDERLEI.pdf",
-      "tipo_arquivo": "application/pdf",
-      "tamanho_bytes": 200040,
-      "valor_liquido": 0.0,
-      "observacoes": "Upload em Lote Automatizado",
-      "created_at": "2026-09-17 14:14:42",
-      "arquivo_url": "UPLOADS/CONTRACHEQUES/74/2025_10_8c302c_HOLERITES_10_2025-VANDERLEI.pdf"
     }
   ]
 }
