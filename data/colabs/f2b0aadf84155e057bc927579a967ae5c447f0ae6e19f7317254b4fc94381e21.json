@@ -100,58 +100,6 @@
       "observacoes": "Upload em Lote Automatizado",
       "created_at": "2026-09-16 15:03:28",
       "arquivo_url": "UPLOADS/CONTRACHEQUES/68/2026_02_09faec_HOLERITE_02-2026-RONALDO.pdf"
-    },
-    {
-      "id": 1401,
-      "ano": 2025,
-      "mes": 13,
-      "competencia": "13º Salário / 2025",
-      "nome_arquivo": "ADIANTAMENTO 13°-RONALDO.pdf",
-      "tipo_arquivo": "application/pdf",
-      "tamanho_bytes": 5209,
-      "valor_liquido": 0.0,
-      "observacoes": "Upload em Lote Automatizado",
-      "created_at": "2026-09-21 14:25:07",
-      "arquivo_url": "UPLOADS/CONTRACHEQUES/68/2025_13_dcc674_ADIANTAMENTO_13_-RONALDO.pdf"
-    },
-    {
-      "id": 1188,
-      "ano": 2025,
-      "mes": 10,
-      "competencia": "Outubro / 2025",
-      "nome_arquivo": "HOLERITES 10 2025-RONALDO.pdf",
-      "tipo_arquivo": "application/pdf",
-      "tamanho_bytes": 199953,
-      "valor_liquido": 0.0,
-      "observacoes": "Upload em Lote Automatizado",
-      "created_at": "2026-09-17 14:14:40",
-      "arquivo_url": "UPLOADS/CONTRACHEQUES/68/2025_10_f3c09c_HOLERITES_10_2025-RONALDO.pdf"
-    },
-    {
-      "id": 1261,
-      "ano": 2025,
-      "mes": 9,
-      "competencia": "Setembro / 2025",
-      "nome_arquivo": "HOLERITES 09 2025-RONALDO.pdf",
-      "tipo_arquivo": "application/pdf",
-      "tamanho_bytes": 200054,
-      "valor_liquido": 0.0,
-      "observacoes": "Upload em Lote Automatizado",
-      "created_at": "2026-09-17 18:41:25",
-      "arquivo_url": "UPLOADS/CONTRACHEQUES/68/2025_09_06f581_HOLERITES_09_2025-RONALDO.pdf"
-    },
-    {
-      "id": 1301,
-      "ano": 2025,
-      "mes": 8,
-      "competencia": "Agosto / 2025",
-      "nome_arquivo": "08_2025_RONALDO.pdf",
-      "tipo_arquivo": "application/pdf",
-      "tamanho_bytes": 5429,
-      "valor_liquido": 0.0,
-      "observacoes": "Upload em Lote Automatizado",
-      "created_at": "2026-09-17 18:43:24",
-      "arquivo_url": "UPLOADS/CONTRACHEQUES/68/2025_08_ae41cd_08_2025_RONALDO.pdf"
     }
   ]
 }
