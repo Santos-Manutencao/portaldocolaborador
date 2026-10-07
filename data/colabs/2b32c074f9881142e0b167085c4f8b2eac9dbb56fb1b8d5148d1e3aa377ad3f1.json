@@ -11,6 +11,19 @@
   "default_senha_hash": "2bc565e1704da82010a99cedc867c60b300a690069278762ff855e7f2dc701ff",
   "contracheques": [
     {
+      "id": 1547,
+      "ano": 2026,
+      "mes": 9,
+      "competencia": "Setembro / 2026",
+      "nome_arquivo": "HOLERITE_09_2026_LUCIO_PASCHOAL.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 8299,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-10-07 17:18:05",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/43/2026_09_8b3ff6_HOLERITE_09_2026_LUCIO_PASCHOAL.pdf"
+    },
+    {
       "id": 780,
       "ano": 2026,
       "mes": 8,

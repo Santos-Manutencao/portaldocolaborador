@@ -11,6 +11,19 @@
   "default_senha_hash": "51947d278f6199eb5518738f1552b9948aea0442fc2fee35558e3373f5de4b25",
   "contracheques": [
     {
+      "id": 1550,
+      "ano": 2026,
+      "mes": 9,
+      "competencia": "Setembro / 2026",
+      "nome_arquivo": "HOLERITE_09_2026_LUIZ_CARLOS.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 8393,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-10-07 17:18:05",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/46/2026_09_cb9021_HOLERITE_09_2026_LUIZ_CARLOS.pdf"
+    },
+    {
       "id": 783,
       "ano": 2026,
       "mes": 8,

@@ -11,6 +11,19 @@
   "default_senha_hash": "c964c03d02b058c25bd9c4660fd9b9adbd250459efdfbdb48fec9d5cd901f575",
   "contracheques": [
     {
+      "id": 1505,
+      "ano": 2026,
+      "mes": 9,
+      "competencia": "Setembro / 2026",
+      "nome_arquivo": "HOLERITE_09_2026_ADELMO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 8498,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-10-07 17:18:01",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/1/2026_09_de33ef_HOLERITE_09_2026_ADELMO.pdf"
+    },
+    {
       "id": 736,
       "ano": 2026,
       "mes": 8,

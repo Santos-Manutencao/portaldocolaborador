@@ -11,6 +11,19 @@
   "default_senha_hash": "d99bd88d98736068d113789ba8e6cf844e5352c7ac34ccf48eb1cba15f276d1e",
   "contracheques": [
     {
+      "id": 1530,
+      "ano": 2026,
+      "mes": 9,
+      "competencia": "Setembro / 2026",
+      "nome_arquivo": "HOLERITE_09_2026_JADERSON.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 8414,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-10-07 17:18:04",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/27/2026_09_42c447_HOLERITE_09_2026_JADERSON.pdf"
+    },
+    {
       "id": 762,
       "ano": 2026,
       "mes": 8,

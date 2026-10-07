@@ -11,6 +11,19 @@
   "default_senha_hash": "e7e1f0c0a71fa7c589b22d57b70ea723a114e812ce935f00c37b94db3dd96365",
   "contracheques": [
     {
+      "id": 1552,
+      "ano": 2026,
+      "mes": 9,
+      "competencia": "Setembro / 2026",
+      "nome_arquivo": "HOLERITE_09_2026_MACIEL.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 8257,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-10-07 17:18:05",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/48/2026_09_d2f923_HOLERITE_09_2026_MACIEL.pdf"
+    },
+    {
       "id": 785,
       "ano": 2026,
       "mes": 8,

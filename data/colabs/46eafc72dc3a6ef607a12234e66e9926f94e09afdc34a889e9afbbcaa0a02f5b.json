@@ -11,6 +11,19 @@
   "default_senha_hash": "9b8b896918fb6c87f527be9045d3aa805deafa7c345be0502d14931373962b5c",
   "contracheques": [
     {
+      "id": 1513,
+      "ano": 2026,
+      "mes": 9,
+      "competencia": "Setembro / 2026",
+      "nome_arquivo": "HOLERITE_09_2026_CLEISON.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 8499,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-10-07 17:18:03",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/10/2026_09_2c2e9a_HOLERITE_09_2026_CLEISON.pdf"
+    },
+    {
       "id": 745,
       "ano": 2026,
       "mes": 8,

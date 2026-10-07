@@ -11,6 +11,19 @@
   "default_senha_hash": "920d0ec3663baf60d1cb1f23c75de39fe648c96d91fcd2e2d9449928a2c15a3a",
   "contracheques": [
     {
+      "id": 1564,
+      "ano": 2026,
+      "mes": 9,
+      "competencia": "Setembro / 2026",
+      "nome_arquivo": "HOLERITE_09_2026_RAFAEL_VIEIRA.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 8489,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-10-07 17:18:07",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/60/2026_09_833746_HOLERITE_09_2026_RAFAEL_VIEIRA.pdf"
+    },
+    {
       "id": 735,
       "ano": 2026,
       "mes": 8,

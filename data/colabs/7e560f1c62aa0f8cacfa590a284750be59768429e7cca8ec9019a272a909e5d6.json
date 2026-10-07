@@ -11,6 +11,19 @@
   "default_senha_hash": "30b7d11bd3dd6c5c8fe0711ef69be2dc79f92eaa050b4f5959e795f6f8b195ea",
   "contracheques": [
     {
+      "id": 1508,
+      "ano": 2026,
+      "mes": 9,
+      "competencia": "Setembro / 2026",
+      "nome_arquivo": "HOLERITE_09_2026_ANDERSON.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 8439,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-10-07 17:18:02",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/4/2026_09_eb31d2_HOLERITE_09_2026_ANDERSON.pdf"
+    },
+    {
       "id": 739,
       "ano": 2026,
       "mes": 8,

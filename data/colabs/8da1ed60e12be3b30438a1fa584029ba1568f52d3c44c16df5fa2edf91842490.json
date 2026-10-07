@@ -11,6 +11,19 @@
   "default_senha_hash": "2d13509df96bbe3f2717b1f3550ad693368f82dbea261b7c92ba066a7ccc901f",
   "contracheques": [
     {
+      "id": 1578,
+      "ano": 2026,
+      "mes": 9,
+      "competencia": "Setembro / 2026",
+      "nome_arquivo": "HOLERITE_09_2026_VANDERLEI_LUCIO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 8296,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-10-07 17:18:08",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/75/2026_09_463c4c_HOLERITE_09_2026_VANDERLEI_LUCIO.pdf"
+    },
+    {
       "id": 810,
       "ano": 2026,
       "mes": 8,

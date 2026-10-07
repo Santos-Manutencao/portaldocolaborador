@@ -11,6 +11,32 @@
   "default_senha_hash": "9943096ffb1898375ef93bc0ff3299adff2783f0f3cf6f3da5d2dcb1548e91a1",
   "contracheques": [
     {
+      "id": 1531,
+      "ano": 2026,
+      "mes": 9,
+      "competencia": "Setembro / 2026",
+      "nome_arquivo": "HOLERITE_09_2026_JANIR1.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 8736,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-10-07 17:18:04",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/28/2026_09_d08270_HOLERITE_09_2026_JANIR1.pdf"
+    },
+    {
+      "id": 1532,
+      "ano": 2026,
+      "mes": 9,
+      "competencia": "Setembro / 2026",
+      "nome_arquivo": "HOLERITE_09_2026_JANIR2.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 7479,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-10-07 17:18:04",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/28/2026_09_53c553_HOLERITE_09_2026_JANIR2.pdf"
+    },
+    {
       "id": 763,
       "ano": 2026,
       "mes": 8,

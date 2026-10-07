@@ -11,6 +11,19 @@
   "default_senha_hash": "d0ea2da15488de6e5243ab9051c75d2d81b18099120498402ec9f0149f3c400f",
   "contracheques": [
     {
+      "id": 1537,
+      "ano": 2026,
+      "mes": 9,
+      "competencia": "Setembro / 2026",
+      "nome_arquivo": "HOLERITE_09_2026_JOCIEL.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 8378,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-10-07 17:18:04",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/33/2026_09_41c555_HOLERITE_09_2026_JOCIEL.pdf"
+    },
+    {
       "id": 769,
       "ano": 2026,
       "mes": 8,

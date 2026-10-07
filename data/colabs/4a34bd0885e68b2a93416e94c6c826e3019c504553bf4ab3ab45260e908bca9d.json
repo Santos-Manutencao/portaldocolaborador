@@ -11,6 +11,19 @@
   "default_senha_hash": "75b1deb5d7b5f1049e03a95e54fd68c4c85820a8f04a5077c4b262a05440f6bb",
   "contracheques": [
     {
+      "id": 1573,
+      "ano": 2026,
+      "mes": 9,
+      "competencia": "Setembro / 2026",
+      "nome_arquivo": "HOLERITE_09_2026_SALVIANO_JOAO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 8062,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-10-07 17:18:07",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/69/2026_09_dd2d6e_HOLERITE_09_2026_SALVIANO_JOAO.pdf"
+    },
+    {
       "id": 805,
       "ano": 2026,
       "mes": 8,

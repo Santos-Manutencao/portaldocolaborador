@@ -11,6 +11,19 @@
   "default_senha_hash": "e016f6ef471801f52ec7b0dad6796c7be74a0c67ee2aff03690ae62f3703d389",
   "contracheques": [
     {
+      "id": 1534,
+      "ano": 2026,
+      "mes": 9,
+      "competencia": "Setembro / 2026",
+      "nome_arquivo": "HOLERITE_09_2026_JOAO_OLIVEIRA.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 190777,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-10-07 17:18:04",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/30/2026_09_617c21_HOLERITE_09_2026_JOAO_OLIVEIRA.pdf"
+    },
+    {
       "id": 766,
       "ano": 2026,
       "mes": 8,

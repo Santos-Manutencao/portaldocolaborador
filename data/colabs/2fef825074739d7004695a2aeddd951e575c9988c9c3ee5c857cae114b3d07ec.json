@@ -11,6 +11,19 @@
   "default_senha_hash": "8c02e44803b5ea41276d906d7e99aaa35a4e0b75d6425c78e9b12368c64749fb",
   "contracheques": [
     {
+      "id": 1544,
+      "ano": 2026,
+      "mes": 9,
+      "competencia": "Setembro / 2026",
+      "nome_arquivo": "HOLERITE_09_2026_JOSE_ROBERTO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 8401,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-10-07 17:18:05",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/40/2026_09_f21bdc_HOLERITE_09_2026_JOSE_ROBERTO.pdf"
+    },
+    {
       "id": 777,
       "ano": 2026,
       "mes": 8,

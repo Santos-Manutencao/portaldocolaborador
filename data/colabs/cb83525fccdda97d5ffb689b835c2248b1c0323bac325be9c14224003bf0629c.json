@@ -11,6 +11,19 @@
   "default_senha_hash": "a3f7bd3bc988e8ef9f91f981bf395ef349a1f5e00672696a58a7599d273d2377",
   "contracheques": [
     {
+      "id": 1545,
+      "ano": 2026,
+      "mes": 9,
+      "competencia": "Setembro / 2026",
+      "nome_arquivo": "HOLERITE_09_2026_LEANDRO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 8075,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-10-07 17:18:05",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/41/2026_09_aef8f0_HOLERITE_09_2026_LEANDRO.pdf"
+    },
+    {
       "id": 778,
       "ano": 2026,
       "mes": 8,

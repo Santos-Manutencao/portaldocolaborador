@@ -11,6 +11,19 @@
   "default_senha_hash": "0102780aea49a2b4cf236a338d5ca59238cb486eda04300d2512afcb1eeb9a56",
   "contracheques": [
     {
+      "id": 1540,
+      "ano": 2026,
+      "mes": 9,
+      "competencia": "Setembro / 2026",
+      "nome_arquivo": "HOLERITE_09_2026_JONES.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 8022,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-10-07 17:18:04",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/36/2026_09_19289e_HOLERITE_09_2026_JONES.pdf"
+    },
+    {
       "id": 773,
       "ano": 2026,
       "mes": 8,

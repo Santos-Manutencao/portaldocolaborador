@@ -11,6 +11,19 @@
   "default_senha_hash": "f4e505b13ad7ccad29b7a296df9d8ea730e67298a46eb90bc2fb3641bb6b970a",
   "contracheques": [
     {
+      "id": 1542,
+      "ano": 2026,
+      "mes": 9,
+      "competencia": "Setembro / 2026",
+      "nome_arquivo": "HOLERITE_09_2026_JOSE_LANIEL.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 8216,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-10-07 17:18:05",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/38/2026_09_dafbde_HOLERITE_09_2026_JOSE_LANIEL.pdf"
+    },
+    {
       "id": 775,
       "ano": 2026,
       "mes": 8,

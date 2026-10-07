@@ -11,6 +11,19 @@
   "default_senha_hash": "344ba52570c7357d9c176ad00ff04f4bd9cd7911bf6b571000a02db48d21dd57",
   "contracheques": [
     {
+      "id": 1576,
+      "ano": 2026,
+      "mes": 9,
+      "competencia": "Setembro / 2026",
+      "nome_arquivo": "HOLERITE_09_2026_UZENIR.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 8266,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-10-07 17:18:08",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/73/2026_09_c2baf5_HOLERITE_09_2026_UZENIR.pdf"
+    },
+    {
       "id": 808,
       "ano": 2026,
       "mes": 8,

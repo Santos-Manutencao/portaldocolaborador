@@ -11,6 +11,19 @@
   "default_senha_hash": "43d46b5d261109a8ecffa562696a1aa09ab1b225c4fac02417011e4f6c4f7a92",
   "contracheques": [
     {
+      "id": 1546,
+      "ano": 2026,
+      "mes": 9,
+      "competencia": "Setembro / 2026",
+      "nome_arquivo": "HOLERITE_09_2026_LUCAS_PHILIP.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 8683,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-10-07 17:18:05",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/42/2026_09_d291c9_HOLERITE_09_2026_LUCAS_PHILIP.pdf"
+    },
+    {
       "id": 779,
       "ano": 2026,
       "mes": 8,
