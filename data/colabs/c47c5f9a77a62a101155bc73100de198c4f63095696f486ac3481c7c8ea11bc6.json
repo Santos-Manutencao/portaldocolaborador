@@ -6,7 +6,7 @@
   "cargo": "DIRETOR",
   "admissao": "",
   "local_trabalho": "ADM",
-  "foto_path": null,
+  "foto_path": "UPLOADS/FOTOS/foto_70_1792587842.png",
   "senha_hash": null,
   "default_senha_hash": "d6d922c4201abe23c9db6081ad9386de1e57391309d95fec7210c9b1c50383aa",
   "contracheques": []

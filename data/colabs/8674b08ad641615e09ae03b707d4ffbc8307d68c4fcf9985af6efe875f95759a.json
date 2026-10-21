@@ -6,7 +6,7 @@
   "cargo": "MANTENEDOR",
   "admissao": "2026-02-03",
   "local_trabalho": "TSA",
-  "foto_path": null,
+  "foto_path": "UPLOADS/FOTOS/foto_48_1792587669.jpg",
   "senha_hash": null,
   "default_senha_hash": "e7e1f0c0a71fa7c589b22d57b70ea723a114e812ce935f00c37b94db3dd96365",
   "contracheques": [
