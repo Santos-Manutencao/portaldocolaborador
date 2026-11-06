@@ -11,6 +11,19 @@
   "default_senha_hash": "3d8eb1aa0963600001fb87b0570a1633593c75f54bad6582ee51336e6a8d6656",
   "contracheques": [
     {
+      "id": 1728,
+      "ano": 2026,
+      "mes": 10,
+      "competencia": "Outubro / 2026",
+      "nome_arquivo": "HOLERITE_10_2026-VICTOR.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 8299,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-11-06 19:29:17",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/77/2026_10_e7417f_HOLERITE_10_2026-VICTOR.pdf"
+    },
+    {
       "id": 1580,
       "ano": 2026,
       "mes": 9,

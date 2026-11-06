@@ -11,6 +11,19 @@
   "default_senha_hash": "59bad1112c28e26d333f591d0d1dee9969fc0a9d97a68f27691ab754c3554b9c",
   "contracheques": [
     {
+      "id": 1720,
+      "ano": 2026,
+      "mes": 10,
+      "competencia": "Outubro / 2026",
+      "nome_arquivo": "HOLERITE_10_2026-RONALDO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 8482,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-11-06 19:29:17",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/68/2026_10_8390f9_HOLERITE_10_2026-RONALDO.pdf"
+    },
+    {
       "id": 1572,
       "ano": 2026,
       "mes": 9,

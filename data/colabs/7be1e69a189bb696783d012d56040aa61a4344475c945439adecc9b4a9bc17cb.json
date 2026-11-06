@@ -11,6 +11,19 @@
   "default_senha_hash": "a90e983858d0b34993b3d74060383df1f78af824fc500aa524b81897d0365541",
   "contracheques": [
     {
+      "id": 1664,
+      "ano": 2026,
+      "mes": 10,
+      "competencia": "Outubro / 2026",
+      "nome_arquivo": "HOLERITE_10_2026-BRUNO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 8529,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-11-06 19:29:12",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/8/2026_10_72de1e_HOLERITE_10_2026-BRUNO.pdf"
+    },
+    {
       "id": 1511,
       "ano": 2026,
       "mes": 9,

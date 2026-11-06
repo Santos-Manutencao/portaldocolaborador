@@ -11,6 +11,19 @@
   "default_senha_hash": "9e067a535f9b827827f171338406e85cf92e3f5be102b650a29e1acdde349cde",
   "contracheques": [
     {
+      "id": 1693,
+      "ano": 2026,
+      "mes": 10,
+      "competencia": "Outubro / 2026",
+      "nome_arquivo": "HOLERITE_10_2026-JOSE MARIA.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 8285,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-11-06 19:29:15",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/39/2026_10_ee047c_HOLERITE_10_2026-JOSE_MARIA.pdf"
+    },
+    {
       "id": 1543,
       "ano": 2026,
       "mes": 9,

@@ -11,6 +11,32 @@
   "default_senha_hash": "c964c03d02b058c25bd9c4660fd9b9adbd250459efdfbdb48fec9d5cd901f575",
   "contracheques": [
     {
+      "id": 1658,
+      "ano": 2026,
+      "mes": 10,
+      "competencia": "Outubro / 2026",
+      "nome_arquivo": "HOLERITE_10_2026-ADELMO1.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 8859,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-11-06 19:29:12",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/1/2026_10_ce3371_HOLERITE_10_2026-ADELMO1.pdf"
+    },
+    {
+      "id": 1659,
+      "ano": 2026,
+      "mes": 10,
+      "competencia": "Outubro / 2026",
+      "nome_arquivo": "HOLERITE_10_2026-ADELMO2.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 7659,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-11-06 19:29:12",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/1/2026_10_de7da5_HOLERITE_10_2026-ADELMO2.pdf"
+    },
+    {
       "id": 1505,
       "ano": 2026,
       "mes": 9,
