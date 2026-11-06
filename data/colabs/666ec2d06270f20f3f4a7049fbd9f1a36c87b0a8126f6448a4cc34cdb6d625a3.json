@@ -11,19 +11,6 @@
   "default_senha_hash": "5c98f068dfdac4a3faac5b69def25899acfa9e917f76d3a7ac6ba53f5b4c1281",
   "contracheques": [
     {
-      "id": 1588,
-      "ano": 2026,
-      "mes": 11,
-      "competencia": "Novembro / 2026",
-      "nome_arquivo": "HOLERITE_10_2026-ANDRE.pdf",
-      "tipo_arquivo": "application/pdf",
-      "tamanho_bytes": 8526,
-      "valor_liquido": 0.0,
-      "observacoes": "Upload em Lote Automatizado",
-      "created_at": "2026-11-06 19:27:28",
-      "arquivo_url": "UPLOADS/CONTRACHEQUES/5/2026_11_3e34ad_HOLERITE_10_2026-ANDRE.pdf"
-    },
-    {
       "id": 1509,
       "ano": 2026,
       "mes": 9,

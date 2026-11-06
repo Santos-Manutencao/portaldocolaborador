@@ -11,19 +11,6 @@
   "default_senha_hash": "4ade0a8e259ffa9423e688f69b75cc9ed903e43ae5dfc226ed8cf13ce6131dba",
   "contracheques": [
     {
-      "id": 1586,
-      "ano": 2026,
-      "mes": 11,
-      "competencia": "Novembro / 2026",
-      "nome_arquivo": "HOLERITE_10_2026-ANA PAULA.pdf",
-      "tipo_arquivo": "application/pdf",
-      "tamanho_bytes": 8325,
-      "valor_liquido": 0.0,
-      "observacoes": "Upload em Lote Automatizado",
-      "created_at": "2026-11-06 19:27:28",
-      "arquivo_url": "UPLOADS/CONTRACHEQUES/3/2026_11_660567_HOLERITE_10_2026-ANA_PAULA.pdf"
-    },
-    {
       "id": 1507,
       "ano": 2026,
       "mes": 9,

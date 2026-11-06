@@ -11,19 +11,6 @@
   "default_senha_hash": "3050b0245d3ad50f54f8601e2244f27f60a9bd99679713f78669d6d383d6cdd6",
   "contracheques": [
     {
-      "id": 1625,
-      "ano": 2026,
-      "mes": 11,
-      "competencia": "Novembro / 2026",
-      "nome_arquivo": "HOLERITE_10_2026-LUIS MANUEL.pdf",
-      "tipo_arquivo": "application/pdf",
-      "tamanho_bytes": 8415,
-      "valor_liquido": 0.0,
-      "observacoes": "Upload em Lote Automatizado",
-      "created_at": "2026-11-06 19:27:32",
-      "arquivo_url": "UPLOADS/CONTRACHEQUES/45/2026_11_52c2a7_HOLERITE_10_2026-LUIS_MANUEL.pdf"
-    },
-    {
       "id": 1549,
       "ano": 2026,
       "mes": 9,

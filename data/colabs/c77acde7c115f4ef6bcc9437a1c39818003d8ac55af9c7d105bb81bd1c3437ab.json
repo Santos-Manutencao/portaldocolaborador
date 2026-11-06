@@ -11,19 +11,6 @@
   "default_senha_hash": "956095679505186558ad150a02af4bee9a20e71818c09a8a09e446f7e4a303c5",
   "contracheques": [
     {
-      "id": 1600,
-      "ano": 2026,
-      "mes": 11,
-      "competencia": "Novembro / 2026",
-      "nome_arquivo": "HOLERITE_10_2026-EVANDRO.pdf",
-      "tipo_arquivo": "application/pdf",
-      "tamanho_bytes": 8162,
-      "valor_liquido": 0.0,
-      "observacoes": "Upload em Lote Automatizado",
-      "created_at": "2026-11-06 19:27:29",
-      "arquivo_url": "UPLOADS/CONTRACHEQUES/18/2026_11_cd7d46_HOLERITE_10_2026-EVANDRO.pdf"
-    },
-    {
       "id": 1521,
       "ano": 2026,
       "mes": 9,

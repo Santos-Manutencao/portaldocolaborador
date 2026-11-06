@@ -11,19 +11,6 @@
   "default_senha_hash": "8830e68f8a5eadc1f7e5ca4c2095b874a0ee9d039a2af8420b25881ab98c8978",
   "contracheques": [
     {
-      "id": 1633,
-      "ano": 2026,
-      "mes": 11,
-      "competencia": "Novembro / 2026",
-      "nome_arquivo": "HOLERITE_10_2026-MOISES.pdf",
-      "tipo_arquivo": "application/pdf",
-      "tamanho_bytes": 8063,
-      "valor_liquido": 0.0,
-      "observacoes": "Upload em Lote Automatizado",
-      "created_at": "2026-11-06 19:27:33",
-      "arquivo_url": "UPLOADS/CONTRACHEQUES/54/2026_11_baf0ed_HOLERITE_10_2026-MOISES.pdf"
-    },
-    {
       "id": 1558,
       "ano": 2026,
       "mes": 9,

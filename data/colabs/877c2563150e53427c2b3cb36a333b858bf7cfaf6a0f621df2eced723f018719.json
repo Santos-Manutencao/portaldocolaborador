@@ -11,19 +11,6 @@
   "default_senha_hash": "111d83bb546363881882f853d056942fbc918d0392009c2b105e5e8d4791d913",
   "contracheques": [
     {
-      "id": 1612,
-      "ano": 2026,
-      "mes": 11,
-      "competencia": "Novembro / 2026",
-      "nome_arquivo": "HOLERITE_10_2026-JOAO PAULO.pdf",
-      "tipo_arquivo": "application/pdf",
-      "tamanho_bytes": 8176,
-      "valor_liquido": 0.0,
-      "observacoes": "Upload em Lote Automatizado",
-      "created_at": "2026-11-06 19:27:31",
-      "arquivo_url": "UPLOADS/CONTRACHEQUES/31/2026_11_f706ce_HOLERITE_10_2026-JOAO_PAULO.pdf"
-    },
-    {
       "id": 1535,
       "ano": 2026,
       "mes": 9,

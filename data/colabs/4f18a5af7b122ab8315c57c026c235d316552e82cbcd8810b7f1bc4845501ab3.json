@@ -11,19 +11,6 @@
   "default_senha_hash": "b2ccc439604a6072560773cd2395701a00fbf5fa90cb9c5a522b71f3bc978b8d",
   "contracheques": [
     {
-      "id": 1639,
-      "ano": 2026,
-      "mes": 11,
-      "competencia": "Novembro / 2026",
-      "nome_arquivo": "HOLERITE_10_2026-RAFAELLY.pdf",
-      "tipo_arquivo": "application/pdf",
-      "tamanho_bytes": 8216,
-      "valor_liquido": 0.0,
-      "observacoes": "Upload em Lote Automatizado",
-      "created_at": "2026-11-06 19:27:33",
-      "arquivo_url": "UPLOADS/CONTRACHEQUES/61/2026_11_066950_HOLERITE_10_2026-RAFAELLY.pdf"
-    },
-    {
       "id": 1565,
       "ano": 2026,
       "mes": 9,

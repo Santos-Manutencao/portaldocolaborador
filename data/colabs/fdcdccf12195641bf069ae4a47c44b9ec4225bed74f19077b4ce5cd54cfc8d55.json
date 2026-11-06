@@ -11,19 +11,6 @@
   "default_senha_hash": "4e475596a129a27925caae02c60ea6d44849aa4afa9aeb1e3e174e89bb59c248",
   "contracheques": [
     {
-      "id": 1599,
-      "ano": 2026,
-      "mes": 11,
-      "competencia": "Novembro / 2026",
-      "nome_arquivo": "HOLERITE_10_2026-EPAMINONDAS.pdf",
-      "tipo_arquivo": "application/pdf",
-      "tamanho_bytes": 8326,
-      "valor_liquido": 0.0,
-      "observacoes": "Upload em Lote Automatizado",
-      "created_at": "2026-11-06 19:27:29",
-      "arquivo_url": "UPLOADS/CONTRACHEQUES/17/2026_11_8b2bbc_HOLERITE_10_2026-EPAMINONDAS.pdf"
-    },
-    {
       "id": 1520,
       "ano": 2026,
       "mes": 9,

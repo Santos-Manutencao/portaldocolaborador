@@ -11,19 +11,6 @@
   "default_senha_hash": "7938e27a9db976b346f5ac25e6d4718115980083ccc5324af996cd92a928f86e",
   "contracheques": [
     {
-      "id": 1643,
-      "ano": 2026,
-      "mes": 11,
-      "competencia": "Novembro / 2026",
-      "nome_arquivo": "HOLERITE_10_2026-ROBSON FABRICIO.pdf",
-      "tipo_arquivo": "application/pdf",
-      "tamanho_bytes": 8511,
-      "valor_liquido": 0.0,
-      "observacoes": "Upload em Lote Automatizado",
-      "created_at": "2026-11-06 19:27:34",
-      "arquivo_url": "UPLOADS/CONTRACHEQUES/65/2026_11_7e84bc_HOLERITE_10_2026-ROBSON_FABRICIO.pdf"
-    },
-    {
       "id": 1569,
       "ano": 2026,
       "mes": 9,
