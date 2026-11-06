@@ -47,6 +47,19 @@ def get_git_env():
     prepend = ';'.join([d for d in extra_dirs if os.path.isdir(d)])
     if prepend:
         env['PATH'] = f"{prepend};" + env.get('PATH', '')
+
+    # Garante autenticação prioritária da conta Santos-Manutencao
+    try:
+        gh_candidate = r'C:\Users\rafae\AppData\Local\Microsoft\WinGet\Packages\GitHub.cli_Microsoft.Winget.Source_8wekyb3d8bbwe\bin\gh.exe'
+        gh_bin = gh_candidate if os.path.isfile(gh_candidate) else shutil.which('gh')
+        if gh_bin:
+            res_t = subprocess.run([gh_bin, 'auth', 'token', '-u', 'Santos-Manutencao'], capture_output=True, text=True, timeout=5, env=env)
+            token = res_t.stdout.strip()
+            if res_t.returncode == 0 and token:
+                env['GH_TOKEN'] = token
+                env['GITHUB_TOKEN'] = token
+    except Exception:
+        pass
     return env
 
 def save_foto_base64(foto_b64_str, identifier=''):
@@ -994,12 +1007,24 @@ class SGPHandler(BaseHTTPRequestHandler):
                     res_st = subprocess.run([git_bin, 'status', '--porcelain'], cwd=BASE_DIR, env=env, capture_output=True, text=True, timeout=10)
                     changes = [line.strip() for line in res_st.stdout.splitlines() if line.strip()]
 
+                    unpushed_count = 0
+                    res_unpushed = subprocess.run([git_bin, 'rev-list', '--count', 'origin/main..HEAD'], cwd=BASE_DIR, env=env, capture_output=True, text=True, timeout=10)
+                    if res_unpushed.returncode == 0:
+                        try:
+                            unpushed_count = int(res_unpushed.stdout.strip() or 0)
+                        except Exception:
+                            unpushed_count = 0
+
                     res_log = subprocess.run([git_bin, 'log', '-1', '--format=%cd (%cr)', '--date=format:%d/%m/%Y %H:%M'], cwd=BASE_DIR, env=env, capture_output=True, text=True, timeout=10)
                     last_commit = res_log.stdout.strip() if res_log.returncode == 0 else ''
 
+                    has_changes = (len(changes) > 0) or (unpushed_count > 0)
+                    total_pendentes = len(changes) + unpushed_count
+
                     self.send_json({
-                        'has_changes': len(changes) > 0,
-                        'total_pendentes': len(changes),
+                        'has_changes': has_changes,
+                        'total_pendentes': total_pendentes,
+                        'unpushed_commits': unpushed_count,
                         'arquivos_pendentes': changes[:10],
                         'ultimo_sync': last_commit,
                         'repo_url': 'https://github.com/Santos-Manutencao/portaldocolaborador'
@@ -1642,43 +1667,56 @@ class SGPHandler(BaseHTTPRequestHandler):
                         self.send_json({'error': f'Falha ao indexar arquivos locais: {add_res.stderr or add_res.stdout}'}, 500)
                         return
 
-                    # 3. Verifica se existem alterações em relação ao repositório
+                    # 3. Verifica se existem alterações de arquivos em relação ao repositório
                     st_res = subprocess.run([git_bin, 'status', '--porcelain'], cwd=BASE_DIR, env=env, capture_output=True, text=True, timeout=15)
                     changes = [line.strip() for line in st_res.stdout.splitlines() if line.strip()]
 
                     portal_url = 'https://santos-manutencao.github.io/portaldocolaborador/'
 
-                    if not changes:
+                    # 4. Cria o commit automático com data e hora caso haja alterações locais
+                    agora_str = datetime.datetime.now().strftime('%d/%m/%Y %H:%M:%S')
+                    committed_now = False
+                    if changes:
+                        commit_msg = f"sync: atualizacao automatica do sistema ({agora_str})"
+                        c_res = subprocess.run([git_bin, 'commit', '-m', commit_msg], cwd=BASE_DIR, env=env, capture_output=True, text=True, timeout=30)
+                        if c_res.returncode != 0:
+                            self.send_json({'error': f'Falha ao registrar versão (commit): {c_res.stderr or c_res.stdout}'}, 500)
+                            return
+                        committed_now = True
+
+                    # 5. Verifica se há commits pendentes de envio para o GitHub
+                    unpushed_count = 0
+                    unpushed_res = subprocess.run([git_bin, 'rev-list', '--count', 'origin/main..HEAD'], cwd=BASE_DIR, env=env, capture_output=True, text=True, timeout=15)
+                    if unpushed_res.returncode == 0:
+                        try:
+                            unpushed_count = int(unpushed_res.stdout.strip() or 0)
+                        except Exception:
+                            unpushed_count = 0
+
+                    if not committed_now and unpushed_count == 0:
                         self.send_json({
                             'success': True,
                             'status': 'sem_alteracoes',
                             'message': 'O sistema online já está totalmente atualizado! Nenhuma nova alteração local pendente.',
                             'total_arquivos': 0,
-                            'timestamp': datetime.datetime.now().strftime('%d/%m/%Y %H:%M:%S'),
+                            'timestamp': agora_str,
                             'portal_url': portal_url,
                             'repo_url': 'https://github.com/Santos-Manutencao/portaldocolaborador'
                         })
                         return
 
-                    # 4. Cria o commit automático com data e hora
-                    agora_str = datetime.datetime.now().strftime('%d/%m/%Y %H:%M:%S')
-                    commit_msg = f"sync: atualizacao automatica do sistema ({agora_str})"
-                    c_res = subprocess.run([git_bin, 'commit', '-m', commit_msg], cwd=BASE_DIR, env=env, capture_output=True, text=True, timeout=30)
-                    if c_res.returncode != 0:
-                        self.send_json({'error': f'Falha ao registrar versão (commit): {c_res.stderr or c_res.stdout}'}, 500)
-                        return
-
-                    # 5. Envia para o GitHub (push origin main)
+                    # 6. Envia para o GitHub (push origin main)
                     p_res = subprocess.run([git_bin, 'push', 'origin', 'main'], cwd=BASE_DIR, env=env, capture_output=True, text=True, timeout=60)
                     if p_res.returncode != 0:
                         self.send_json({'error': f'Falha ao enviar dados para o GitHub: {p_res.stderr or p_res.stdout}'}, 500)
                         return
 
+                    total_sincronizados = len(changes) if changes else unpushed_count
                     self.send_json({
                         'success': True,
                         'status': 'sincronizado',
-                        'message': f'Sistema online atualizado com sucesso no GitHub Pages! {len(changes)} arquivo(s) sincronizados.',
-                        'total_arquivos': len(changes),
+                        'message': f'Sistema online atualizado com sucesso no GitHub Pages! {total_sincronizados} item(ns) sincronizados.',
+                        'total_arquivos': total_sincronizados,
                         'portal_url': portal_url,
                         'timestamp': agora_str,
                         'repo_url': 'https://github.com/Santos-Manutencao/portaldocolaborador'
