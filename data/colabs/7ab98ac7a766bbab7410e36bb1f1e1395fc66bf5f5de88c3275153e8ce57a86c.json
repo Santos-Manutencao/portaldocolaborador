@@ -1,0 +1,27 @@
+{
+  "id": 156,
+  "matricula": "000222",
+  "nome": "FRANCISCO FERREIRA LIMA FILHO DE OLIVEIRA",
+  "cpf_limpo": "08101240683",
+  "cargo": "ELETRICISTA",
+  "admissao": "2026-11-16",
+  "local_trabalho": "CDA",
+  "foto_path": "UPLOADS/FOTOS/foto_FRANCISCO_FERREIRA_LIMA_FILHO_DE_OLIVEIRA_1795631368.jpg",
+  "senha_hash": null,
+  "default_senha_hash": "7306e659edd60f85467f6f413c22384dcef28ef6d7f880ccfefa1b9a8a912f10",
+  "contracheques": [
+    {
+      "id": 1799,
+      "ano": 2026,
+      "mes": 13,
+      "competencia": "13º Salário / 2026",
+      "nome_arquivo": "HOLERITE_1° PARCELA 13°_2026-FRANCISCO.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 7540,
+      "valor_liquido": 0.0,
+      "observacoes": "",
+      "created_at": "2026-11-25 18:30:16",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/156/2026_13_9a6cc2_HOLERITE_1__PARCELA_13__2026-FRANCISCO.pdf"
+    }
+  ]
+}
