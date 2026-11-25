@@ -11,6 +11,19 @@
   "default_senha_hash": "9943096ffb1898375ef93bc0ff3299adff2783f0f3cf6f3da5d2dcb1548e91a1",
   "contracheques": [
     {
+      "id": 1756,
+      "ano": 2026,
+      "mes": 13,
+      "competencia": "13º Salário / 2026",
+      "nome_arquivo": "HOLERITE_1° PARCELA 13°_2026-JANIR.pdf",
+      "tipo_arquivo": "application/pdf",
+      "tamanho_bytes": 8026,
+      "valor_liquido": 0.0,
+      "observacoes": "Upload em Lote Automatizado",
+      "created_at": "2026-11-25 18:16:07",
+      "arquivo_url": "UPLOADS/CONTRACHEQUES/28/2026_13_97aba6_HOLERITE_1__PARCELA_13__2026-JANIR.pdf"
+    },
+    {
       "id": 1684,
       "ano": 2026,
       "mes": 10,
